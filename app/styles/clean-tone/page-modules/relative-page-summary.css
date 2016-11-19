@@ -1,0 +1,10 @@
+:host {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+  display: block;
+}
+
+:host p {
+  margin-bottom: 10px;
+}

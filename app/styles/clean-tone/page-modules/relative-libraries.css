@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  margin: 0px 15px 30px 30px;
+}
+
+:host .relative-library-title {
+  margin-bottom: 10px;
+}
+
+:host .library-link {
+  margin-left: 15px;
+}
+
+:host .library-link a {
+  display: block;
+  line-height: 30px;
+}

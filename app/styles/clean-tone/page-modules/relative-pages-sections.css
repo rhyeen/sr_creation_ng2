@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin: 0px 15px 30px 30px;
+}
+
+:host .relative-pages-section {
+  margin-bottom: 30px;
+}
+
+:host .relative-page-title {
+  display: inline;
+  margin-bottom: 10px;
+}

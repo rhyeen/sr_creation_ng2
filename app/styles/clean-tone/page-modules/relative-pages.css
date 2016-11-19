@@ -1,0 +1,22 @@
+:host .relative-pages-container {
+  display: block;
+  width: 310px;
+  max-height: 175px;
+  padding: 5px 10px;
+  margin: 15px 0 30px 15px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+:host .page-link-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+:host .page-link-title a {
+  width: 200px;
+  line-height: 30px;
+  font-size: 18px;
+  flex-grow: 1;
+}
