@@ -3,8 +3,8 @@ import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-relative-pages-sections',
-  templateUrl: './app/views/page-modules/relative-pages-sections.html',
-  styleUrls: ['./app/styles/clean-tone/page-modules/relative-pages-sections.css']
+  templateUrl: './app/components/page-modules/relative-pages-sections.html',
+  styleUrls: ['./app/components/page-modules/relative-pages-sections.css']
 })
 export class RelativePagesSectionsComponent implements OnInit {
   private relative_pages_sections;

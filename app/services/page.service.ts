@@ -3,7 +3,8 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class PageService {
   private page = {
-    title: "Main Page",
+    title: "The curse of the chicken foot",
+    summary: "Players are expected to take the left path at the Crow's crossing.  If they take the right, they will be taken through the woods of dread's love and to Lady Giga's haunted house.  There, they will most certainly meet their doom as Giga likes to eat adventurers",
     relative_libraries: [
       {
         name: "Campaigns"
@@ -26,7 +27,7 @@ export class PageService {
     ],
     relative_pages_sections: [
       {
-        title: "Current Campaigns",
+        title: "Current Quests",
         relative_pages: [
           {
             name: "Curse of the chicken foot"
@@ -42,7 +43,7 @@ export class PageService {
         ]
       },
       {
-        title: "Archived Campaigns",
+        title: "NPCs",
         relative_pages: [
           {
             name: "Curse of the chicken foot"
@@ -78,14 +79,22 @@ export class PageService {
     return this.page.breadcrumbs;
   }
 
-  getPageSummary(page_section_index, page_index) {
+  getRelativePageSummary(page_section_index, page_index) {
     if (page_section_index == null || page_index == null) {
       return null;
     }
     var page = this.page.relative_pages_sections[page_section_index]['relative_pages'][page_index];
+    return this._extractSummary(page);
+  }
+
+  private _extractSummary(page) {
     if (!('summary' in page)) {
       return null;
     }
     return page['summary'];
+  }
+
+  getPageSummary() {
+    return this._extractSummary(this.page);
   }
 }

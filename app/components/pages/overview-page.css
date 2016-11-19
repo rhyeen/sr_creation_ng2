@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 370px;
+  /*background-color: #eee;*/
+  margin: 15px;
+}
+
+@media (max-width: 400px) {
+  :host {
+    width: calc(100% - 20px);
+    margin: 0px;
+    padding: 10px;
+  }
+}

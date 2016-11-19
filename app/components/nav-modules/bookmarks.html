@@ -1,0 +1,30 @@
+<section *ngIf="state.show_bookmarks">
+  <section class="top-bar">
+    <sr-bookmarks-btn></sr-bookmarks-btn>
+    <sr-exit-btn [state_key]="state_key" [state_event_key]="state_event_key"></sr-exit-btn>
+  </section>
+  <section class="content">
+    <section class="bookmarks">
+      <sr-add-bookmark-btn></sr-add-bookmark-btn>
+      <div *ngFor="let bookmark of bookmarks; let bookmark_index = index">
+        <a (click)="openBookmark(bookmark_index)">{{bookmark.name}}</a>
+      </div>
+    </section>
+    <section class="events">
+      <div>
+        <a (click)="openEvents()">Time &amp; World Events</a>
+      </div>
+    </section>
+    <section class="others">
+      <div>
+        <a (click)="openRulebooks()">Rulebooks</a>
+      </div>
+      <div>
+        <a (click)="openReferenceTables()">Reference Tables</a>
+      </div>
+      <div>
+        <a (click)="openWiki()">Wiki</a>
+      </div>
+    </section>
+  </section>
+</section>

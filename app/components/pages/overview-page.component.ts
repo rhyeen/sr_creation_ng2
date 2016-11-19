@@ -3,8 +3,8 @@ import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-overview-page',
-  templateUrl: './app/views/pages/overview-page.html',
-  styleUrls: ['./app/styles/clean-tone/pages/overview-page.css'],
+  templateUrl: './app/components/pages/overview-page.html',
+  styleUrls: ['./app/components/pages/overview-page.css'],
   providers: [PageService]
 })
 export class OverviewPageComponent implements OnInit {

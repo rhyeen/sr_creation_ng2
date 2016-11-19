@@ -3,8 +3,8 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-content-help-btn',
-  templateUrl: './app/views/tools/content-help-btn.html',
-  styleUrls: ['./app/styles/clean-tone/tools/content-help-btn.css'],
+  templateUrl: './app/components/tools/content-help-btn.html',
+  styleUrls: ['./app/components/tools/content-help-btn.css'],
   inputs: ['state_key']
 })
 export class ContentHelpBtnComponent implements OnInit {

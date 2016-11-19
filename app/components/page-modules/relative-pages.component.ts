@@ -4,8 +4,8 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-relative-pages',
-  templateUrl: './app/views/page-modules/relative-pages.html',
-  styleUrls: ['./app/styles/clean-tone/page-modules/relative-pages.css'],
+  templateUrl: './app/components/page-modules/relative-pages.html',
+  styleUrls: ['./app/components/page-modules/relative-pages.css'],
   inputs: ['state_key', 'pages', 'parent_index']
 })
 export class RelativePagesComponent implements OnInit {

@@ -3,8 +3,8 @@ import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-relative-libraries',
-  templateUrl: './app/views/page-modules/relative-libraries.html',
-  styleUrls: ['./app/styles/clean-tone/page-modules/relative-libraries.css']
+  templateUrl: './app/components/page-modules/relative-libraries.html',
+  styleUrls: ['./app/components/page-modules/relative-libraries.css']
 })
 export class RelativeLibrariesComponent implements OnInit {
   private relative_libraries;

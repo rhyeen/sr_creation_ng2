@@ -70,7 +70,7 @@ textarea {
 /* defaults */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Viga', sans-serif;
-  color:#373737;
+  /*color:#373737;*/
   font-weight: 400;
 }
 

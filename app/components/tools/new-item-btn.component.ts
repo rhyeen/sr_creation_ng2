@@ -3,14 +3,13 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-new-item-btn',
-  templateUrl: './app/views/tools/new-item-btn.html',
-  styleUrls: ['./app/styles/clean-tone/tools/new-item-btn.css'],
-  providers: [StateService]
+  templateUrl: './app/components/tools/new-item-btn.html',
+  styleUrls: ['./app/components/tools/new-item-btn.css']
 })
 export class NewItemBtnComponent implements OnInit {
 
   constructor(
-    private _stateService: StateService
+    private stateService: StateService
   ) {
 
   }

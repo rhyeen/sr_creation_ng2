@@ -3,8 +3,8 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-section-toggle-btn',
-  templateUrl: './app/views/tools/section-toggle-btn.html',
-  styleUrls: ['./app/styles/clean-tone/tools/section-toggle-btn.css'],
+  templateUrl: './app/components/tools/section-toggle-btn.html',
+  styleUrls: ['./app/components/tools/section-toggle-btn.css'],
   inputs: ['state_key']
 })
 export class SectionToggleBtnComponent implements OnInit {

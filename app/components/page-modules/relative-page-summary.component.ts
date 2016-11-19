@@ -4,8 +4,8 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-relative-page-summary',
-  templateUrl: './app/views/page-modules/relative-page-summary.html',
-  styleUrls: ['./app/styles/clean-tone/page-modules/relative-page-summary.css'],
+  templateUrl: './app/components/page-modules/relative-page-summary.html',
+  styleUrls: ['./app/components/page-modules/relative-page-summary.css'],
   inputs: ['state_key', 'page_section_index', 'page_index']
 })
 export class RelativePageSummaryComponent implements OnInit {
@@ -23,7 +23,7 @@ export class RelativePageSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.page_summary = this.pageService.getPageSummary(this.page_section_index, this.page_index);
+    this.page_summary = this.pageService.getRelativePageSummary(this.page_section_index, this.page_index);
     this.state = this.stateService.getState(this.state_key);
   }
 }

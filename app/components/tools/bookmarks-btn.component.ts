@@ -3,14 +3,15 @@ import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-bookmarks-btn',
-  templateUrl: './app/views/tools/bookmarks-btn.html',
-  styleUrls: ['./app/styles/clean-tone/tools/bookmarks-btn.css'],
-  providers: [StateService]
+  templateUrl: './app/components/tools/bookmarks-btn.html',
+  styleUrls: ['./app/components/tools/bookmarks-btn.css']
 })
 export class BookmarksBtnComponent implements OnInit {
+  private state_key = 'bookmarks';
+  private state_event_key = 'show_bookmarks';
 
   constructor(
-    private _stateService: StateService
+    private stateService: StateService
   ) {
 
   }
@@ -19,7 +20,7 @@ export class BookmarksBtnComponent implements OnInit {
   }
 
   openBookmarks() {
-    // @TODO:
+    this.stateService.editState(this.state_key, this.state_event_key, true);
   }
 
 }
