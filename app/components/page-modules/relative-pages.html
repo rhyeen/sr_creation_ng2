@@ -1,9 +1,9 @@
 <div class="relative-pages-container" *ngIf="state.show_section">
   <div *ngFor="let page of pages; let page_index = index">
     <div class="page-link-title">
-      <a (click)="selectPage(page)">{{page.name}}</a>
-      <sr-content-help-btn [state_key]="getRelativePageStateKey(parent_index, page_index)"></sr-content-help-btn>
+      <a href="javascript:void(0)" (click)="selectPage(page)">{{page.name}}</a>
+      <sr-content-help-btn *ngIf="page['summary']" [state_key]="getRelativePageStateKey(parent_index, page_index)"></sr-content-help-btn>
     </div>
-    <sr-relative-page-summary [state_key]="getRelativePageStateKey(parent_index, page_index)" [page_section_index]="parent_index" [page_index]="page_index"></sr-relative-page-summary>
+    <sr-relative-page-summary *ngIf="page['summary']" [state_key]="getRelativePageStateKey(parent_index, page_index)" [page_summary]="page['summary']"></sr-relative-page-summary>
   </div>
 </div>

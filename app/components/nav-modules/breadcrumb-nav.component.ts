@@ -7,7 +7,7 @@ import {PageService} from '../../services/page.service';
   styleUrls: ['./app/components/nav-modules/breadcrumb-nav.css']
 })
 export class BreadcrumbNavComponent implements OnInit {
-  private breadcrumbs;
+  private breadcrumbs_container;
 
   constructor(
     private pageService: PageService
@@ -16,7 +16,7 @@ export class BreadcrumbNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadcrumbs = this.pageService.getBreadCrumbs();
+    this.breadcrumbs_container = this.pageService.getBreadCrumbsContainer();
   }
 
 }

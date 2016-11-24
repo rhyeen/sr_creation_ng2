@@ -1,0 +1,14 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='#FFF' d='M11.5 5.5c0 .445-.002 1.055-.907 2.168S9.11 8.787 9 10.5c-.671.021-2 0-2 0s-.056-1.252.42-2.327C8.109 6.859 9.365 6.279 9.5 5.5 9.641 4.692 9.267 4 8 4S6.234 5.156 6.5 6.5h-2C4.328 5.344 4.078 2.156 8 2c2.098.031 3.5 1.22 3.5 3.5zM9.012 12.238c.159.158.238.492.238 1.004s-.079.849-.238 1.012-.493.246-1.004.246c-.512 0-.849-.082-1.012-.246-.164-.164-.246-.5-.246-1.012s.082-.846.246-1.004c.163-.159.5-.238 1.012-.238.511 0 .846.079 1.004.238z'/></svg>");
+  width: 16px;
+  height: 16px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+:host button:hover {
+  background-color: #000;
+}

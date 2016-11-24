@@ -12,6 +12,12 @@
 }
 
 :host .library-link a {
+  text-transform: capitalize;
+  color: black;
   display: block;
   line-height: 30px;
+}
+
+:host .library-link a:hover {
+  color: #003399;
 }

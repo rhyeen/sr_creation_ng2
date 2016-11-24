@@ -4,4 +4,17 @@
 	height: 40px;
 	background-color: #333;
 	color: white;
+  padding-left: 10px;
+}
+
+:host .home-btn {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='#FFF' d='M4.5 10h2v7h7v-7h2v9h-11'/><path fill='#FFF' d='M3.5 10.5L2 9l8-8 8 8-1.5 1.5L10 4'/></svg>");
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+:host >>> button {
+  margin: 10px 10px 0 0;
 }

@@ -1,2 +1,7 @@
-<p>{{page_summary}}</p>
-<a class="summary-details" (click)="viewDetails">More details</a>
+<div *ngIf="page_summary">
+  <p>{{page_summary}}</p>
+  <a href="javascript:void(0)" class="summary-details" (click)="viewDetails">More details</a>
+</div>
+<!-- <div *ngIf="!page_summary">
+  <a href="javascript:void(0)" class="summary-details" (click)="viewDetails">More details</a>
+</div> -->

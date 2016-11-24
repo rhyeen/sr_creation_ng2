@@ -11,4 +11,9 @@
   float: right;
   font-size: 18px;
   font-family: 'Viga', sans-serif;
+  color: black;
+}
+
+:host .summary-details:hover {
+  color: #003399;
 }

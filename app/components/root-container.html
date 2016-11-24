@@ -1,4 +1,5 @@
 <sr-trail-nav></sr-trail-nav>
-<sr-overview-page></sr-overview-page>
+<sr-overview-page *ngIf="!page['is_loading']" [page]="page"></sr-overview-page>
+<sr-spinner *ngIf="page['is_loading']"></sr-spinner>
 <sr-bookmarks></sr-bookmarks>
 <router-outlet></router-outlet>

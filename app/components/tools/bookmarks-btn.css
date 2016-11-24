@@ -1,0 +1,7 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='#FFF' d='M3 2v15l2 2h11.5V4h-2v1h1v13H5.25l-1-1H14.5V2h-5v8l-2-2-2 2V2'/></svg>");
+  width: 20px;
+  height: 20px;
+  border: none;
+}

@@ -1,0 +1,4 @@
+/* in clean-tone.css due to the index.html page using it before Angular loads */
+:host {
+  display: block;
+}

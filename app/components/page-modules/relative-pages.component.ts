@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
 import {StateService} from '../../services/state.service';
 
@@ -16,7 +17,8 @@ export class RelativePagesComponent implements OnInit {
 
   constructor(
     private stateService: StateService,
-    private pageService: PageService
+    private pageService: PageService,
+    private router: Router
   ) {
 
   }
@@ -26,6 +28,8 @@ export class RelativePagesComponent implements OnInit {
   }
 
   selectPage(page) {
+    let page_type = this.pageService.getPageType(page.id);
+    this.router.navigate(['/page', page_type, page.id]);
   }
 
   getRelativePageStateKey(page_section_index, page_index) {

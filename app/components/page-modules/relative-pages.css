@@ -12,19 +12,26 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  line-height: 30px;
 }
 
 :host .page-link-title a {
-  width: 200px;
-  line-height: 30px;
+  color: black;
   font-size: 18px;
   flex-grow: 1;
+}
+
+:host .page-link-title a:hover {
+  color: #003399;
+}
+
+:host sr-content-help-btn {
+  margin-top: 5px;
 }
 
 @media (max-width: 400px) {
   :host .relative-pages-container {
     width: calc(100% - 20px);
-    margin: 0px;
-    padding: 10px;
+    margin: 15px 0px 30px 0;
   }
 }

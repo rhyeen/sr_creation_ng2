@@ -7,23 +7,23 @@
     <section class="bookmarks">
       <sr-add-bookmark-btn></sr-add-bookmark-btn>
       <div *ngFor="let bookmark of bookmarks; let bookmark_index = index">
-        <a (click)="openBookmark(bookmark_index)">{{bookmark.name}}</a>
+        <a href="javascript:void(0)" (click)="openBookmark(bookmark_index)">{{bookmark.name}}</a>
       </div>
     </section>
     <section class="events">
       <div>
-        <a (click)="openEvents()">Time &amp; World Events</a>
+        <a href="javascript:void(0)" (click)="openEvents()">Time &amp; World Events</a>
       </div>
     </section>
     <section class="others">
       <div>
-        <a (click)="openRulebooks()">Rulebooks</a>
+        <a href="javascript:void(0)" (click)="openRulebooks()">Rulebooks</a>
       </div>
       <div>
-        <a (click)="openReferenceTables()">Reference Tables</a>
+        <a href="javascript:void(0)" (click)="openReferenceTables()">Reference Tables</a>
       </div>
       <div>
-        <a (click)="openWiki()">Wiki</a>
+        <a href="javascript:void(0)" (click)="openWiki()">Wiki</a>
       </div>
     </section>
   </section>

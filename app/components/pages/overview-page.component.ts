@@ -1,16 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-overview-page',
   templateUrl: './app/components/pages/overview-page.html',
   styleUrls: ['./app/components/pages/overview-page.css'],
-  providers: [PageService]
+  inputs: ['page']
 })
 export class OverviewPageComponent implements OnInit {
+  private page;
 
   constructor(
-    private _pageService: PageService
   ) {
 
   }

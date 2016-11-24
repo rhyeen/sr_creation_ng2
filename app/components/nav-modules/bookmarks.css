@@ -24,12 +24,21 @@
   margin: 5px 0 7px 0;
 }
 
+:host a {
+  color: white;
+}
+
 :host div,
-:host >>> sr-add-bookmark-btn {
+:host sr-add-bookmark-btn {
   line-height: 25px;
 }
 
-:host >>> sr-exit-btn {
-  margin-right: 5px;
+:host sr-exit-btn {
+  margin: 13px 5px 0 0;
   float: right;
+}
+
+:host sr-bookmarks-btn {
+  display: inline-block;
+  margin: 10px 0 0 10px;
 }

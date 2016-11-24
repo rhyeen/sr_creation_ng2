@@ -1,6 +1,6 @@
 <div class="relative-pages-section" *ngFor="let relative_pages_section of relative_pages_sections; let page_section_index = index">
-  <h3 class="relative-page-title">{{relative_pages_section.title}}</h3>
-  <sr-section-toggle-btn [state_key]="getRelativePagesSectionStateKey(page_section_index)"></sr-section-toggle-btn>
+  <h3 class="relative-page-title">{{relative_pages_section.name}}</h3>
+  <sr-section-toggle-btn *ngIf="relative_pages_section['relative_pages'].length" [state_key]="getRelativePagesSectionStateKey(page_section_index)"></sr-section-toggle-btn>
   <sr-new-item-btn></sr-new-item-btn>
-  <sr-relative-pages [state_key]="getRelativePagesSectionStateKey(page_section_index)" [pages]="relative_pages_section.relative_pages" [parent_index]="page_section_index"></sr-relative-pages>
+  <sr-relative-pages *ngIf="relative_pages_section['relative_pages'].length" [state_key]="getRelativePagesSectionStateKey(page_section_index)" [pages]="relative_pages_section.relative_pages" [parent_index]="page_section_index"></sr-relative-pages>
 </div>

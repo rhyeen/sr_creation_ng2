@@ -3,6 +3,10 @@
   margin: 0px;
 }
 
+:host .relative-page-title {
+  text-transform: capitalize;
+}
+
 :host .relative-pages-section {
   margin-bottom: 30px;
 }
