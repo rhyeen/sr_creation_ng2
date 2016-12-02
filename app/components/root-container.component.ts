@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import './rxjs-operators';
 
 import {PageService} from '../services/page.service';
+import {ArticleService} from '../services/article.service';
+import {TagService} from '../services/tag.service';
 import {StateService} from '../services/state.service';
 import {BookmarksService} from '../services/bookmarks.service';
 
@@ -11,46 +13,50 @@ import {BookmarksService} from '../services/bookmarks.service';
   selector: 'sr-root-container',
   templateUrl: './app/components/root-container.html',
   styleUrls: ['./app/components/root-container.css'],
-  providers: [PageService, StateService, BookmarksService]
+  providers: [PageService, ArticleService, StateService, BookmarksService, TagService]
 })
 export class RootContainerComponent implements OnInit {
-  private page;
-  private page_error;
+  private is_page = true;
+  private is_article = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private stateService: StateService,
     private pageService: PageService,
+    private tagService: TagService,
+    private articleService: ArticleService,
     private bookmarksService: BookmarksService
   ) {
 
   }
 
   ngOnInit() {
-    // @NOTE: it works, but it's in the digest cycle in such a way where we never see the spinner, unless it takes some time to load.  Probably an intentional featuer for NG2
-    this.router.events.subscribe(path => {
-      this.setLoading();
-    });
-    this.setLoading();
-    this.route.params
-      .switchMap((params: Params) => this.pageService.getPage(params['page_type'], params['id'], params['library']))
-      .subscribe(
-        page => this.page = page,
-        error => this.page_error = <any>error);
+    this.route.data
+      .subscribe((data) => {
+        let type = data['type'];
+        if (type === 'page') {
+          this.setIsPage();
+        } else if (type === 'article') {
+          this.setIsArticle();
+        } else {
+          this.setIsPage();
+        }
+      });
   }
 
-  /**
-   * Will be unset once page is retrieved since it doesn't have a 'is_loading' property.
-   */
-  setLoading() {
-    if (!this.page || !('is_loading' in this.page)) {
-      this.page = {};
-      this.page['is_loading'] = true;
-    }
+  setIsPage() {
+    this.resetContainerType();
+    this.is_page = true;
   }
 
-  goToRoot() {
-    this.router.navigate(['/']);
+  setIsArticle() {
+    this.resetContainerType();
+    this.is_article = true;
+  }
+
+  resetContainerType() {
+    this.is_page = false;
+    this.is_article = false;
   }
 }

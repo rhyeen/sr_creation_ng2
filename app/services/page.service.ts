@@ -130,6 +130,10 @@ export class PageService {
     return this.page_id;
   }
 
+  /**
+   * SOURCE: tag.service.ts: keep updated.
+   * @TODO: later, have one location instead of duplicating code.
+   */
   getPageType(id) {
     let page_code = this.getPageCode(id);
     switch (page_code) {

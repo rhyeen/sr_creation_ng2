@@ -1,0 +1,16 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M9 2.5v15H7V9H5M11 17.5v-15h2V11h2'/></svg>");
+  width: 20px;
+  height: 20px;
+  border: none;
+  transition: all 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+:host .reveal {
+  transition: all 0.5s;
+  pointer-events: auto;
+  opacity: 1;
+}

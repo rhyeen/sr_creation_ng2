@@ -1,0 +1,4 @@
+<p *ngIf="state.show_section && !edit_state.edit_enabled">
+  <span *ngIf="detail_content" [innerHTML]="detail_content"></span>
+  <span *ngIf="!detail_content">Add details...</span>
+</p>

@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  margin: 0px;
+}
+
+:host h3 {
+  display: inline;
+  margin-bottom: 10px;
+}

@@ -5,11 +5,12 @@ import {StateService} from '../../services/state.service';
   selector: 'sr-exit-btn',
   templateUrl: './app/components/tools/exit-btn.html',
   styleUrls: ['./app/components/tools/exit-btn.css'],
-  inputs: ['state_key', 'state_event_key']
+  inputs: ['state_key', 'state_event_key', 'color']
 })
 export class ExitBtnComponent implements OnInit {
   private state_key;
   private state_event_key;
+  private color;
 
   constructor(
     private stateService: StateService

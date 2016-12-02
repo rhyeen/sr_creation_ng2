@@ -1,0 +1,6 @@
+<div class="article-container" *ngIf="!article['is_loading']">
+  <sr-page-title [page_title]="article['name']"></sr-page-title>
+  <sr-article-description [article_description]="article['description']" [article_id]="article['id']"></sr-article-description>
+  <sr-relative-pages-sections [relative_pages_sections]="article['relative_pages_sections']"></sr-relative-pages-sections>
+</div>
+<sr-spinner *ngIf="article['is_loading']"></sr-spinner>

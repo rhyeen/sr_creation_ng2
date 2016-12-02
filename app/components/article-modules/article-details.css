@@ -1,0 +1,60 @@
+:host .article-details-container {
+  display: block;
+  width: 350px;
+  max-height: 300px;
+  padding: 5px 10px;
+  margin: 15px 0 30px 0px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+:host .detail-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 30px;
+}
+
+:host .detail-title a {
+  color: black;
+  font-size: 18px;
+  flex-grow: 1;
+  transition: all 0.3s;
+  font-weight: 400;
+}
+
+:host .detail-title a:hover {
+  color: #003399;
+  text-decoration: none;
+}
+
+:host .detail-title input {
+  font-size: 18px;
+  flex-grow: 1;
+  font-weight: 400;
+  font-family: 'Cuprum', sans-serif;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+:host sr-section-toggle-btn,
+:host sr-options-btn,
+:host sr-edit-btn,
+:host sr-remove-btn {
+  margin-top: 4px;
+}
+
+:host sr-exit-btn {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+:host .options-container {
+  margin-left: -60px;
+}
+
+@media (max-width: 400px) {
+  :host .article-details-container {
+    width: calc(100% - 20px);
+  }
+}

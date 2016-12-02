@@ -60,6 +60,10 @@ input {
 
 textarea {
   resize: vertical;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: baseline;
+  font-family: 'Cuprum', sans-serif;
 }
 
 /* remove auto input highlight */
@@ -84,6 +88,20 @@ h3 {
 
 .sk-folding-cube-index {
   margin-top: 160px !important;
+}
+
+a {
+  color: #0268D8;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #003399;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0268D8;
 }
 
 /* SPINNER */

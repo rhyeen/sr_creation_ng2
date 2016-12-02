@@ -33,9 +33,24 @@ import {ContentHelpBtnComponent} from './components/tools/content-help-btn.compo
 import {ExitBtnComponent} from './components/tools/exit-btn.component';
 import {AddBookmarkBtnComponent} from './components/tools/add-bookmark-btn.component';
 import {SpinnerComponent} from './components/tools/spinner.component';
+import {OptionsBtnComponent} from './components/tools/options-btn.component';
+import {EditBtnComponent} from './components/tools/edit-btn.component';
+import {RemoveBtnComponent} from './components/tools/remove-btn.component';
+import {MoveBtnComponent} from './components/tools/move-btn.component';
+import {TextareaComponent} from './components/tools/textarea.component';
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
+
+// article
+import {OverviewArticleComponent} from './components/article/overview-article.component';
+
+// article-modules
+import {ArticleDescriptionComponent} from './components/article-modules/article-description.component';
+import {ArticleDetailsComponent} from './components/article-modules/article-details.component';
+import {ArticleDetailContentComponent} from './components/article-modules/article-detail-content.component';
+import {ArticleDetailContentEditComponent} from './components/article-modules/article-detail-content-edit.component';
+
 
 
 @NgModule({
@@ -63,9 +78,19 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     BookmarksBtnComponent,
     ContentHelpBtnComponent,
     ExitBtnComponent,
+    RemoveBtnComponent,
+    MoveBtnComponent,
+    TextareaComponent,
     AddBookmarkBtnComponent,
     SpinnerComponent,
-    OverviewPageComponent
+    OptionsBtnComponent,
+    EditBtnComponent,
+    OverviewPageComponent,
+    OverviewArticleComponent,
+    ArticleDescriptionComponent,
+    ArticleDetailsComponent,
+    ArticleDetailContentComponent,
+    ArticleDetailContentEditComponent
   ],
   providers: [
   	appRoutingProviders
