@@ -1,4 +1,4 @@
-import {ElementRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StateService} from '../../services/state.service';
 
 @Component({
@@ -15,13 +15,8 @@ export class ArticleDetailContentEditComponent implements OnInit {
   private textarea_height;
 
   constructor(
-    private stateService: StateService,
-    private element: ElementRef
+    private stateService: StateService
   ) {
-  }
-
-  contentEdited(new_value) {
-    this.content_container[this.content_key] = new_value;
   }
 
   ngOnInit() {

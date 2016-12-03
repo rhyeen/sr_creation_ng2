@@ -1,1 +1,1 @@
-<div contenteditable="true" [textContent]="content_container[content_key]" (input)="content_container[content_key]=$event.target.textContent"></div>
+<div contenteditable="true" [textContent]="content_container[content_key]" (input)="changeContent($event)"></div>
