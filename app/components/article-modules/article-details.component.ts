@@ -14,7 +14,7 @@ export class ArticleDetailsComponent implements OnInit {
   private state;
   private edit_states;
   private exit_btn_color = 'black';
-  private content_key = 'content';
+  private content_key = 'mark_down';
 
   constructor(
     private stateService: StateService,
@@ -55,6 +55,14 @@ export class ArticleDetailsComponent implements OnInit {
 
   getEditStateEventKey() {
     return 'edit_enabled';
+  }
+
+  getTagRenderStateKey(index) {
+    return this.state_key + '_tagrender' + index;
+  }
+
+  getTagRenderStateEventKey() {
+    return 'tag_rendering_enabled';
   }
 
   getRemoveStateKey(index) {

@@ -40,7 +40,8 @@
 :host sr-section-toggle-btn,
 :host sr-options-btn,
 :host sr-edit-btn,
-:host sr-remove-btn {
+:host sr-remove-btn,
+:host sr-tag-render-btn {
   margin-top: 4px;
 }
 

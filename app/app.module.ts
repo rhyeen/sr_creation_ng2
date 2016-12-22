@@ -38,6 +38,8 @@ import {EditBtnComponent} from './components/tools/edit-btn.component';
 import {RemoveBtnComponent} from './components/tools/remove-btn.component';
 import {MoveBtnComponent} from './components/tools/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
+import {TagRenderBtnComponent} from './components/tools/tag-render-btn.component';
+
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
@@ -81,6 +83,7 @@ import {ArticleDetailContentEditComponent} from './components/article-modules/ar
     RemoveBtnComponent,
     MoveBtnComponent,
     TextareaComponent,
+    TagRenderBtnComponent,
     AddBookmarkBtnComponent,
     SpinnerComponent,
     OptionsBtnComponent,

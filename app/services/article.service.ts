@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { URLSearchParams, Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ArticleService {
@@ -33,13 +33,13 @@ export class ArticleService {
   }
 
   addTags(article, tag_service) {
-    let tag_containers = article['description']['details'];
-    tag_service.addTagsInContainer(tag_containers, 'article_detail');
-    let relative_pages_sections = article['relative_pages_sections'];
-    for (let i = 0; i < relative_pages_sections.length; i++) {
-      tag_containers = relative_pages_sections[i]['relative_pages'];
-      tag_service.addTagsInContainer(tag_containers, 'relative_pages_summary');
-    }
+    // let tag_containers = article['description']['details'];
+    // tag_service.addTagsInContainer(tag_containers, 'article_detail');
+    // let relative_pages_sections = article['relative_pages_sections'];
+    // for (let i = 0; i < relative_pages_sections.length; i++) {
+    //   tag_containers = relative_pages_sections[i]['relative_pages'];
+    //   tag_service.addTagsInContainer(tag_containers, 'relative_pages_summary');
+    // }
   }
 
   private setGetArticleParams(id) {

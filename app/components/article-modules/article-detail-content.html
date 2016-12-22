@@ -1,4 +1,6 @@
 <p *ngIf="state.show_section && !edit_state.edit_enabled">
-  <span *ngIf="detail_content" [innerHTML]="detail_content"></span>
-  <span *ngIf="!detail_content">Add details...</span>
+  <span *ngFor="let partition of partitions; let partition_index = index">
+    <span *ngIf="partition.type == 'text'">{{partition.text}}</span>
+    <span class="tag page-tag" *ngIf="partition.type == 'tag'" (click)="showTag(partition)">{{partition.text}}</span>
+  </span>
 </p>

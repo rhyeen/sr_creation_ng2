@@ -8,3 +8,26 @@
 :host p {
   margin-bottom: 10px;
 }
+
+/* removes spacing between spans */
+:host span {
+  word-spacing: -2px;
+  letter-spacing: -2px;
+}
+
+:host span span {
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+/* END removes spacing between spans */
+
+:host .tag {
+  cursor: pointer;
+  color: #0268D8;
+  font-weight: 700;
+}
+
+:host .tag:hover {
+  color: #003399;
+  text-decoration: underline;
+}

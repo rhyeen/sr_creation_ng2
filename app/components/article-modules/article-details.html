@@ -14,10 +14,11 @@
     <!-- edit -->
     <div class="detail-title" *ngIf="edit_states[detail_index].edit_enabled">
       <input type="text" [(ngModel)]="detail.name">
-      <sr-exit-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [color]="exit_btn_color"></sr-exit-btn>
+      <sr-tag-render-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [content_container]="detail"></sr-tag-render-btn>
+      <!-- <sr-exit-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [color]="exit_btn_color"></sr-exit-btn> -->
     </div>
     <!-- default -->
-    <sr-article-detail-content *ngIf="detail['tagged_content']" [state_key]="getDetailStateKey(detail_index)" [detail_content]="detail['tagged_content']" [edit_state_key]="getEditStateKey(detail_index)"></sr-article-detail-content>
+    <sr-article-detail-content *ngIf="detail['content']['partitions']" [state_key]="getDetailStateKey(detail_index)" [partitions]="detail['content']['partitions']" [edit_state_key]="getEditStateKey(detail_index)"></sr-article-detail-content>
     <!-- edit -->
     <sr-article-detail-content-edit [edit_state_key]="getEditStateKey(detail_index)" [content_container]="detail" [content_key]="content_key"></sr-article-detail-content-edit>
   </div>

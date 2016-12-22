@@ -36,7 +36,7 @@ export class OverviewArticleComponent implements OnInit {
 
   setArticle(article) {
     this.article = article;
-    this.articleService.addTags(this.article, this.tagService);
+    // this.articleService.addTags(this.article, this.tagService);
   }
 
   /**

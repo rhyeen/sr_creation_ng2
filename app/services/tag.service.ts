@@ -1,99 +1,71 @@
 import {Injectable} from '@angular/core';
+import { URLSearchParams, Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class TagService {
-  private base_url = '';
-  private article_url = this.base_url + 'article/';
-  private page_url = this.base_url + 'page/';
+  private base_url = 'http://localhost:4000/';
+  private tag_url = this.base_url + 'user/tag/';
+  private render_tags_url = this.tag_url + 'render';
 
-  generateTags(content, tags, endpoint) {
-    if (!tags) {
-      return content;
+  constructor (private http: Http) {}
+
+  renderPartitions(content_container) {
+    let mark_down = content_container.content.mark_down;
+    let id = content_container.id;
+    let params = this.setRenderTagsParams(id);
+    let options = this.setRequestOptions(params);
+    let request_body = {
+      mark_down:mark_down
+    };
+    return this.http
+      .post(this.render_tags_url, request_body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private setRenderTagsParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('detail_id', id);
     }
-    for (let i = 0; i < tags.length; i++) {
-      let tag = tags[i];
-      let tag_start = tag['start'];
-      let tag_end = tag['end'];
-      let id = tag['id'];
-      // need to do closing first to not offset the index
-      content = this.addTagClosing(content, tag_end);
-      content = this.addTagOpening(content, tag_start, id, endpoint);
+    return params;
+  }
+
+  private setRequestOptions(params) {
+    let headers = this.setHeaders();
+    let options = new RequestOptions({
+      headers: headers,
+      search: params
+    });
+    return options;
+  }
+
+  private setHeaders() {
+    // let headers = new Headers({
+    //   'Content-Type': 'application/json',
+    //   'X-OWNER-ID': 'US_1234567890123'
+    // });
+    let headers = new Headers();
+    return headers;
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body.data || body;
+  }
+
+  private handleError (error: Response | any) {
+    // In a real world app, we might use a remote logging infrastructure
+    let error_message: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      error_message = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      error_message = error.message ? error.message : error.toString();
     }
-    return content;
-  }
-
-  private addTagOpening(content, index, id, endpoint) {
-    return content.slice(0, index) + this.getTagOpening(id, endpoint) + content.slice(index);
-  }
-
-  private addTagClosing(content, index) {
-    return content.slice(0, index) + this.getTagClosing() + content.slice(index);
-  }
-
-  private getTagOpening(id, endpoint) {
-    if (endpoint === this.page_url) {
-      endpoint += this.getPageType(id); + '/';
-    }
-    endpoint = endpoint + id;
-    return '<a href="' + endpoint +'"">';
-  }
-
-  private getTagClosing() {
-    return '</a>';
-  }
-
-  addTagsInContainer(tag_containers, tag_type) {
-    let content_key, content_tag_key, results_key, endpoint;
-    if (tag_type === 'article_detail') {
-      content_key = 'content';
-      content_tag_key = 'content_tags';
-      results_key = 'tagged_content';
-      endpoint = this.article_url;
-    } else if (tag_type === 'relative_page_summary') {
-      content_key = 'summary';
-      content_tag_key = 'summary_tags';
-      results_key = 'tagged_summary';
-      endpoint = this.page_url;
-    }
-    for (let i = 0; i < tag_containers.length; i++) {
-      tag_containers[i][results_key] = this.generateTags(tag_containers[i][content_key], tag_containers[i][content_tag_key], endpoint);
-    }
-  }
-
-  /**
-   * SOURCE: page.service.ts: keep updated.
-   * @TODO: later, have one location instead of duplicating code.
-   */
-  getPageType(id) {
-    let page_code = this.getPageCode(id);
-    switch (page_code) {
-      case 'CA':
-        return 'campaign';
-      case 'CH':
-        return 'character';
-      case 'CR':
-        return 'creature';
-      case 'EN':
-        return 'encounter';
-      case 'IT':
-        return 'item';
-      case 'LO':
-        return 'location';
-      case 'PL':
-        return 'player';
-      case 'QU':
-        return 'quest';
-      case 'SH':
-        return 'shop';
-      case 'ST':
-        return 'story-arc';
-      default:
-        return null;
-    }
-  }
-
-  private getPageCode(id) {
-    let page_code = id.substring(0,2);
-    return page_code.toUpperCase();
+    console.error(error_message);
+    return Observable.throw(error_message);
   }
 }
