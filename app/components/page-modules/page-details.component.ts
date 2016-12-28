@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleService} from '../../services/article.service';
 import {StateService} from '../../services/state.service';
 
 @Component({
-  selector: 'sr-article-details',
-  templateUrl: './app/components/article-modules/article-details.html',
-  styleUrls: ['./app/components/article-modules/article-details.css'],
+  selector: 'sr-page-details',
+  templateUrl: './app/components/page-modules/page-details.html',
+  styleUrls: ['./app/components/page-modules/page-details.css'],
   inputs: ['details', 'state_key']
 })
-export class ArticleDetailsComponent implements OnInit {
+export class PageDetailsComponent implements OnInit {
   private details;
   private state_key;
   private state;
@@ -17,8 +16,7 @@ export class ArticleDetailsComponent implements OnInit {
   private content_key = 'mark_down';
 
   constructor(
-    private stateService: StateService,
-    private pageService: ArticleService
+    private stateService: StateService
   ) {
 
   }

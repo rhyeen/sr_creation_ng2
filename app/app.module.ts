@@ -24,6 +24,10 @@ import {RelativePagesComponent} from './components/page-modules/relative-pages.c
 import {RelativePagesSectionsComponent} from './components/page-modules/relative-pages-sections.component';
 import {RelativePageSummaryComponent} from './components/page-modules/relative-page-summary.component';
 import {TrailNavComponent} from './components/page-modules/trail-nav.component';
+import {PageDetailsSectionComponent} from './components/page-modules/page-details-section.component';
+import {PageDetailsComponent} from './components/page-modules/page-details.component';
+import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
+import {PageDetailContentEditComponent} from './components/page-modules/page-detail-content-edit.component';
 
 // tools
 import {NewItemBtnComponent} from './components/tools/new-item-btn.component';
@@ -40,19 +44,8 @@ import {MoveBtnComponent} from './components/tools/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
 import {TagRenderBtnComponent} from './components/tools/tag-render-btn.component';
 
-
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
-
-// article
-import {OverviewArticleComponent} from './components/article/overview-article.component';
-
-// article-modules
-import {ArticleDescriptionComponent} from './components/article-modules/article-description.component';
-import {ArticleDetailsComponent} from './components/article-modules/article-details.component';
-import {ArticleDetailContentComponent} from './components/article-modules/article-detail-content.component';
-import {ArticleDetailContentEditComponent} from './components/article-modules/article-detail-content-edit.component';
-
 
 
 @NgModule({
@@ -89,11 +82,10 @@ import {ArticleDetailContentEditComponent} from './components/article-modules/ar
     OptionsBtnComponent,
     EditBtnComponent,
     OverviewPageComponent,
-    OverviewArticleComponent,
-    ArticleDescriptionComponent,
-    ArticleDetailsComponent,
-    ArticleDetailContentComponent,
-    ArticleDetailContentEditComponent
+    PageDetailsSectionComponent,
+    PageDetailsComponent,
+    PageDetailContentComponent,
+    PageDetailContentEditComponent
   ],
   providers: [
   	appRoutingProviders

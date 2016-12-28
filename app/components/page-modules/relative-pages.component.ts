@@ -28,8 +28,7 @@ export class RelativePagesComponent implements OnInit {
   }
 
   selectPage(page) {
-    let page_type = this.pageService.getPageType(page.id);
-    this.router.navigate(['/page', page_type, page.id]);
+    this.router.navigate(['/page', page.id]);
   }
 
   getRelativePageStateKey(page_section_index, page_index) {

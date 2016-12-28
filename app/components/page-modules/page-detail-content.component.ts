@@ -4,12 +4,12 @@ import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
 
 @Component({
-  selector: 'sr-article-detail-content',
-  templateUrl: './app/components/article-modules/article-detail-content.html',
-  styleUrls: ['./app/components/article-modules/article-detail-content.css'],
+  selector: 'sr-page-detail-content',
+  templateUrl: './app/components/page-modules/page-detail-content.html',
+  styleUrls: ['./app/components/page-modules/page-detail-content.css'],
   inputs: ['state_key', 'partitions', 'edit_state_key']
 })
-export class ArticleDetailContentComponent implements OnInit {
+export class PageDetailContentComponent implements OnInit {
   private partitions;
   private state_key;
   private state;
@@ -30,7 +30,6 @@ export class ArticleDetailContentComponent implements OnInit {
 
   showTag(partition) {
     let page_id = partition.tag.id;
-    let page_type = this.pageService.getPageType(page_id);
-    this.router.navigate(['/page', page_type, page_id]);
+    this.router.navigate(['/page', page_id]);
   }
 }

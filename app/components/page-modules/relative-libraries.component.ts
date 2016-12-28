@@ -22,9 +22,9 @@ export class RelativeLibrariesComponent implements OnInit {
   }
 
   selectLibrary(library) {
+    let library_name = library.name;
     let page_id = this.pageService.getPageId();
-    let page_type = this.pageService.getPageType(page_id);
-    this.router.navigate(['/page', page_type, page_id, library.name]);
+    this.router.navigate(['/library', page_id, library.name]);
   }
 
 }

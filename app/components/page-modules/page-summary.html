@@ -1,7 +1,8 @@
 <div *ngIf="page_summary">
-  <p>{{page_summary}}</p>
-  <a href="javascript:void(0)" class="summary-details" (click)="viewArticle()">More details</a>
+  <div *ngIf="page_summary.properties">
+    <p>This page has properties: currently unsupported.</p>
+  </div>
+  <div *ngIf="page_summary.text">
+    <p>{{page_summary.text}}</p>
+  </div>
 </div>
-<!-- <div *ngIf="!page_summary">
-  <a href="javascript:void(0)" class="summary-details" (click)="viewDetails">More details</a>
-</div> -->

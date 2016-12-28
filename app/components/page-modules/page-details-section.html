@@ -1,0 +1,6 @@
+<div *ngIf="page_details_section">
+  <h3>Details</h3>
+  <sr-section-toggle-btn *ngIf="page_details_section['list'].length" [state_key]="getStateKey()"></sr-section-toggle-btn>
+  <sr-new-item-btn></sr-new-item-btn>
+  <sr-page-details *ngIf="page_details_section['list'].length" [details]="page_details_section['details']" [state_key]="getStateKey()"></sr-page-details>
+</div>

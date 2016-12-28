@@ -4,99 +4,30 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class PageService {
-  private base_url = 'http://localhost:4000/';
-  private page_url = this.base_url + 'user/page/';
-  private page_overview_url = this.page_url + 'overview';
-  private page_id = null;
-  private page_breadcrumbs_container = {
-    breadcrumbs: []
-  };
-
-  // private page = {
-  //   title: "The curse of the chicken foot",
-  //   summary: "Players are expected to take the left path at the Crow's crossing.  If they take the right, they will be taken through the woods of dread's love and to Lady Giga's haunted house.  There, they will most certainly meet their doom as Giga likes to eat adventurers",
-  //   relative_libraries: [
-  //     {
-  //       name: "Campaigns"
-  //     },
-  //     {
-  //       name: "Players"
-  //     },
-  //     {
-  //       name: "Encounters"
-  //     },
-  //     {
-  //       name: "Stores"
-  //     },
-  //     {
-  //       name: "Locations"
-  //     },
-  //     {
-  //       name: "Characters"
-  //     }
-  //   ],
-  //   relative_pages_sections: [
-  //     {
-  //       title: "Current Quests",
-  //       relative_pages: [
-  //         {
-  //           name: "Curse of the chicken foot"
-  //         },
-  //         {
-  //           name: "Vox Machina",
-  //           summary: "Players are expected to take the left path at the Crow's crossing.  If they take the right, they will be taken through the woods of dread's love and to Lady Giga's haunted house.  There, they will most certainly meet their doom as Giga likes to eat adventurers"
-  //         },
-  //         {
-  //           name: "Big content",
-  //           summary: "Players are expected to take the left path at the Crow's crossing.  If they take the right, they will be taken through the woods of dread's love and to Lady Giga's haunted house.  There, they will most certainly meet their doom as Giga likes to eat adventurers"
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       title: "NPCs",
-  //       relative_pages: [
-  //         {
-  //           name: "Curse of the chicken foot"
-  //         },
-  //         {
-  //           name: "Vox Machina",
-  //           summary: "This is a test summary"
-  //         },
-  //         {
-  //           name: "Big content",
-  //           summary: "Players are expected to take the left path at the Crow's crossing.  If they take the right, they will be taken through the woods of dread's love and to Lady Giga's haunted house.  There, they will most certainly meet their doom as Giga likes to eat adventurers"
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // };
+  private base_url = 'http://localhost:4000';
+  private page_url = this.base_url + '/user/page';
+  private page_summary_url = this.page_url + '/summary';
+  private page_detail_url = this.page_url + '/detail';
+  private page_image_url = this.page_url + '/image';
+  private page_links_url = this.page_url + '/page-links';
+  private page_id;
 
   constructor (private http: Http) {}
 
-  getBreadCrumbsContainer() {
-    return this.page_breadcrumbs_container;
-  }
-
-  getPage(page_type, id, library) {
-    let params = this.setGetPageParams(page_type, id, library);
+  getPage(id) {
+    let params = this.setGetPageParams(id);
     let options = this.setRequestOptions(params);
     this.setPageId(id);
     return this.http
-      .get(this.page_overview_url, options)
+      .get(this.page_url, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
-  private setGetPageParams(page_type, id, library) {
+  private setGetPageParams(id) {
     let params = new URLSearchParams();
-    if (page_type) {
-      params.set('pageType', page_type);
-    }
     if (id) {
       params.set('id', id);
-    }
-    if (library) {
-      params.set('library', library);
     }
     return params;
   }
@@ -125,41 +56,9 @@ export class PageService {
 
   getPageId() {
     if (!this.page_id) {
-      return 'undefined';
+      return null;
     }
     return this.page_id;
-  }
-
-  /**
-   * SOURCE: tag.service.ts: keep updated.
-   * @TODO: later, have one location instead of duplicating code.
-   */
-  getPageType(id) {
-    let page_code = this.getPageCode(id);
-    switch (page_code) {
-      case 'CA':
-        return 'campaign';
-      case 'CH':
-        return 'character';
-      case 'CR':
-        return 'creature';
-      case 'EN':
-        return 'encounter';
-      case 'IT':
-        return 'item';
-      case 'LO':
-        return 'location';
-      case 'PL':
-        return 'player';
-      case 'QU':
-        return 'quest';
-      case 'SH':
-        return 'shop';
-      case 'ST':
-        return 'story-arc';
-      default:
-        return null;
-    }
   }
 
   private getPageCode(id) {
@@ -168,8 +67,50 @@ export class PageService {
   }
 
   private extractData(res: Response) {
+    let addTitles = function(response_body) {
+      let getPageTitle = function(page) {
+        if (!page.type) {
+          return null;
+        }
+        let type = page.type;
+        switch (type) {
+          case 'CA':
+            return 'campaigns';
+          case 'CH':
+            return 'characters';
+          case 'CR':
+            return 'creatures';
+          case 'EN':
+            return 'encounters';
+          case 'IT':
+            return 'items';
+          case 'LO':
+            return 'locations';
+          case 'PL':
+            return 'players';
+          case 'QU':
+            return 'quests';
+          case 'SH':
+            return 'shops';
+          case 'ST':
+            return 'story arcs';
+          default:
+            return null;
+        }
+      }
+      if (!response_body) {
+        return;
+      }
+      if (response_body.pages && response_body.pages.length) {
+        for (let page of response_body.pages) {
+          page.title = getPageTitle(page);
+        }
+      }
+    }
     let body = res.json();
-    return body.data || body;
+    body = body.data || body;
+    addTitles(body);
+    return body;
   }
 
   private handleError (error: Response | any) {

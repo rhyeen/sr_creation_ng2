@@ -5,21 +5,14 @@ import { RootContainerComponent }  from './components/root-container.component';
 
 const appRoutes: Routes = [
   { 
-    path: 'page/:page_type/:id/:library',
+    path: 'library/:id/:library',
     component: RootContainerComponent,
     data: {
-      type: 'page'
+      type: 'library'
     }
   },
   { 
-    path: 'page/:page_type/:id',
-    component: RootContainerComponent,
-    data: {
-      type: 'page'
-    }
-  },
-  { 
-    path: 'page/:page_type',
+    path: 'page/:id',
     component: RootContainerComponent,
     data: {
       type: 'page'
@@ -32,11 +25,11 @@ const appRoutes: Routes = [
       type: 'page'
     }
   },
-  {
-    path: 'article/:id',
+  { 
+    path: 'page',
     component: RootContainerComponent,
     data: {
-      type: 'article'
+      type: 'page'
     }
   },
   { 

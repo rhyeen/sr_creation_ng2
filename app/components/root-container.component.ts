@@ -4,16 +4,16 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import './rxjs-operators';
 
 import {PageService} from '../services/page.service';
-import {ArticleService} from '../services/article.service';
 import {TagService} from '../services/tag.service';
 import {StateService} from '../services/state.service';
 import {BookmarksService} from '../services/bookmarks.service';
+import {BreadcrumbService} from '../services/breadcrumb.service';
 
 @Component({
   selector: 'sr-root-container',
   templateUrl: './app/components/root-container.html',
   styleUrls: ['./app/components/root-container.css'],
-  providers: [PageService, ArticleService, StateService, BookmarksService, TagService]
+  providers: [PageService, StateService, BookmarksService, TagService, BreadcrumbService]
 })
 export class RootContainerComponent implements OnInit {
   private is_page = true;
@@ -25,8 +25,8 @@ export class RootContainerComponent implements OnInit {
     private stateService: StateService,
     private pageService: PageService,
     private tagService: TagService,
-    private articleService: ArticleService,
-    private bookmarksService: BookmarksService
+    private bookmarksService: BookmarksService,
+    private breadcrumbService: BreadcrumbService
   ) {
 
   }
@@ -37,9 +37,8 @@ export class RootContainerComponent implements OnInit {
         let type = data['type'];
         if (type === 'page') {
           this.setIsPage();
-        } else if (type === 'article') {
-          this.setIsArticle();
         } else {
+          // default:
           this.setIsPage();
         }
       });
@@ -50,13 +49,7 @@ export class RootContainerComponent implements OnInit {
     this.is_page = true;
   }
 
-  setIsArticle() {
-    this.resetContainerType();
-    this.is_article = true;
-  }
-
   resetContainerType() {
     this.is_page = false;
-    this.is_article = false;
   }
 }

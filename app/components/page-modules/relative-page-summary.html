@@ -1,4 +1,8 @@
-<p *ngIf="state.show_help">
-  <span *ngIf="page_summary">{{page_summary}}</span>
-  <span *ngIf="!page_summary">No summary available</span>
-</p>
+<div *ngIf="state.show_help">
+  <div *ngIf="page_summary.text">
+    <p>{{page_summary.text}}</p>
+  </div>
+  <div *ngIf="page_summary.properties">
+    <p>This page has properties: currently unsupported.</p>
+  </div>
+</div>
