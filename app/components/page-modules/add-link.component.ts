@@ -17,20 +17,6 @@ export class AddLinkComponent implements OnInit {
   private name;
   private add_link_btn;
   private relative_pages_section;
-  private search_item_list = [
-    {
-      'text': 'qwehjhfdskwtyuejrhjkrtyuioiuytrertyrutiyoewder',
-      'id': 'test_id'
-    },
-    {
-      'text': 'test2',
-      'id': 'test_id2'
-    },
-    {
-      'text': 'test3',
-      'id': 'test_id3'
-    }
-  ];
   private search_selected_item = null;
 
   constructor(
@@ -49,15 +35,15 @@ export class AddLinkComponent implements OnInit {
     this.search_selected_item = search_item;
     if (search_item) {
       this.switchToUpdateBtn();
-      this.name = search_item.text;
+      this.name = search_item.name;
     }
   }
 
-  switchToAddBtn() {
+  private switchToAddBtn() {
     this.add_link_btn = 'Add';
   }
 
-  switchToUpdateBtn() {
+  private switchToUpdateBtn() {
     this.add_link_btn = 'Link';
   }
 
@@ -74,11 +60,23 @@ export class AddLinkComponent implements OnInit {
     return this.state_key + '_search_results';
   }
 
-  addPageLink() {
+  linkOrCreatePage() {
+    if (this.shouldAddPage()) {
+      this.newPage();
+    } else {
+      this.addPageLink();
+    }
+  }
+
+  private shouldAddPage() {
+    return this.add_link_btn == 'Add';
+  }
+
+  private addPageLink() {
 
   }
 
-  newPage() {
+  private newPage() {
     let name = this.name;
     if (!name) {
       name = 'New page';
@@ -92,7 +90,7 @@ export class AddLinkComponent implements OnInit {
     this.cancel();
   }
 
-  redirectToPage(page_id) {
+  private redirectToPage(page_id) {
     this.router.navigate(['/page', page_id]);
   }
 }

@@ -10,6 +10,8 @@ export class PageService {
   private page_detail_url = this.page_url + '/detail';
   private page_image_url = this.page_url + '/image';
   private page_links_url = this.page_url + '/page-links';
+  private page_search_url = this.page_url + '/search';
+
   private page_id;
 
   constructor (private http: Http) {}
@@ -17,6 +19,15 @@ export class PageService {
   isHomePage() {
     let page_code = this.getPageCode(null);
     return page_code == 'RR';
+  }
+
+  searchRelevantPages(query, type) {
+    let params = this.setSearchRelevantPagesParams(query, type);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .get(this.page_search_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   deletePageLink(link, links) {
@@ -62,6 +73,17 @@ export class PageService {
       .put(this.page_url, null, options)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  private setSearchRelevantPagesParams(query, type) {
+    let params = new URLSearchParams();
+    if (query) {
+      params.set('query', query);
+    }
+    if (type) {
+      params.set('type', type);
+    }
+    return params;
   }
 
   private setUpdatePageLinksParams(id) {

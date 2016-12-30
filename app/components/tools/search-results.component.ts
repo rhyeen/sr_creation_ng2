@@ -1,11 +1,12 @@
 import {Component, OnInit, ElementRef, OnChanges, Output, EventEmitter} from '@angular/core';
 import {StateService} from '../../services/state.service';
+import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-search-results',
   templateUrl: './app/components/tools/search-results.html',
   styleUrls: ['./app/components/tools/search-results.css'],
-  inputs: ['item_list', 'search_query_text', 'show_state_key'],
+  inputs: ['search_query_text', 'show_state_key', 'page_type'],
   host: {
     '(document:click)': 'onClick($event)',
     '[class.active]': 'is_active'
@@ -13,6 +14,7 @@ import {StateService} from '../../services/state.service';
 })
 export class SearchResultsComponent implements OnInit, OnChanges {
   @Output() itemSelected = new EventEmitter();
+  private page_type;
   private item_list;
   private selected_item;
   private search_query_text;
@@ -21,9 +23,11 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   private show_state_event_key = 'search_results_enabled';
   private initial_show_state = false;
   private is_active;
+  private error;
 
   constructor(
     private stateService: StateService,
+    private pageService: PageService,
     private _eref: ElementRef
   ) {
 
@@ -43,10 +47,26 @@ export class SearchResultsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     let new_search_query_text = changes.search_query_text.currentValue;
-    if (new_search_query_text && new_search_query_text.length > 2 && (!this.selected_item || new_search_query_text != this.selected_item.text)) {
+    if (new_search_query_text && new_search_query_text.length > 2 && (!this.selected_item || new_search_query_text != this.selected_item.name)) {
       this.selected_item = null;
       this.showResults();
     }
+    if (new_search_query_text != changes.search_query_text.previousValue && !this.selected_item) {
+      this.search_query_text = new_search_query_text;
+      this.searchRelevantPages();
+    }
+  }
+
+  searchRelevantPages() {
+    this.pageService.searchRelevantPages(this.search_query_text, this.page_type)
+      .subscribe(
+        results => this.handleNewSearchResults(results),
+        error => this.error = <any>error);
+  }
+
+  handleNewSearchResults(results) {
+    this.item_list = results;
+    this.showResults();
   }
 
   selectItem(search_item) {
