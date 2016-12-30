@@ -1,1 +1,8 @@
-<button class="remove-btn" (click)="removeItem()" [ngClass]="{'reveal': show_state.show_options}"></button>
+<div class="remove-verify arrow_box" *ngIf="show_confirmation">
+  <p>Remove item?</p>
+  <div class="btn-container">
+    <button class="danger-btn" (click)="removeItem()">Remove</button>
+    <button class="cancel-btn" (click)="cancel()">Cancel</button>
+  </div>
+</div>
+<button class="remove-btn" (click)="askRemoveItem()" [ngClass]="{'reveal': show_state.show_options}"></button>

@@ -28,6 +28,8 @@ import {PageDetailsSectionComponent} from './components/page-modules/page-detail
 import {PageDetailsComponent} from './components/page-modules/page-details.component';
 import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
 import {PageDetailContentEditComponent} from './components/page-modules/page-detail-content-edit.component';
+import {AddLinkComponent} from './components/page-modules/add-link.component';
+
 
 // tools
 import {NewItemBtnComponent} from './components/tools/new-item-btn.component';
@@ -43,6 +45,7 @@ import {RemoveBtnComponent} from './components/tools/remove-btn.component';
 import {MoveBtnComponent} from './components/tools/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
 import {TagRenderBtnComponent} from './components/tools/tag-render-btn.component';
+import {SearchResultsComponent} from './components/tools/search-results.component';
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
@@ -85,7 +88,9 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageDetailsSectionComponent,
     PageDetailsComponent,
     PageDetailContentComponent,
-    PageDetailContentEditComponent
+    PageDetailContentEditComponent,
+    AddLinkComponent,
+    SearchResultsComponent
   ],
   providers: [
   	appRoutingProviders

@@ -14,20 +14,82 @@ export class PageService {
 
   constructor (private http: Http) {}
 
+  isHomePage() {
+    let page_code = this.getPageCode(null);
+    return page_code == 'RR';
+  }
+
+  deletePageLink(link, links) {
+    let page_id = this.getPageId();
+    let link_index: number = links.indexOf(link);
+    if (link_index > -1) {
+      links.splice(link_index, 1);
+    }
+    this.updatePageLinks(links, page_id);
+  }
+
+  addPageLink(link, links) {
+    let page_id = this.getPageId();
+    links.push(link);
+    this.updatePageLinks(links, page_id);
+  }
+
+  updatePageLinks(links, id) {
+    let body = {
+      'links': links
+    };
+    let params = this.setUpdatePageLinksParams(id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   getPage(id) {
     let params = this.setGetPageParams(id);
     let options = this.setRequestOptions(params);
-    this.setPageId(id);
     return this.http
       .get(this.page_url, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
 
+  newPage(name, type, parent_page_id) {
+    let params = this.setPutPageParams(name, type, parent_page_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_url, null, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private setUpdatePageLinksParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
   private setGetPageParams(id) {
     let params = new URLSearchParams();
     if (id) {
       params.set('id', id);
+    }
+    return params;
+  }
+
+  private setPutPageParams(name, type, parent_page_id) {
+    let params = new URLSearchParams();
+    if (name) {
+      params.set('name', name);
+    }
+    if (type) {
+      params.set('type', type);
+    }
+    if (parent_page_id) {
+      params.set('link', parent_page_id);
     }
     return params;
   }
@@ -62,6 +124,9 @@ export class PageService {
   }
 
   private getPageCode(id) {
+    if (!id) {
+      id = this.getPageId();
+    }
     let page_code = id.substring(0,2);
     return page_code.toUpperCase();
   }
@@ -92,7 +157,7 @@ export class PageService {
             return 'quests';
           case 'SH':
             return 'shops';
-          case 'ST':
+          case 'SA':
             return 'story arcs';
           default:
             return null;
@@ -107,7 +172,13 @@ export class PageService {
         }
       }
     }
-    let body = res.json();
+    let body;
+    try {
+      body = res.json();
+    }
+    catch (e) {
+      body = res.text();
+    }
     body = body.data || body;
     addTitles(body);
     return body;

@@ -32,6 +32,26 @@
   margin-top: 5px;
 }
 
+:host sr-section-toggle-btn,
+:host sr-options-btn,
+:host sr-remove-btn {
+  margin-top: 4px;
+}
+
+:host sr-exit-btn {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+:host .options-container {
+  margin-left: -60px;
+  margin-right: 20px;
+}
+
+:host .content-help-btn-space {
+  width: 16px;
+}
+
 @media (max-width: 400px) {
   :host .relative-pages-container {
     width: calc(100% - 20px);

@@ -1,0 +1,29 @@
+:host {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 25px;
+  bottom: 0;
+  z-index: 1;
+}
+
+:host .outer-container {
+  background: #373737;
+}
+
+:host .search-item {
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+  color: white;
+}
+
+:host .search-item:hover {
+  background-color: #555;
+}
+
+:host(.active) {
+  display: block;
+}

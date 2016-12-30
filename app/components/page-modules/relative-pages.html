@@ -2,7 +2,13 @@
   <div *ngFor="let page of pages; let page_index = index">
     <div class="page-link-title">
       <a href="javascript:void(0)" (click)="selectPage(page)">{{page.name}}</a>
-      <sr-content-help-btn *ngIf="page['summary']" [state_key]="getRelativePageStateKey(parent_index, page_index)"></sr-content-help-btn>
+      <sr-options-btn [state_key]="getOptionsStateKey(page_index)"></sr-options-btn>
+      <div class="options-container">
+        <sr-move-btn [state_key]="getMoveStateKey(page_index)" [show_state_key]="getOptionsStateKey(page_index)"></sr-move-btn>
+        <sr-remove-btn [show_state_key]="getOptionsStateKey(page_index)"></sr-remove-btn>
+      </div>
+      <sr-content-help-btn *ngIf="page['summary'] && (page['summary']['text'] || page['summary']['properties'])" [state_key]="getRelativePageStateKey(parent_index, page_index)"></sr-content-help-btn>
+      <div class="content-help-btn-space" *ngIf="!(page['summary'] && (page['summary']['text'] || page['summary']['properties']))"></div>
     </div>
     <sr-relative-page-summary *ngIf="page['summary']" [state_key]="getRelativePageStateKey(parent_index, page_index)" [page_summary]="page['summary']"></sr-relative-page-summary>
   </div>

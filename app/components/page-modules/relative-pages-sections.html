@@ -1,6 +1,7 @@
 <div class="relative-pages-section" *ngFor="let relative_pages_section of relative_pages_sections; let page_section_index = index">
   <h3 class="relative-page-title">{{relative_pages_section.title}}</h3>
   <sr-section-toggle-btn *ngIf="relative_pages_section.properties['list'].length" [state_key]="getRelativePagesSectionStateKey(page_section_index)"></sr-section-toggle-btn>
-  <sr-new-item-btn></sr-new-item-btn>
+  <sr-new-item-btn [state_key]="getAddLinkStateKey(page_section_index)"></sr-new-item-btn>
+  <sr-add-link [state_key]="getAddLinkStateKey(page_section_index)" [relative_pages_section]="relative_pages_section"></sr-add-link>
   <sr-relative-pages *ngIf="relative_pages_section.properties['list'].length" [state_key]="getRelativePagesSectionStateKey(page_section_index)" [pages]="relative_pages_section.properties['list']" [parent_index]="page_section_index"></sr-relative-pages>
 </div>

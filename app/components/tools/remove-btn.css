@@ -1,4 +1,4 @@
-:host button {
+:host .remove-btn {
   background: none;
   background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M3.5 6v1.5H5L6 18h8l1-10.5h1.5V6M3.5 5h13V3.5H12L11.5 2h-3L8 3.5H3.5'/><path fill='#FFF' d='M13.5 7.5l-1 9h-1l1-9M6.5 7.5l1 9h1l-1-9M9.5 7.5h1v9h-1z'/></svg>");
   width: 20px;
@@ -13,4 +13,53 @@
   transition: all 0.5s;
   pointer-events: auto;
   opacity: 1;
+}
+
+:host .remove-verify {
+  position: absolute;
+  background-color: #373737;
+  border-radius: 4px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  margin-left: -46px;
+  z-index: 1;
+  width: 140px;
+}
+
+:host .btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+:host .remove-verify button {
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: 'Cuprum', sans-serif;
+  color: white;
+}
+
+:host .danger-btn {
+  background-color: #e5442b;
+}
+
+:host .cancel-btn {
+  background-color: #555;
+}
+
+:host .arrow_box:after {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(55, 55, 55, 0);
+  border-bottom-color: #373737;
+  border-width: 4px;
+  margin-left: -4px;
 }

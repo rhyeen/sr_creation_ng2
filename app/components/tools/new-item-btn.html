@@ -1,1 +1,1 @@
-<button class="new-item-btn" (click)="newItem()"></button>
+<button class="new-item-btn" (click)="toggleNewItem()" [ngClass]="{active: state.new_enabled}"></button>

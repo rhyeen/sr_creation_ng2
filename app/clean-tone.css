@@ -55,7 +55,7 @@ a:hover {text-decoration: none;}
 
 /* remove extra padding of input */
 input {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 textarea {

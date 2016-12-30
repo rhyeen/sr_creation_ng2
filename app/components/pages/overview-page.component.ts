@@ -27,7 +27,7 @@ export class OverviewPageComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.pageService.getPage(params['id']))
       .subscribe(
-        page => this.page = page,
+        page => this.setPage(page),
         error => this.page_error = <any>error);
   }
 
@@ -39,5 +39,10 @@ export class OverviewPageComponent implements OnInit {
       this.page = {};
       this.page['is_loading'] = true;
     }
+  }
+
+  setPage(page) {
+    this.page = page;
+    this.pageService.setPageId(page.id);
   }
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-trail-nav',
@@ -9,6 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class TrailNavComponent implements OnInit {
 
   constructor(
+    private pageService: PageService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -19,6 +21,8 @@ export class TrailNavComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['/']);
+    if (!this.pageService.isHomePage()) {
+      this.router.navigate(['/']);
+    }
   }
 }

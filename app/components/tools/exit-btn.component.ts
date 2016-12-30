@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {StateService} from '../../services/state.service';
 
 @Component({
@@ -8,6 +8,7 @@ import {StateService} from '../../services/state.service';
   inputs: ['state_key', 'state_event_key', 'color']
 })
 export class ExitBtnComponent implements OnInit {
+  @Output() closed = new EventEmitter();
   private state_key;
   private state_event_key;
   private color;
@@ -24,6 +25,7 @@ export class ExitBtnComponent implements OnInit {
 
   exit() {
     this.stateService.editState(this.state_key, this.state_event_key, false);
+    this.closed.emit();
   }
 
 }

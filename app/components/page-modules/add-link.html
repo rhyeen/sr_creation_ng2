@@ -1,0 +1,11 @@
+<div class="add-link-container" *ngIf="state.new_enabled">
+  <div class="input-results">
+    <input *ngIf="!search_selected_item" type="text" [(ngModel)]="name">
+    <div *ngIf="search_selected_item" class="selected-item-container">
+      <div class="selected-item-text">{{name}}</div>
+      <sr-exit-btn (closed)="removeSelection()"></sr-exit-btn>
+    </div>
+    <sr-search-results [item_list]="search_item_list" [show_state_key]="getSearchResultsShowStateKey()" [search_query_text]="name" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
+  </div>
+  <button class="add-link-btn" (click)="newPage()" [disabled]="!name">{{add_link_btn}}</button>
+</div>

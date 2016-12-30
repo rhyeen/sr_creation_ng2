@@ -34,4 +34,20 @@ export class RelativePagesComponent implements OnInit {
   getRelativePageStateKey(page_section_index, page_index) {
     return 'relative_page_' + page_section_index + '_' + page_index;
   }
+
+  getPageLinkStateKey(index) {
+    return this.state_key + index;
+  }
+
+  getOptionsStateKey(index) {
+    return this.state_key + '_options' + index;
+  }
+
+  getMoveStateKey(index) {
+    return this.state_key + '_move' + index;
+  }
+
+  getDelinkStateKey(index) {
+    return this.state_key + '_delink' + index;
+  }
 }
