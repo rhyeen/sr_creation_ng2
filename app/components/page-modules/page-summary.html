@@ -1,8 +1,12 @@
-<div *ngIf="page_summary">
-  <div *ngIf="page_summary.properties">
+<div class="page-title" *ngIf="page.name">
+  <h2>{{page.name}}</h2>
+  <sr-options-btn [config]="options_btn_config"></sr-options-btn>
+</div>
+<div *ngIf="page.summary">
+  <div *ngIf="page.summary.properties">
     <p>This page has properties: currently unsupported.</p>
   </div>
-  <div *ngIf="page_summary.text">
-    <p>{{page_summary.text}}</p>
+  <div *ngIf="page.summary.text">
+    <p>{{page.summary.text}}</p>
   </div>
 </div>

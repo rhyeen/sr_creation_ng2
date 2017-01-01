@@ -21,6 +21,26 @@ export class PageService {
     return page_code == 'RR';
   }
 
+  addPageStates(page) {
+    page._states = {};
+    if (page.pages && page.pages.length) {
+      for (let page_section of page.pages) {
+        this.addPageSectionStates(page_section);
+      }
+    }
+  }
+
+  private addPageSectionStates(page_section) {
+    if (page_section.properties) {
+      let lists = page_section.properties.list;
+      if (lists && lists.length) {
+        for (let page_link of lists) {
+          page_link._states = {};
+        }
+      }
+    }
+  }
+
   searchRelevantPages(query, type) {
     let params = this.setSearchRelevantPagesParams(query, type);
     let options = this.setRequestOptions(params);

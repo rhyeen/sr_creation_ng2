@@ -5,11 +5,18 @@ import {Router} from '@angular/router';
   selector: 'sr-page-summary',
   templateUrl: './app/components/page-modules/page-summary.html',
   styleUrls: ['./app/components/page-modules/page-summary.css'],
-  inputs: ['page_summary', 'page_id']
+  inputs: ['page']
 })
 export class PageSummaryComponent implements OnInit {
-  private page_summary;
-  private page_id;
+  private page;
+  private options_btn_config = {
+    edit_btn: {
+      text: 'Edit Summary'
+    },
+    remove_btn: {
+      text: 'Remove Page'
+    }
+  };
 
   constructor(
     private router: Router
@@ -18,10 +25,13 @@ export class PageSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
-  viewArticle() {
-    this.router.navigate(['/article', this.page_id]);
+  editSummary() {
+
+  }
+
+  deletePage() {
+
   }
 }

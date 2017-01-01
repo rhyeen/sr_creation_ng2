@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule,
          JsonpModule } from '@angular/http';
+import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
 
 import { AppComponent }  from './app.component';
 
@@ -17,7 +18,6 @@ import {BookmarksComponent} from './components/nav-modules/bookmarks.component';
 import {BreadcrumbNavComponent} from './components/nav-modules/breadcrumb-nav.component';
 
 // page-modules
-import {PageTitleComponent} from './components/page-modules/page-title.component';
 import {PageSummaryComponent} from './components/page-modules/page-summary.component';
 import {RelativeLibrariesComponent} from './components/page-modules/relative-libraries.component';
 import {RelativePagesComponent} from './components/page-modules/relative-pages.component';
@@ -57,6 +57,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     FormsModule,
     HttpModule,
     JsonpModule,
+    DragulaModule,
     routing
   ],
   declarations: [
@@ -64,7 +65,6 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
   	RootContainerComponent,
     BookmarksComponent,
     BreadcrumbNavComponent,
-    PageTitleComponent,
     PageSummaryComponent,
     RelativeLibrariesComponent,
     RelativePagesComponent,
@@ -93,7 +93,8 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     SearchResultsComponent
   ],
   providers: [
-  	appRoutingProviders
+  	appRoutingProviders,
+    DragulaService
   ],
   bootstrap:    [ AppComponent ]
 })

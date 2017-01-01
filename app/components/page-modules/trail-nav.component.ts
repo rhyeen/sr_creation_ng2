@@ -8,16 +8,20 @@ import {PageService} from '../../services/page.service';
   styleUrls: ['./app/components/page-modules/trail-nav.css']
 })
 export class TrailNavComponent implements OnInit {
+  private page;
+  private options_btn_config = {
+    'color': 'white'
+  };
 
   constructor(
     private pageService: PageService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-
   }
 
   ngOnInit() {
+
   }
 
   goHome() {

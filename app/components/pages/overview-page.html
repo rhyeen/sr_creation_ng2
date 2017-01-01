@@ -1,6 +1,5 @@
 <div class="page-container" *ngIf="!page['is_loading']">
-  <sr-page-title [page_title]="page['name']"></sr-page-title>
-  <sr-page-summary [page_summary]="page['summary']"></sr-page-summary>
+  <sr-page-summary [page]="page"></sr-page-summary>
   <sr-page-details-section [page_details_section]="page['details']"></sr-page-details-section>
   <sr-relative-pages-sections [relative_pages_sections]="page['pages']"></sr-relative-pages-sections>
   <sr-relative-libraries [relative_libraries]="page['relative_libraries']"></sr-relative-libraries>

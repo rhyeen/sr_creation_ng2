@@ -1,1 +1,5 @@
-<button class="options-btn" (click)="toggleOptions()" [ngClass]="{active: state}"></button>
+<div class="options arrow_box_top_dark" *ngIf="show_options">
+  <sr-edit-btn *ngIf="config.edit_btn" (edit)="passEdit()" [config]="config.edit_btn"></sr-edit-btn>
+  <sr-remove-btn *ngIf="config.remove_btn" (remove)="passRemove()" [config]="config.remove_btn"></sr-remove-btn>
+</div>
+<button class="options-btn" (click)="toggleOptions()"></button>

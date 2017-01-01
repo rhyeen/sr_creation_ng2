@@ -43,6 +43,7 @@ export class OverviewPageComponent implements OnInit {
 
   setPage(page) {
     this.page = page;
+    this.pageService.addPageStates(this.page);
     this.pageService.setPageId(page.id);
   }
 }

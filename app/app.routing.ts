@@ -26,19 +26,9 @@ const appRoutes: Routes = [
     }
   },
   { 
-    path: 'page',
-    component: RootContainerComponent,
-    data: {
-      type: 'page'
-    }
-  },
-  { 
     path: '**',
     redirectTo: '/page',
-    pathMatch: 'full',
-    data: {
-      type: 'page'
-    }
+    pathMatch: 'full'
   }
 ];
 

@@ -1,8 +1,9 @@
-<div class="remove-verify arrow_box" *ngIf="show_confirmation">
+<div class="remove-verify arrow_box_top_dark" *ngIf="show_confirmation">
   <p>Remove item?</p>
   <div class="btn-container">
     <button class="danger-btn" (click)="removeItem()">Remove</button>
     <button class="cancel-btn" (click)="cancel()">Cancel</button>
   </div>
 </div>
-<button class="remove-btn" (click)="askRemoveItem()" [ngClass]="{'reveal': show_state.show_options}"></button>
+<button class="remove-btn" (click)="askRemoveItem()"></button>
+<a *ngIf="config.text" href="javascript:void(0)" (click)="askRemoveItem()">{{config.text}}</a>

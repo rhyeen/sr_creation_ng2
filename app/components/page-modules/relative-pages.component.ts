@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
 import {StateService} from '../../services/state.service';
+import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
 
 @Component({
   selector: 'sr-relative-pages',
@@ -14,13 +15,19 @@ export class RelativePagesComponent implements OnInit {
   private parent_index;
   private state_key;
   private state;
+  private content_help_enabled = false;
 
   constructor(
     private stateService: StateService,
     private pageService: PageService,
-    private router: Router
+    private router: Router,
+    private dragulaService: DragulaService
   ) {
-
+    dragulaService.setOptions('page-link-bag', {
+      moves: function (el, container, handle) {
+        return handle.className.indexOf('move-btn') != -1;
+      }
+    });
   }
 
   ngOnInit() {
@@ -35,19 +42,11 @@ export class RelativePagesComponent implements OnInit {
     return 'relative_page_' + page_section_index + '_' + page_index;
   }
 
-  getPageLinkStateKey(index) {
-    return this.state_key + index;
+  deletePageLink(page) {
+
   }
 
-  getOptionsStateKey(index) {
-    return this.state_key + '_options' + index;
-  }
-
-  getMoveStateKey(index) {
-    return this.state_key + '_move' + index;
-  }
-
-  getDelinkStateKey(index) {
-    return this.state_key + '_delink' + index;
+  contentHelpEnabled(enabled) {
+    this.content_help_enabled = enabled;
   }
 }

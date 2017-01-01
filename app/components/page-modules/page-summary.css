@@ -17,3 +17,14 @@
 :host .summary-details:hover {
   color: #003399;
 }
+
+:host h2 {
+  margin-bottom: 15px;
+}
+
+:host .page-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 30px;
+}

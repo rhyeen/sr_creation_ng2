@@ -6,14 +6,20 @@
   height: 20px;
   border: none;
   transition: all 0.3s;
-  transform: rotate(0deg);
 }
 
 :host button:hover {
   opacity: 1;
 }
 
-:host .active {
-  margin-right: 60px;
-  transform: rotate(-360deg);
+:host .options {
+  position: absolute;
+  background-color: #373737;
+  border-radius: 4px;
+  padding: 10px;
+  color: white;
+  z-index: 1;
+  width: 150px;
+  margin-left: -75px;
+  margin-top: 28px;
 }

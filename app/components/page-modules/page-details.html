@@ -1,7 +1,7 @@
-<div class="page-details-container" *ngIf="state.show_section">
-  <div *ngFor="let detail of details; let detail_index = index">
+<!-- <div class="page-details-container" *ngIf="state.show_section">
+  <div *ngFor="let detail of details; let detail_index = index"> -->
     <!-- default -->
-    <div class="detail-title" *ngIf="!edit_states[detail_index].edit_enabled">
+    <!-- <div class="detail-title" *ngIf="!edit_states[detail_index].edit_enabled">
       <a href="javascript:void(0)">{{detail.name}}</a>
       <sr-options-btn [state_key]="getOptionsStateKey(detail_index)"></sr-options-btn>
       <div class="options-container">
@@ -10,16 +10,15 @@
         <sr-remove-btn [show_state_key]="getOptionsStateKey(detail_index)"></sr-remove-btn>
       </div>
       <sr-section-toggle-btn [state_key]="getDetailStateKey(detail_index)"></sr-section-toggle-btn>
-    </div>
+    </div> -->
     <!-- edit -->
-    <div class="detail-title" *ngIf="edit_states[detail_index].edit_enabled">
+    <!-- <div class="detail-title" *ngIf="edit_states[detail_index].edit_enabled">
       <input type="text" [(ngModel)]="detail.name">
       <sr-tag-render-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [content_container]="detail"></sr-tag-render-btn>
-      <!-- <sr-exit-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [color]="exit_btn_color"></sr-exit-btn> -->
-    </div>
+    </div> -->
     <!-- default -->
-    <sr-page-detail-content *ngIf="detail['content']['partitions']" [state_key]="getDetailStateKey(detail_index)" [partitions]="detail['content']['partitions']" [edit_state_key]="getEditStateKey(detail_index)"></sr-page-detail-content>
+    <!-- <sr-page-detail-content *ngIf="detail['content']['partitions']" [state_key]="getDetailStateKey(detail_index)" [partitions]="detail['content']['partitions']" [edit_state_key]="getEditStateKey(detail_index)"></sr-page-detail-content> -->
     <!-- edit -->
-    <sr-page-detail-content-edit [edit_state_key]="getEditStateKey(detail_index)" [content_container]="detail" [content_key]="content_key"></sr-page-detail-content-edit>
+    <!-- <sr-page-detail-content-edit [edit_state_key]="getEditStateKey(detail_index)" [content_container]="detail" [content_key]="content_key"></sr-page-detail-content-edit>
   </div>
-</div>
+</div> -->

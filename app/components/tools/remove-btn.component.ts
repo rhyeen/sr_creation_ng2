@@ -1,22 +1,20 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
-import {StateService} from '../../services/state.service';
+import {Component, OnInit, ElementRef, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'sr-remove-btn',
   templateUrl: './app/components/tools/remove-btn.html',
   styleUrls: ['./app/components/tools/remove-btn.css'],
-  inputs: ['show_state_key'],
+  inputs: ['config'],
   host: {
     '(document:click)': 'onClick($event)'
   }
 })
 export class RemoveBtnComponent implements OnInit {
-  private show_state_key;
-  private show_state = false;
+  @Output() remove = new EventEmitter();
   private show_confirmation = false;
+  private config;
 
   constructor(
-    private stateService: StateService,
     private _eref: ElementRef
   ) {
 
@@ -29,7 +27,9 @@ export class RemoveBtnComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.show_state = this.stateService.getState(this.show_state_key);
+    if (!this.config) {
+      this.config = {};
+    }
   }
 
   askRemoveItem() {
@@ -41,7 +41,7 @@ export class RemoveBtnComponent implements OnInit {
   }
 
   removeItem() {
-    // @TODO: notify parent directive
+    this.remove.emit();
   }
 
 }
