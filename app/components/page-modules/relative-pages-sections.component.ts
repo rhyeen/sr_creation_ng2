@@ -18,8 +18,8 @@ export class RelativePagesSectionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleEnabled(enabled, relative_pages_section) {
-    relative_pages_section._states['hide_relative_pages'] = enabled;
+  toggleRelativePages(show_content, relative_pages_section) {
+    relative_pages_section._states['hide_relative_pages'] = !show_content;
   }
 
   toggleAddLink(enabled, relative_pages_section) {

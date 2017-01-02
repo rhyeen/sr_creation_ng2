@@ -1,6 +1,7 @@
 <div *ngIf="page_details_section">
   <h3>Details</h3>
-  <sr-section-toggle-btn *ngIf="page_details_section['list'].length" (enabled)="toggleEnabled($event)"></sr-section-toggle-btn>
-  <sr-new-item-btn>Need to finish...</sr-new-item-btn>
-  <sr-page-details *ngIf="page_details_section['list'].length" [details]="page_details_section['details']" [show_state]="!hide_details"></sr-page-details>
+  <sr-section-toggle-btn *ngIf="page_details_section['list'].length" (reveal)="togglePageDetails($event)"></sr-section-toggle-btn>
+  <sr-new-item-btn (enabled)="toggleAddDetail($event)"></sr-new-item-btn>
+  <sr-add-detail [show_state]="add_detail_enabled"></sr-add-detail>
+  <sr-page-details *ngIf="page_details_section['list'].length && !hide_details" [details]="page_details_section['list']"></sr-page-details>
 </div>

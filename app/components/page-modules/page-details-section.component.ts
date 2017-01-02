@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class PageDetailsSectionComponent implements OnInit {
   private page_details_section;
   private hide_details = false;
+  private add_detail_enabled = false;
 
   constructor(
     private router: Router
@@ -18,10 +19,13 @@ export class PageDetailsSectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
-  toggleEnabled(enabled) {
-    this.hide_details = enabled;
+  togglePageDetails(show_content) {
+    this.hide_details = !show_content;
+  }
+
+  toggleAddDetail(enabled) {
+    this.add_detail_enabled = enabled;
   }
 }

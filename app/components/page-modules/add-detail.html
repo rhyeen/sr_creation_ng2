@@ -1,0 +1,6 @@
+<div class="add-detail-container" *ngIf="show_state">
+  <div class="input-results">
+    <input type="text" [(ngModel)]="name">
+  </div>
+  <button class="add-detail-btn" (click)="newDetail()" [disabled]="!name">{{add_detail_btn}}</button>
+</div>

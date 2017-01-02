@@ -21,6 +21,19 @@ export class PageService {
     return page_code == 'RR';
   }
 
+  newDetail(name, content, id) {
+    let body = {
+      'name': name,
+      'content': content
+    };
+    let params = this.setAddDetailsParams(id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .post(this.page_detail_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   addPageStates(page) {
     page._states = {};
     this.addDetailStates(page);
@@ -103,6 +116,14 @@ export class PageService {
       .put(this.page_url, null, options)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  private setAddDetailsParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
   }
 
   private setSearchRelevantPagesParams(query, type) {

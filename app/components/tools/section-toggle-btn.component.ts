@@ -3,11 +3,13 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'sr-section-toggle-btn',
   templateUrl: './app/components/tools/section-toggle-btn.html',
-  styleUrls: ['./app/components/tools/section-toggle-btn.css']
+  styleUrls: ['./app/components/tools/section-toggle-btn.css'],
+  inputs: ['reverse_toggle']
 })
 export class SectionToggleBtnComponent implements OnInit {
-  @Output() enabled = new EventEmitter();
-  private enable = true;
+  @Output() reveal = new EventEmitter();
+  private show_content = true;
+  private reverse_toggle = false;
 
   constructor(
   ) {
@@ -15,11 +17,14 @@ export class SectionToggleBtnComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.reverse_toggle) {
+      this.show_content = !this.show_content;
+    }
   }
 
   toggleSection() {
-    this.enable = !this.enable;
-    this.enabled.emit(this.enable);
+    this.show_content = !this.show_content;
+    this.reveal.emit(this.show_content);
   }
 
 }

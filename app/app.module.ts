@@ -28,6 +28,7 @@ import {PageDetailsSectionComponent} from './components/page-modules/page-detail
 import {PageDetailsComponent} from './components/page-modules/page-details.component';
 import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
 import {AddLinkComponent} from './components/page-modules/add-link.component';
+import {AddDetailComponent} from './components/page-modules/add-detail.component';
 
 
 // tools
@@ -88,6 +89,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageDetailsComponent,
     PageDetailContentComponent,
     AddLinkComponent,
+    AddDetailComponent,
     SearchResultsComponent
   ],
   providers: [

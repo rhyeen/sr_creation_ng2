@@ -1,7 +1,8 @@
-:host .article-details-container {
+:host {
   display: block;
   width: 350px;
   max-height: 300px;
+  min-height: 75px;
   padding: 5px 10px;
   margin: 15px 0 30px 0px;
   border: 1px solid #ccc;
@@ -9,6 +10,8 @@
 }
 
 :host .detail-title {
+  position: relative;
+  height: auto;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -37,11 +40,7 @@
   margin-bottom: 10px;
 }
 
-:host sr-section-toggle-btn,
-:host sr-options-btn,
-:host sr-edit-btn,
-:host sr-remove-btn,
-:host sr-tag-render-btn {
+:host .detail-tools {
   margin-top: 4px;
 }
 
