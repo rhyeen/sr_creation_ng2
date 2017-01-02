@@ -4,13 +4,10 @@
   width: 20px;
   height: 20px;
   border: none;
-  transition: all 0.2s;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0.2;
+  transition: all 0.3s;
 }
 
-:host .reveal {
-  transition: all 0.5s;
-  pointer-events: auto;
+:host button:hover {
   opacity: 1;
 }

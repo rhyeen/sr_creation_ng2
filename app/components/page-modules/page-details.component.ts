@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StateService} from '../../services/state.service';
+import {TagService} from '../../services/tag.service';
 
 @Component({
   selector: 'sr-page-details',
@@ -16,7 +17,8 @@ export class PageDetailsComponent implements OnInit {
   private content_key = 'mark_down';
 
   constructor(
-    private stateService: StateService
+    private stateService: StateService,
+    private tagService: TagService
   ) {
 
   }
@@ -24,6 +26,13 @@ export class PageDetailsComponent implements OnInit {
   ngOnInit() {
     this.state = this.stateService.getState(this.state_key);
     this.edit_states = this.getAllEditStates();
+  }
+
+  renderTags(detail) {
+    this.tagService.renderPartitions(detail)
+      .subscribe((data) => {
+        detail['content'] = data;
+      });
   }
 
   getAllEditStates() {

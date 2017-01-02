@@ -10,36 +10,24 @@
   border: none;
 }
 
-:host .remove-verify {
-  position: absolute;
-  background-color: #373737;
-  border-radius: 4px;
-  padding: 10px;
-  color: white;
-  text-align: center;
-  margin-left: -46px;
-  z-index: 1;
-  width: 140px;
-}
-
-:host .btn-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-:host .remove-verify button {
+:host .danger-btn {
+  margin: 0 auto;
+  display: block;
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
   font-size: 14px;
   font-family: 'Cuprum', sans-serif;
   color: white;
-}
-
-:host .danger-btn {
   background-color: #e5442b;
 }
 
-:host .cancel-btn {
-  background-color: #555;
+:host a {
+  font-size: 14px;
+  color: white;
+}
+
+:host a:hover {
+  color: white;
+  text-decoration: none;
 }

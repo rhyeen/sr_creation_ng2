@@ -23,8 +23,24 @@
 }
 
 :host .page-title {
+  text-align: left;
   display: flex;
   justify-content: space-between;
   width: 100%;
   line-height: 30px;
+}
+
+:host sr-options-btn,
+:host sr-complete-btn {
+  margin-top: 7px;
+}
+
+:host .page-title input {
+  font-size: 24px;
+  line-height: 32px;
+  flex-grow: 1;
+  font-weight: 400;
+  font-family: 'Viga', sans-serif;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

@@ -44,7 +44,7 @@ import {EditBtnComponent} from './components/tools/edit-btn.component';
 import {RemoveBtnComponent} from './components/tools/remove-btn.component';
 import {MoveBtnComponent} from './components/tools/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
-import {TagRenderBtnComponent} from './components/tools/tag-render-btn.component';
+import {CompleteBtnComponent} from './components/tools/complete-btn.component';
 import {SearchResultsComponent} from './components/tools/search-results.component';
 
 // pages
@@ -79,7 +79,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     RemoveBtnComponent,
     MoveBtnComponent,
     TextareaComponent,
-    TagRenderBtnComponent,
+    CompleteBtnComponent,
     AddBookmarkBtnComponent,
     SpinnerComponent,
     OptionsBtnComponent,

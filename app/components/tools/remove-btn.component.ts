@@ -33,7 +33,7 @@ export class RemoveBtnComponent implements OnInit {
   }
 
   askRemoveItem() {
-    this.show_confirmation = true;
+    this.show_confirmation = !this.show_confirmation;
   }
 
   cancel() {

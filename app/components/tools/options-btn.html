@@ -1,4 +1,4 @@
-<div class="options arrow_box_top_dark" *ngIf="show_options">
+<div class="options arrow_box_top_dark" *ngIf="show_options" [ngClass]="{'moved-left': config.moved_left}">
   <sr-edit-btn *ngIf="config.edit_btn" (edit)="passEdit()" [config]="config.edit_btn"></sr-edit-btn>
   <sr-remove-btn *ngIf="config.remove_btn" (remove)="passRemove()" [config]="config.remove_btn"></sr-remove-btn>
 </div>

@@ -15,7 +15,12 @@ export class RelativePagesComponent implements OnInit {
   private parent_index;
   private state_key;
   private state;
-  private content_help_enabled = false;
+  private options_btn_config = {
+    remove_btn: {
+      text: 'Remove Link'
+    },
+    moved_left: true
+  };
 
   constructor(
     private stateService: StateService,
@@ -46,7 +51,7 @@ export class RelativePagesComponent implements OnInit {
 
   }
 
-  contentHelpEnabled(enabled) {
-    this.content_help_enabled = enabled;
+  contentHelpEnabled(enabled, page) {
+    page._states['help_enabled'] = enabled;
   }
 }

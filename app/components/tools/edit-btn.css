@@ -9,3 +9,13 @@
   height: 20px;
   border: none;
 }
+
+:host a {
+  font-size: 14px;
+  color: white;
+}
+
+:host a:hover {
+  color: white;
+  text-decoration: none;
+}

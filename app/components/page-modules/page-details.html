@@ -1,24 +1,22 @@
-<!-- <div class="page-details-container" *ngIf="state.show_section">
-  <div *ngFor="let detail of details; let detail_index = index"> -->
-    <!-- default -->
-    <!-- <div class="detail-title" *ngIf="!edit_states[detail_index].edit_enabled">
-      <a href="javascript:void(0)">{{detail.name}}</a>
-      <sr-options-btn [state_key]="getOptionsStateKey(detail_index)"></sr-options-btn>
-      <div class="options-container">
-        <sr-move-btn [state_key]="getMoveStateKey(detail_index)" [show_state_key]="getOptionsStateKey(detail_index)"></sr-move-btn>
-        <sr-edit-btn [state_key]="getEditStateKey(detail_index)" [show_state_key]="getOptionsStateKey(detail_index)"></sr-edit-btn>
-        <sr-remove-btn [show_state_key]="getOptionsStateKey(detail_index)"></sr-remove-btn>
+<div class="page-details-container" *ngIf="state.show_section">
+  <div *ngFor="let detail of details; let detail_index = index">
+    <div class="detail-read" *ngIf="!detail._states.edit_enabled">
+      <div class="detail-title">
+        <a href="javascript:void(0)">{{detail.name}}</a>
+        <div class="detail-tools">
+          <sr-section-toggle-btn [state_key]="getDetailStateKey(detail_index)"></sr-section-toggle-btn>
+          <sr-options-btn [config]="options_btn_config" (remove)="deleteDetail(detail)" (edit)="editDetail(detail)"></sr-options-btn>
+          <sr-move-btn></sr-move-btn>
+        </div>
       </div>
-      <sr-section-toggle-btn [state_key]="getDetailStateKey(detail_index)"></sr-section-toggle-btn>
-    </div> -->
-    <!-- edit -->
-    <!-- <div class="detail-title" *ngIf="edit_states[detail_index].edit_enabled">
-      <input type="text" [(ngModel)]="detail.name">
-      <sr-tag-render-btn [state_key]="getEditStateKey(detail_index)" [state_event_key]="getEditStateEventKey()" [content_container]="detail"></sr-tag-render-btn>
-    </div> -->
-    <!-- default -->
-    <!-- <sr-page-detail-content *ngIf="detail['content']['partitions']" [state_key]="getDetailStateKey(detail_index)" [partitions]="detail['content']['partitions']" [edit_state_key]="getEditStateKey(detail_index)"></sr-page-detail-content> -->
-    <!-- edit -->
-    <!-- <sr-page-detail-content-edit [edit_state_key]="getEditStateKey(detail_index)" [content_container]="detail" [content_key]="content_key"></sr-page-detail-content-edit>
+      <sr-page-detail-content *ngIf="detail['content']['partitions']" [state_key]="getDetailStateKey(detail_index)" [partitions]="detail['content']['partitions']" [edit_state_key]="getEditStateKey(detail_index)"></sr-page-detail-content>
+    </div>
+    <div class="detail-edit" *ngIf="detail._states.edit_enabled">
+      <div class="detail-title">
+        <input type="text" [(ngModel)]="detail.name">
+        <sr-complete-btn (complete)="renderTags(detail)"></sr-complete-btn>
+        <sr-page-detail-content-edit [edit_state_key]="getEditStateKey(detail_index)" [content_container]="detail" [content_key]="content_key"></sr-page-detail-content-edit>
+      </div>
+    </div>
   </div>
-</div> -->
+</div>

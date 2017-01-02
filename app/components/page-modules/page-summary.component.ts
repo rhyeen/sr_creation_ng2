@@ -17,6 +17,7 @@ export class PageSummaryComponent implements OnInit {
       text: 'Remove Page'
     }
   };
+  private edit_mode = false;
 
   constructor(
     private router: Router
@@ -28,7 +29,12 @@ export class PageSummaryComponent implements OnInit {
   }
 
   editSummary() {
+    this.edit_mode = true;
+  }
 
+  finishEditSummary() {
+    this.edit_mode = false;
+    // @TODO:
   }
 
   deletePage() {

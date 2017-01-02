@@ -1,12 +1,28 @@
-<div class="page-title" *ngIf="page.name">
-  <h2>{{page.name}}</h2>
-  <sr-options-btn [config]="options_btn_config"></sr-options-btn>
-</div>
-<div *ngIf="page.summary">
-  <div *ngIf="page.summary.properties">
-    <p>This page has properties: currently unsupported.</p>
+<div class="summary-read" *ngIf="!edit_mode">
+  <div class="page-title" *ngIf="page.name">
+    <h2>{{page.name}}</h2>
+    <sr-options-btn [config]="options_btn_config" (remove)="deletePage()" (edit)="editSummary()"></sr-options-btn>
   </div>
-  <div *ngIf="page.summary.text">
-    <p>{{page.summary.text}}</p>
+  <div *ngIf="page.summary">
+    <div *ngIf="page.summary.properties">
+      <p>This page has properties: currently unsupported.</p>
+    </div>
+    <div *ngIf="page.summary.text">
+      <p>{{page.summary.text}}</p>
+    </div>
+  </div>
+</div>
+<div class="summary-edit" *ngIf="edit_mode">
+  <div class="page-title">
+    <input type="text" [(ngModel)]="page.name">
+    <sr-complete-btn (complete)="finishEditSummary()"></sr-complete-btn>
+  </div>
+  <div>
+    <div>
+      <p>This page has properties: currently unsupported.</p>
+    </div>
+    <div>
+      <sr-textarea [content_container]="page.summary" [content_key]="'text'"></sr-textarea>
+    </div>
   </div>
 </div>

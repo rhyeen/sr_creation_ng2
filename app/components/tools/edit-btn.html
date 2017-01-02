@@ -1,2 +1,2 @@
 <button class="edit-btn" (click)="editItem()"></button>
-<a *ngIf="config.text" href="javascript:void(0)">{{config.text}}</a>
+<a *ngIf="config.text" href="javascript:void(0)" (click)="editItem()">{{config.text}}</a>

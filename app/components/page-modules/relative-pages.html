@@ -2,14 +2,13 @@
   <div *ngFor="let page of pages; let page_index = index">
     <div class="page-link-title">
       <a href="javascript:void(0)" (click)="selectPage(page)">{{page.name}}</a>
-      <!-- <sr-options-btn [state_key]="'options_btn'" [state_container]="page._states"></sr-options-btn>
-      <div class="options-container">
-        <sr-move-btn [show_state]="page._states.options_btn"></sr-move-btn>
-        <sr-remove-btn [show_state]="page._states.options_btn" (remove)="deletePageLink(page)"></sr-remove-btn>
-      </div> -->
-      <sr-content-help-btn *ngIf="page['summary'] && (page['summary']['text'] || page['summary']['properties'])" (enabled)="contentHelpEnabled($event)"></sr-content-help-btn>
-      <div class="content-help-btn-space" *ngIf="!(page['summary'] && (page['summary']['text'] || page['summary']['properties']))"></div>
+      <div class="page-link-tools">
+        <sr-content-help-btn *ngIf="page['summary'] && (page['summary']['text'] || page['summary']['properties'])" (enabled)="contentHelpEnabled($event, page)"></sr-content-help-btn>
+        <div class="content-help-btn-space" *ngIf="!(page['summary'] && (page['summary']['text'] || page['summary']['properties']))"></div>
+        <sr-move-btn></sr-move-btn>
+        <sr-options-btn [config]="options_btn_config" (remove)="deletePageLink(page)"></sr-options-btn>
+      </div>
     </div>
-    <sr-relative-page-summary *ngIf="page['summary']" [show_state]="content_help_enabled" [page_summary]="page['summary']"></sr-relative-page-summary>
+    <sr-relative-page-summary *ngIf="page['summary']" [show_state]="page._states.help_enabled" [page_summary]="page['summary']"></sr-relative-page-summary>
   </div>
 </div>

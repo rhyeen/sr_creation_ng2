@@ -1,17 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-move-btn',
   templateUrl: './app/components/tools/move-btn.html',
-  styleUrls: ['./app/components/tools/move-btn.css'],
-  inputs: ['show_state']
+  styleUrls: ['./app/components/tools/move-btn.css']
 })
 export class MoveBtnComponent implements OnInit {
-  private show_state;
 
   constructor(
-    private stateService: StateService
   ) {
 
   }

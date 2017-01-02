@@ -9,6 +9,8 @@
 }
 
 :host .page-link-title {
+  position: relative;
+  height: auto;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -28,14 +30,15 @@
   text-decoration: none;
 }
 
-:host sr-content-help-btn {
-  margin-top: 5px;
+:host .page-link-tools {
+  margin-top: 4px;
+  display: flex;
+/*  justify-content: space-between;*/
 }
 
-:host sr-section-toggle-btn,
-:host sr-options-btn,
-:host sr-remove-btn {
-  margin-top: 4px;
+:host sr-content-help-btn {
+  margin-top: 2px;
+  margin-right: 4px;
 }
 
 :host sr-exit-btn {

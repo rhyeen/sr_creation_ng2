@@ -23,9 +23,18 @@ export class PageService {
 
   addPageStates(page) {
     page._states = {};
+    this.addDetailStates(page);
     if (page.pages && page.pages.length) {
       for (let page_section of page.pages) {
         this.addPageSectionStates(page_section);
+      }
+    }
+  }
+
+  private addDetailStates(page) {
+    if (page.details && page.details.list && page.details.list.length) {
+      for (let detail of page.details.list) {
+        detail._states = {};
       }
     }
   }

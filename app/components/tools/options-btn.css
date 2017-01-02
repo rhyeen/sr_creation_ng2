@@ -1,5 +1,5 @@
 :host button {
-  opacity: 0.4;
+  opacity: 0.3;
   background: none;
   background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='#373737'><circle cx='10' cy='3' r='2'/><circle cx='10' cy='10' r='2'/><circle cx='10' cy='17' r='2'/></svg>");
   width: 20px;
@@ -13,13 +13,36 @@
 }
 
 :host .options {
+  min-width: 100px;
   position: absolute;
   background-color: #373737;
   border-radius: 4px;
   padding: 10px;
   color: white;
   z-index: 1;
-  width: 150px;
-  margin-left: -75px;
+  transform: translate(-50%);
   margin-top: 28px;
+  margin-left: 10px;
+}
+
+:host .options.moved-left {
+  transform: translate(-100%);
+  margin: 0;
+  display: inline-table;
+}
+
+:host .options.moved-left:after {
+  content: none;
+}
+
+@media (max-width: 500px) {
+  :host .options {
+    transform: translate(-100%);
+    margin: 0;
+    display: inline-table;
+  }
+
+  :host .options:after {
+    content: none;
+  }
 }
