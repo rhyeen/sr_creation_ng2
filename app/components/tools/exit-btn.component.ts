@@ -1,20 +1,16 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-exit-btn',
   templateUrl: './app/components/tools/exit-btn.html',
   styleUrls: ['./app/components/tools/exit-btn.css'],
-  inputs: ['state_key', 'state_event_key', 'color']
+  inputs: ['color']
 })
 export class ExitBtnComponent implements OnInit {
   @Output() closed = new EventEmitter();
-  private state_key;
-  private state_event_key;
   private color;
 
   constructor(
-    private stateService: StateService
   ) {
 
   }
@@ -24,8 +20,6 @@ export class ExitBtnComponent implements OnInit {
   }
 
   exit() {
-    this.stateService.editState(this.state_key, this.state_event_key, false);
     this.closed.emit();
   }
-
 }

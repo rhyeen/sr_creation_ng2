@@ -1,7 +1,8 @@
-<section *ngIf="state.show_bookmarks">
+<sr-bookmarks-btn *ngIf="!show_bookmarks" (open)="openBookmarks()"></sr-bookmarks-btn>
+<section class="bookmarks-container" *ngIf="show_bookmarks">
   <section class="top-bar">
     <sr-bookmarks-btn></sr-bookmarks-btn>
-    <sr-exit-btn [state_key]="state_key" [state_event_key]="state_event_key"></sr-exit-btn>
+    <sr-exit-btn (closed)="closeBookmarks()"></sr-exit-btn>
   </section>
   <section class="content">
     <section class="bookmarks">

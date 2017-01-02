@@ -19,6 +19,7 @@ import {DragulaService} from 'ng2-dragula/ng2-dragula';
 export class RootContainerComponent implements OnInit {
   private is_page = true;
   private is_article = false;
+  private show_bookmarks = false;
 
   constructor(
     private route: ActivatedRoute,

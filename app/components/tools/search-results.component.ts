@@ -1,12 +1,11 @@
 import {Component, OnInit, ElementRef, OnChanges, Output, EventEmitter} from '@angular/core';
-import {StateService} from '../../services/state.service';
 import {PageService} from '../../services/page.service';
 
 @Component({
   selector: 'sr-search-results',
   templateUrl: './app/components/tools/search-results.html',
   styleUrls: ['./app/components/tools/search-results.css'],
-  inputs: ['search_query_text', 'show_state_key', 'page_type'],
+  inputs: ['search_query_text', 'page_type'],
   host: {
     '(document:click)': 'onClick($event)',
     '[class.active]': 'is_active'
@@ -18,15 +17,10 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   private item_list;
   private selected_item;
   private search_query_text;
-  private show_state_key;
-  private show_state;
-  private show_state_event_key = 'search_results_enabled';
-  private initial_show_state = false;
   private is_active;
   private error;
 
   constructor(
-    private stateService: StateService,
     private pageService: PageService,
     private _eref: ElementRef
   ) {
@@ -40,9 +34,7 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.show_state = this.stateService.getState(this.show_state_key);
-    this.stateService.editState(this.show_state_key, this.show_state_event_key, this.initial_show_state);
-    this.is_active = this.initial_show_state;
+    this.is_active = false;
   }
 
   ngOnChanges(changes) {
@@ -76,12 +68,10 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   }
 
   hideResults() {
-    this.stateService.editState(this.show_state_key, this.show_state_event_key, false);
     this.is_active = false;
   }
 
   showResults() {
-    this.stateService.editState(this.show_state_key, this.show_state_event_key, true);
     this.is_active = true;
   }
 

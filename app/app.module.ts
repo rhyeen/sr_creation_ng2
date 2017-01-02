@@ -27,7 +27,6 @@ import {TrailNavComponent} from './components/page-modules/trail-nav.component';
 import {PageDetailsSectionComponent} from './components/page-modules/page-details-section.component';
 import {PageDetailsComponent} from './components/page-modules/page-details.component';
 import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
-import {PageDetailContentEditComponent} from './components/page-modules/page-detail-content-edit.component';
 import {AddLinkComponent} from './components/page-modules/add-link.component';
 
 
@@ -88,7 +87,6 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageDetailsSectionComponent,
     PageDetailsComponent,
     PageDetailContentComponent,
-    PageDetailContentEditComponent,
     AddLinkComponent,
     SearchResultsComponent
   ],

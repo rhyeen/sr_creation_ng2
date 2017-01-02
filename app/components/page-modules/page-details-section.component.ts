@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class PageDetailsSectionComponent implements OnInit {
   private page_details_section;
-  private state_key = 'page_details_section';
+  private hide_details = false;
 
   constructor(
     private router: Router
@@ -21,7 +21,7 @@ export class PageDetailsSectionComponent implements OnInit {
     
   }
 
-  getStateKey() {
-    return this.state_key;
+  toggleEnabled(enabled) {
+    this.hide_details = enabled;
   }
 }

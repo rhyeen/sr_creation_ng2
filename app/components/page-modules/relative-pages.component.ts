@@ -1,29 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
-import {StateService} from '../../services/state.service';
 import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
 
 @Component({
   selector: 'sr-relative-pages',
   templateUrl: './app/components/page-modules/relative-pages.html',
   styleUrls: ['./app/components/page-modules/relative-pages.css'],
-  inputs: ['state_key', 'pages', 'parent_index']
+  inputs: ['pages', 'show_state']
 })
 export class RelativePagesComponent implements OnInit {
   private pages;
-  private parent_index;
-  private state_key;
-  private state;
   private options_btn_config = {
     remove_btn: {
       text: 'Remove Link'
     },
     moved_left: true
   };
+  private show_state;
 
   constructor(
-    private stateService: StateService,
     private pageService: PageService,
     private router: Router,
     private dragulaService: DragulaService
@@ -36,7 +32,7 @@ export class RelativePagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.state = this.stateService.getState(this.state_key);
+    
   }
 
   selectPage(page) {

@@ -40,6 +40,7 @@ export class PageService {
   }
 
   private addPageSectionStates(page_section) {
+    page_section._states = {};
     if (page_section.properties) {
       let lists = page_section.properties.list;
       if (lists && lists.length) {

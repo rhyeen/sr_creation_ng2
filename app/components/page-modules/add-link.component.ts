@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../services/state.service';
 import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
 
@@ -7,12 +6,10 @@ import {PageService} from '../../services/page.service';
   selector: 'sr-add-link',
   templateUrl: './app/components/page-modules/add-link.html',
   styleUrls: ['./app/components/page-modules/add-link.css'],
-  inputs: ['state_key', 'relative_pages_section']
+  inputs: ['show_state', 'relative_pages_section']
 })
 export class AddLinkComponent implements OnInit {
-  private state_key;
-  private state;
-  private state_event_key = 'new_enabled';
+  private show_state;
   private error;
   private name;
   private add_link_btn;
@@ -21,14 +18,12 @@ export class AddLinkComponent implements OnInit {
 
   constructor(
     private pageService: PageService,
-    private stateService: StateService,
     private router: Router
   ) {
   }
 
   ngOnInit() {
     this.switchToAddBtn();
-    this.state = this.stateService.getState(this.state_key);
   }
 
   searchQueryItemSelected(search_item) {
@@ -53,11 +48,7 @@ export class AddLinkComponent implements OnInit {
   }
 
   cancel() {
-    this.stateService.editState(this.state_key, this.state_event_key, false);
-  }
-
-  getSearchResultsShowStateKey() {
-    return this.state_key + '_search_results';
+    this.show_state = false;
   }
 
   linkOrCreatePage() {

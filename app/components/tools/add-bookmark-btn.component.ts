@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../services/state.service';
 
 @Component({
   selector: 'sr-add-bookmark-btn',
@@ -9,7 +8,6 @@ import {StateService} from '../../services/state.service';
 export class AddBookmarkBtnComponent implements OnInit {
 
   constructor(
-    private stateService: StateService
   ) {
 
   }

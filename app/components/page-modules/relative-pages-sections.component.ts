@@ -18,11 +18,11 @@ export class RelativePagesSectionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  getRelativePagesSectionStateKey(page_section_index) {
-    return 'relative_pages_section' + page_section_index;
+  toggleEnabled(enabled, relative_pages_section) {
+    relative_pages_section._states['hide_relative_pages'] = enabled;
   }
 
-  getAddLinkStateKey(page_section_index) {
-    return 'relative_pages_section_add_link' + page_section_index;
+  toggleAddLink(enabled, relative_pages_section) {
+    relative_pages_section._states['add_link_enabled'] = enabled;
   }
 }

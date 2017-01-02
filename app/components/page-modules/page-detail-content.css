@@ -31,3 +31,7 @@
   color: #003399;
   text-decoration: underline;
 }
+
+:host .content-edit {
+  margin-bottom: 10px;
+}

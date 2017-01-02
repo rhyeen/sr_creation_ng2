@@ -1,9 +1,11 @@
-:host {
+:host .bookmarks-container {
   top: 0;
+  left: 0;
   position: absolute;
   width: 200px;
   color: white;
   font-size: 14px;
+  z-index: 2;
 }
 
 :host .top-bar {
@@ -34,11 +36,11 @@
 }
 
 :host sr-exit-btn {
-  margin: 13px 5px 0 0;
+  margin: 4px 0 0 0;
   float: right;
 }
 
-:host sr-bookmarks-btn {
+:host .bookmarks-container sr-bookmarks-btn {
   display: inline-block;
-  margin: 10px 0 0 10px;
+  margin-left: 10px;
 }

@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {StateService} from '../../services/state.service';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'sr-bookmarks-btn',
@@ -7,11 +6,9 @@ import {StateService} from '../../services/state.service';
   styleUrls: ['./app/components/tools/bookmarks-btn.css']
 })
 export class BookmarksBtnComponent implements OnInit {
-  private state_key = 'bookmarks';
-  private state_event_key = 'show_bookmarks';
+  @Output() open = new EventEmitter();
 
   constructor(
-    private stateService: StateService
   ) {
 
   }
@@ -20,7 +17,6 @@ export class BookmarksBtnComponent implements OnInit {
   }
 
   openBookmarks() {
-    this.stateService.editState(this.state_key, this.state_event_key, true);
+    this.open.emit();
   }
-
 }
