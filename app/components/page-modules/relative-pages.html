@@ -1,4 +1,4 @@
-<div class="relative-pages-container" *ngIf="show_state" [dragula]='"page-link-bag"' [dragulaModel]='pages'>
+<div class="relative-pages-container" *ngIf="show_state && !is_loading" [dragula]="page_link_bag" [dragulaModel]="pages">
   <div *ngFor="let page of pages; let page_index = index">
     <div class="page-link-title">
       <a href="javascript:void(0)" (click)="selectPage(page)">{{page.name}}</a>
@@ -12,3 +12,4 @@
     <sr-relative-page-summary *ngIf="page['summary']" [show_state]="page._states.help_enabled" [page_summary]="page['summary']"></sr-relative-page-summary>
   </div>
 </div>
+<sr-spinner *ngIf="is_loading"></sr-spinner>

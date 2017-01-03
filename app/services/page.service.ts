@@ -74,18 +74,37 @@ export class PageService {
   }
 
   deletePageLink(link, links) {
+    links = this.extractLinkIds(links);
+    link = this.extractLinkId(link);
     let page_id = this.getPageId();
     let link_index: number = links.indexOf(link);
     if (link_index > -1) {
       links.splice(link_index, 1);
     }
-    this.updatePageLinks(links, page_id);
+    return this.updatePageLinks(links, page_id);
   }
 
   addPageLink(link, links) {
+    links = this.extractLinkIds(links);
+    link = this.extractLinkId(link);
     let page_id = this.getPageId();
     links.push(link);
-    this.updatePageLinks(links, page_id);
+    return this.updatePageLinks(links, page_id);
+  }
+
+  private extractLinkIds(links) {
+    let link_ids = [];
+    if (!links || !links.length) {
+      return [];
+    }
+    for (let link of links) {
+      link_ids.push(this.extractLinkId(link));
+    }
+    return link_ids;
+  }
+
+  private extractLinkId(link) {
+    return link.id;
   }
 
   updatePageLinks(links, id) {
@@ -95,7 +114,7 @@ export class PageService {
     let params = this.setUpdatePageLinksParams(id);
     let options = this.setRequestOptions(params);
     return this.http
-      .put(this.page_url, body, options)
+      .put(this.page_links_url, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

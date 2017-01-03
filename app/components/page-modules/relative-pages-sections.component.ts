@@ -25,4 +25,12 @@ export class RelativePagesSectionsComponent implements OnInit {
   toggleAddLink(enabled, relative_pages_section) {
     relative_pages_section._states['add_link_enabled'] = enabled;
   }
+
+  setRelativePagesSection(new_relative_pages_section, relative_pages_section_index) {
+    this.relative_pages_sections[relative_pages_section_index] = new_relative_pages_section;
+  }
+
+  setRelativePagesSections(new_relative_pages_sections) {
+    this.relative_pages_sections = new_relative_pages_sections;
+  }
 }
