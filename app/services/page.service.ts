@@ -8,6 +8,7 @@ export class PageService {
   private page_url = this.base_url + '/user/page';
   private page_summary_url = this.page_url + '/summary';
   private page_detail_url = this.page_url + '/detail';
+  private page_details_url = this.page_url + '/details';
   private page_image_url = this.page_url + '/image';
   private page_links_url = this.page_url + '/page-links';
   private page_search_url = this.page_url + '/search';
@@ -71,6 +72,67 @@ export class PageService {
       .get(this.page_search_url, options)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  reorderDetails(details) {
+    details = this.extractDetailIds(details);
+    let page_id = this.getPageId();
+    let body = {
+      'details': details
+    };
+    let params = this.setReorderDetailsParams(page_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_details_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private extractDetailIds(details) {
+    let detail_ids = [];
+    if (!details || !details.length) {
+      return [];
+    }
+    for (let detail of details) {
+      detail_ids.push(this.extractDetailId(detail));
+    }
+    return detail_ids;
+  }
+
+  private extractDetailId(detail) {
+    return detail.id;
+  }
+
+  deleteDetail(detail) {
+    let detail_id = this.extractDetailId(detail);
+    let page_id = this.getPageId();
+    let params = this.setDeleteDetailsParams(page_id, detail_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .delete(this.page_detail_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  updateDetail(detail) {
+    let detail_id = this.extractDetailId(detail);
+    let page_id = this.getPageId();
+    let body = {
+      'name': detail.name,
+      'content': detail.content
+    };
+    let params = this.setUpdateDetailsParams(page_id, detail_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_detail_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  reorderPageLinks(links) {
+    links = this.extractLinkIds(links);
+    let page_id = this.getPageId();
+    return this.updatePageLinks(links, page_id);
   }
 
   deletePageLink(link, links) {
@@ -137,6 +199,66 @@ export class PageService {
       .catch(this.handleError);
   }
 
+  deletePage(id) {
+    let params = this.setDeletePageParams(id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .delete(this.page_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  updatePageSummary(id, page_name, page_summary) {
+    let body = {
+      'name': page_name,
+      'summary': page_summary
+    };
+    let params = this.setUpdatePageSummaryParams(id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_summary_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private setUpdatePageSummaryParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
+  private setUpdateDetailsParams(id, detail) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    if (detail) {
+      params.set('detail', detail);
+    }
+    return params;
+  }
+
+  private setDeleteDetailsParams(id, detail) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    if (detail) {
+      params.set('detail', detail);
+    }
+    return params;
+  }
+
+  private setReorderDetailsParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
   private setAddDetailsParams(id) {
     let params = new URLSearchParams();
     if (id) {
@@ -182,6 +304,14 @@ export class PageService {
     }
     if (parent_page_id) {
       params.set('link', parent_page_id);
+    }
+    return params;
+  }
+
+  private setDeletePageParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
     }
     return params;
   }

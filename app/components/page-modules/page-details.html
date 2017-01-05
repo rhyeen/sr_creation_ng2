@@ -1,10 +1,10 @@
-<div class="page-details-container" [dragula]='"page-link-bag"' [dragulaModel]='pages'>
+<div class="page-details-container" *ngIf="!details.is_loading" [dragula]='page_detail_bag' [dragulaModel]='details'>
   <div *ngFor="let detail of details; let detail_index = index">
     <div class="detail-read" *ngIf="!detail._states.edit_enabled">
       <div class="detail-title">
         <a href="javascript:void(0)">{{detail.name}}</a>
         <div class="detail-tools">
-          <sr-section-toggle-btn (reveal)="toggleDetail($event, detail)" [reverse_toggle]="true"></sr-section-toggle-btn>
+          <sr-section-toggle-btn *ngIf="detail['content']['partitions'] && detail['content']['partitions'].length" (reveal)="toggleDetail($event, detail)" [reverse_toggle]="true"></sr-section-toggle-btn>
           <sr-move-btn></sr-move-btn>
           <sr-options-btn [config]="options_btn_config" (remove)="deleteDetail(detail)" (edit)="editDetail(detail)"></sr-options-btn>
         </div>
@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
-    <sr-page-detail-content *ngIf="detail['content']['partitions']" [show_state]="detail._states.show_detail_content" [content]="detail['content']" [edit_state]="detail._states.edit_enabled"></sr-page-detail-content>
+    <sr-page-detail-content [show_state]="detail._states.show_detail_content" [content]="detail['content']" [edit_state]="detail._states.edit_enabled"></sr-page-detail-content>
   </div>
 </div>
+<sr-spinner *ngIf="details.is_loading"></sr-spinner>

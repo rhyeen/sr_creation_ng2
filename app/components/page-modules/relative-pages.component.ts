@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import {PageService} from '../../services/page.service';
 import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
@@ -10,6 +10,7 @@ import {DragulaModule, DragulaService} from 'ng2-dragula/ng2-dragula';
   inputs: ['pages', 'show_state', 'is_loading']
 })
 export class RelativePagesComponent implements OnInit {
+  @Output() setRelativePagesSections = new EventEmitter();
   private pages;
   private is_loading;
   private options_btn_config = {
@@ -20,6 +21,7 @@ export class RelativePagesComponent implements OnInit {
   };
   private show_state;
   private page_link_bag;
+  private error;
 
   constructor(
     private pageService: PageService,
@@ -32,6 +34,19 @@ export class RelativePagesComponent implements OnInit {
         return handle.className.indexOf('move-btn') != -1;
       }
     });
+    dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
+    });
+  }
+
+  private onDropModel(args) {
+    debugger;
+    let [el, target, source] = args;
+    // @TODO: may have to determine if this is the pages section that triggered the drop model event.
+    this.pageService.reorderPageLinks(this.pages)
+      .subscribe(
+        data => {},
+        error => this.error = <any>error);
   }
 
   generateRandomString() {
@@ -52,12 +67,30 @@ export class RelativePagesComponent implements OnInit {
     this.router.navigate(['/page', page.id]);
   }
 
-  getRelativePageStateKey(page_section_index, page_index) {
-    return 'relative_page_' + page_section_index + '_' + page_index;
+  deletePageLink(page) {
+    this.setLoading();
+    this.pageService.deletePageLink(page, this.pages)
+      .subscribe(
+        data => this.reloadPage(),
+        error => this.error = <any>error);
   }
 
-  deletePageLink(page) {
+  private setLoading() {
+    this.is_loading = true;
+  }
 
+  private reloadPage() {
+    let page_id = this.pageService.getPageId();
+    this.pageService.getPage(page_id)
+      .subscribe(
+        data => this.passSetRelativePagesSections(data),
+        error => this.error = <any>error);
+  }
+
+  private passSetRelativePagesSections(page) {
+    this.is_loading = false;
+    this.pageService.addPageStates(page);
+    this.setRelativePagesSections.emit(page.pages);
   }
 
   contentHelpEnabled(enabled, page) {

@@ -28,4 +28,8 @@ export class PageDetailsSectionComponent implements OnInit {
   toggleAddDetail(enabled) {
     this.add_detail_enabled = enabled;
   }
+
+  setDetails(page_details_section) {
+    this.page_details_section = page_details_section;
+  }
 }

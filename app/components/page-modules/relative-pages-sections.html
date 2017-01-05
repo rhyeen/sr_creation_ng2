@@ -3,5 +3,5 @@
   <sr-section-toggle-btn *ngIf="relative_pages_section.properties['list'].length" (reveal)="toggleRelativePages($event, relative_pages_section)"></sr-section-toggle-btn>
   <sr-new-item-btn (enabled)="toggleAddLink($event, relative_pages_section)"></sr-new-item-btn>
   <sr-add-link [show_state]="relative_pages_section._states.add_link_enabled" [relative_pages_section]="relative_pages_section" (setRelativePagesSection)="setRelativePagesSection($event, page_section_index)" (setRelativePagesSections)="setRelativePagesSections($event)"></sr-add-link>
-  <sr-relative-pages *ngIf="relative_pages_section.properties['list'].length" [show_state]="!relative_pages_section._states.hide_relative_pages" [pages]="relative_pages_section.properties['list']" [is_loading]="relative_pages_section.is_loading"></sr-relative-pages>
+  <sr-relative-pages *ngIf="relative_pages_section.properties['list'].length" [show_state]="!relative_pages_section._states.hide_relative_pages" [pages]="relative_pages_section.properties['list']" [is_loading]="relative_pages_section.is_loading" (setRelativePagesSections)="setRelativePagesSections($event)"></sr-relative-pages>
 </div>

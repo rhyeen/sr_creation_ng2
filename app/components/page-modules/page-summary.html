@@ -1,4 +1,4 @@
-<div class="summary-read" *ngIf="!edit_mode">
+<div class="summary-read" *ngIf="!edit_mode && !is_loading">
   <div class="page-title" *ngIf="page.name">
     <h2>{{page.name}}</h2>
     <sr-options-btn [config]="options_btn_config" (remove)="deletePage()" (edit)="editSummary()"></sr-options-btn>
@@ -26,3 +26,4 @@
     </div>
   </div>
 </div>
+<sr-spinner *ngIf="is_loading"></sr-spinner>

@@ -16,7 +16,7 @@ export class TagService {
     let params = this.setRenderTagsParams(id);
     let options = this.setRequestOptions(params);
     let request_body = {
-      mark_down:mark_down
+      'mark_down': mark_down
     };
     return this.http
       .post(this.render_tags_url, request_body, options)
