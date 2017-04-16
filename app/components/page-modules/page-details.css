@@ -1,4 +1,4 @@
-:host .page-details-container {
+:host {
   display: block;
   width: 350px;
   max-height: 300px;
@@ -54,7 +54,7 @@
 }
 
 @media (max-width: 400px) {
-  :host .article-details-container {
+  :host {
     width: calc(100% - 20px);
   }
 }

@@ -3,7 +3,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'sr-new-item-btn',
   templateUrl: './app/components/tools/new-item-btn.html',
-  styleUrls: ['./app/components/tools/new-item-btn.css']
+  styleUrls: ['./app/components/tools/new-item-btn.css'],
+  inputs: ['enable']
 })
 export class NewItemBtnComponent implements OnInit {
   @Output() enabled = new EventEmitter();

@@ -11,6 +11,7 @@ export class PageDetailsSectionComponent implements OnInit {
   private page_details_section;
   private hide_details = false;
   private add_detail_enabled = false;
+  private is_loading = false;
 
   constructor(
     private router: Router
@@ -30,6 +31,12 @@ export class PageDetailsSectionComponent implements OnInit {
   }
 
   setDetails(page_details_section) {
+    this.add_detail_enabled = false;
+    this.is_loading = false;
     this.page_details_section = page_details_section;
+  }
+
+  setDetailsLoading() {
+    this.is_loading = true;
   }
 }

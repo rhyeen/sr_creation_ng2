@@ -1,24 +1,21 @@
-<div class="page-details-container" *ngIf="!details.is_loading" [dragula]='page_detail_bag' [dragulaModel]='details'>
-  <div *ngFor="let detail of details; let detail_index = index">
-    <div class="detail-read" *ngIf="!detail._states.edit_enabled">
-      <div class="detail-title">
-        <a href="javascript:void(0)">{{detail.name}}</a>
-        <div class="detail-tools">
-          <sr-section-toggle-btn *ngIf="detail['content']['partitions'] && detail['content']['partitions'].length" (reveal)="toggleDetail($event, detail)" [reverse_toggle]="true"></sr-section-toggle-btn>
-          <sr-move-btn></sr-move-btn>
-          <sr-options-btn [config]="options_btn_config" (remove)="deleteDetail(detail)" (edit)="editDetail(detail)"></sr-options-btn>
-        </div>
+<div *ngFor="let detail of details; let detail_index = index">
+  <div class="detail-read" *ngIf="!detail._states.edit_enabled">
+    <div class="detail-title">
+      <a href="javascript:void(0)">{{detail.name}}</a>
+      <div class="detail-tools">
+        <sr-section-toggle-btn *ngIf="detail['content']['partitions'] && detail['content']['partitions'].length" (reveal)="toggleDetail($event, detail)" [reverse_toggle]="true"></sr-section-toggle-btn>
+        <sr-move-btn></sr-move-btn>
+        <sr-options-btn [config]="options_btn_config" (remove)="deleteDetail(detail)" (edit)="editDetail(detail)"></sr-options-btn>
       </div>
     </div>
-    <div class="detail-edit" *ngIf="detail._states.edit_enabled">
-      <div class="detail-title">
-        <input type="text" [(ngModel)]="detail.name">
-        <div class="detail-tools">
-          <sr-complete-btn (complete)="renderTags(detail)"></sr-complete-btn>
-        </div>
-      </div>
-    </div>
-    <sr-page-detail-content [show_state]="detail._states.show_detail_content" [content]="detail['content']" [edit_state]="detail._states.edit_enabled"></sr-page-detail-content>
   </div>
+  <div class="detail-edit" *ngIf="detail._states.edit_enabled">
+    <div class="detail-title">
+      <input type="text" [(ngModel)]="detail.name">
+      <div class="detail-tools">
+        <sr-complete-btn (complete)="renderTags(detail)"></sr-complete-btn>
+      </div>
+    </div>
+  </div>
+  <sr-page-detail-content [show_state]="detail._states.show_detail_content" [content]="detail['content']" [edit_state]="detail._states.edit_enabled"></sr-page-detail-content>
 </div>
-<sr-spinner *ngIf="details.is_loading"></sr-spinner>
