@@ -1,0 +1,13 @@
+<div *ngIf="!edit_mode && properties_holder.properties">
+  <div class="property-container" *ngFor="let property of properties_holder.properties; let property_index = index">
+    <span class="property-key">{{property.key}}:</span>
+    <span class="property-value">{{property.value}}</span>
+  </div>
+</div>
+<div *ngIf="edit_mode">
+  <div class="property-container-edit" *ngFor="let property of edit_properties; let property_index = index">
+    <input class="property-key-edit" [ngModel]="property.key" (blur)="saveProperties(property_index, property)" (ngModelChange)="checkProperties(property, $event, 'key')">
+    <span class="property-separator">:</span>
+    <input class="property-value-edit" [ngModel]="property.value" (blur)="saveProperties(property_index, property)" (ngModelChange)="checkProperties(property, $event, 'value')" [disabled]="!property.key">
+  </div>
+</div>

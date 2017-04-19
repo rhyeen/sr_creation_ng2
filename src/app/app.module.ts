@@ -29,6 +29,7 @@ import {PageDetailsComponent} from './components/page-modules/page-details.compo
 import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
 import {AddLinkComponent} from './components/page-modules/add-link.component';
 import {AddDetailComponent} from './components/page-modules/add-detail.component';
+import {PagePropertiesComponent} from './components/page-modules/page-properties.component';
 
 
 // tools
@@ -70,6 +71,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     RelativePagesComponent,
     RelativePagesSectionsComponent,
     RelativePageSummaryComponent,
+    PagePropertiesComponent,
     TrailNavComponent,
     NewItemBtnComponent,
     SectionToggleBtnComponent,

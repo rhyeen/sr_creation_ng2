@@ -5,7 +5,7 @@
   </div>
   <div *ngIf="page.summary">
     <div *ngIf="page.summary.properties">
-      <p>This page has properties: currently unsupported.</p>
+      <sr-page-properties [properties_holder]="page.summary" [edit_mode]="edit_mode"></sr-page-properties>
     </div>
     <div *ngIf="page.summary.text">
       <p>{{page.summary.text}}</p>
@@ -19,7 +19,7 @@
   </div>
   <div>
     <div>
-      <p>This page has properties: currently unsupported.</p>
+      <sr-page-properties [properties_holder]="page.summary" [edit_mode]="edit_mode"></sr-page-properties>
     </div>
     <div>
       <sr-textarea [content_container]="page.summary" [content_key]="'text'"></sr-textarea>
