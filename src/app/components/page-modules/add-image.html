@@ -1,0 +1,11 @@
+<div class="image-container" *ngIf="show_state">
+  <div class="add-image-container">
+    <div class="input-results">
+      <input type="text" [(ngModel)]="name">
+    </div>
+    <button class="add-image-btn" (click)="newImage()" [disabled]="!name">{{add_image_btn}}</button>
+  </div>
+  <div class="upload-image-container">
+    <sr-file-upload [valid_file_types]="['image']" (fileReady)="fileReady($event)"></sr-file-upload>
+  </div>
+</div>

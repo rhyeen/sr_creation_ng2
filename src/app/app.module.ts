@@ -27,8 +27,12 @@ import {TrailNavComponent} from './components/page-modules/trail-nav.component';
 import {PageDetailsSectionComponent} from './components/page-modules/page-details-section.component';
 import {PageDetailsComponent} from './components/page-modules/page-details.component';
 import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
+import {PageImagesSectionComponent} from './components/page-modules/page-images-section.component';
+import {PageImagesComponent} from './components/page-modules/page-images.component';
+import {PageImageContentComponent} from './components/page-modules/page-image-content.component';
 import {AddLinkComponent} from './components/page-modules/add-link.component';
 import {AddDetailComponent} from './components/page-modules/add-detail.component';
+import {AddImageComponent} from './components/page-modules/add-image.component';
 import {PagePropertiesComponent} from './components/page-modules/page-properties.component';
 
 
@@ -47,6 +51,8 @@ import {MoveBtnComponent} from './components/tools/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
 import {CompleteBtnComponent} from './components/tools/complete-btn.component';
 import {SearchResultsComponent} from './components/tools/search-results.component';
+import {FileDropComponent} from './components/tools/file-drop.component';
+import {FileUploadComponent} from './components/tools/file-upload.component';
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
@@ -90,9 +96,15 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageDetailsSectionComponent,
     PageDetailsComponent,
     PageDetailContentComponent,
+    PageImagesSectionComponent,
+    PageImagesComponent,
+    PageImageContentComponent,
     AddLinkComponent,
     AddDetailComponent,
-    SearchResultsComponent
+    AddImageComponent,
+    SearchResultsComponent,
+    FileDropComponent,
+    FileUploadComponent
   ],
   providers: [
   	appRoutingProviders,

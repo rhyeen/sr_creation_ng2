@@ -1,0 +1,21 @@
+<div *ngFor="let image of images; let image_index = index">
+  <div class="image-read" *ngIf="!image._states.edit_enabled">
+    <div class="image-title">
+      <a href="javascript:void(0)">{{image.name}}</a>
+      <div class="image-tools">
+        <sr-section-toggle-btn *ngIf="image['content']['partitions'] && image['content']['partitions'].length" (reveal)="toggleImage($event, image)" [reverse_toggle]="true"></sr-section-toggle-btn>
+        <sr-move-btn></sr-move-btn>
+        <sr-options-btn [config]="options_btn_config" (remove)="deleteImage(image)" (edit)="editImage(image)"></sr-options-btn>
+      </div>
+    </div>
+  </div>
+  <div class="image-edit" *ngIf="image._states.edit_enabled">
+    <div class="image-title">
+      <input type="text" [(ngModel)]="image.name">
+      <div class="image-tools">
+        <sr-complete-btn (complete)="renderTags(image)"></sr-complete-btn>
+      </div>
+    </div>
+  </div>
+  <sr-page-image-content [show_state]="image._states.show_image_content" [content]="image['content']" [edit_state]="image._states.edit_enabled"></sr-page-image-content>
+</div>

@@ -10,6 +10,7 @@ export class PageService {
   private page_detail_url = this.page_url + '/detail';
   private page_details_url = this.page_url + '/details';
   private page_image_url = this.page_url + '/image';
+  private page_images_url = this.page_url + '/images';
   private page_links_url = this.page_url + '/page-links';
   private page_search_url = this.page_url + '/search';
 
@@ -35,9 +36,23 @@ export class PageService {
       .catch(this.handleError);
   }
 
+  newImage(name, content, id) {
+    let body = {
+      'name': name,
+      'content': content
+    };
+    let params = this.setAddImagesParams(id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .post(this.page_detail_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   addPageStates(page) {
     page._states = {};
     this.addDetailStates(page);
+    this.addImageStates(page);
     if (page.pages && page.pages.length) {
       for (let page_section of page.pages) {
         this.addPageSectionStates(page_section);
@@ -49,6 +64,14 @@ export class PageService {
     if (page.details && page.details.list && page.details.list.length) {
       for (let detail of page.details.list) {
         detail._states = {};
+      }
+    }
+  }
+
+  private addImageStates(page) {
+    if (page.images && page.images.list && page.images.list.length) {
+      for (let image of page.images.list) {
+        image._states = {};
       }
     }
   }
@@ -125,6 +148,61 @@ export class PageService {
     let options = this.setRequestOptions(params);
     return this.http
       .put(this.page_detail_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  reorderImages(images) {
+    images = this.extractImageIds(images);
+    let page_id = this.getPageId();
+    let body = {
+      'images': images
+    };
+    let params = this.setReorderImagesParams(page_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_images_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private extractImageIds(images) {
+    let image_ids = [];
+    if (!images || !images.length) {
+      return [];
+    }
+    for (let image of images) {
+      image_ids.push(this.extractImageId(image));
+    }
+    return image_ids;
+  }
+
+  private extractImageId(image) {
+    return image.id;
+  }
+
+  deleteImage(image) {
+    let image_id = this.extractImageId(image);
+    let page_id = this.getPageId();
+    let params = this.setDeleteImagesParams(page_id, image_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .delete(this.page_image_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  updateImage(image) {
+    let image_id = this.extractImageId(image);
+    let page_id = this.getPageId();
+    let body = {
+      'name': image.name,
+      'content': image.content
+    };
+    let params = this.setUpdateImagesParams(page_id, image_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.page_image_url, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -260,6 +338,44 @@ export class PageService {
   }
 
   private setAddDetailsParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
+  private setUpdateImagesParams(id, image) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    if (image) {
+      params.set('image', image);
+    }
+    return params;
+  }
+
+  private setDeleteImagesParams(id, image) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    if (image) {
+      params.set('image', image);
+    }
+    return params;
+  }
+
+  private setReorderImagesParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
+  private setAddImagesParams(id) {
     let params = new URLSearchParams();
     if (id) {
       params.set('id', id);

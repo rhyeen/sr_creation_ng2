@@ -1,0 +1,8 @@
+<div *ngIf="page_images_section">
+  <h3>Images</h3>
+  <sr-section-toggle-btn *ngIf="page_images_section['list'].length" (reveal)="togglePageImages($event)"></sr-section-toggle-btn>
+  <sr-new-item-btn (enabled)="toggleAddImage($event)" [enable]="add_image_enabled"></sr-new-item-btn>
+  <sr-add-image [show_state]="add_image_enabled" (setImages)="setImages($event)" (setImagesLoading)="setImagesLoading()"></sr-add-image>
+  <sr-page-images *ngIf="page_images_section['list'].length && !hide_images && !is_loading" [images]="page_images_section['list']" (setImages)="setImages($event)"></sr-page-images>
+  <sr-spinner *ngIf="is_loading"></sr-spinner>
+</div>

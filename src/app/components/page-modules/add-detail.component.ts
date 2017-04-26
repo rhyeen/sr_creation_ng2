@@ -33,9 +33,9 @@ export class AddDetailComponent implements OnInit {
 
   resetContent() {
     this.content = {
-    mark_down: null,
-    partitions: []
-  };
+      mark_down: null,
+      partitions: []
+    };
   }
 
   private newDetail() {

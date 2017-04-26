@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import './rxjs-operators';
 
 import {PageService} from '../services/page.service';
+import {FileService} from '../services/file.service';
 import {TagService} from '../services/tag.service';
 import {StateService} from '../services/state.service';
 import {BookmarksService} from '../services/bookmarks.service';
@@ -14,7 +15,7 @@ import {DragulaService} from 'ng2-dragula/ng2-dragula';
   selector: 'sr-root-container',
   templateUrl: './root-container.html',
   styleUrls: ['./root-container.css'],
-  providers: [PageService, StateService, BookmarksService, TagService, BreadcrumbService, DragulaService]
+  providers: [PageService, FileService, StateService, BookmarksService, TagService, BreadcrumbService, DragulaService]
 })
 export class RootContainerComponent implements OnInit {
   private is_page = true;
@@ -26,6 +27,7 @@ export class RootContainerComponent implements OnInit {
     private router: Router,
     private stateService: StateService,
     private pageService: PageService,
+    private fileService: FileService,
     private tagService: TagService,
     private bookmarksService: BookmarksService,
     private breadcrumbService: BreadcrumbService,
