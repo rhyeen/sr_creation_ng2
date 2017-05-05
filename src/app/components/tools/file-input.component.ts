@@ -2,17 +2,18 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FileService} from '../../services/file.service';
 
 @Component({
-  selector: 'sr-file-upload',
-  templateUrl: './file-upload.html',
-  styleUrls: ['./file-upload.css'],
+  selector: 'sr-file-input',
+  templateUrl: './file-input.html',
+  styleUrls: ['./file-input.css'],
   inputs: ['valid_file_types']
 })
-export class FileUploadComponent implements OnInit {
+export class FileInputComponent implements OnInit {
   @Output() fileReady = new EventEmitter();
   private file;
   private file_name;
   private error;
   private image_src;
+  private thumbnail_src;
   private valid_file_types;
   private known_file_extensions = {
     'jpg': 'image',
@@ -32,6 +33,8 @@ export class FileUploadComponent implements OnInit {
   private resetFile() {
     this.file = null;
     this.file_name = null;
+    this.image_src = null;
+    this.thumbnail_src = null;
   }
 
 
@@ -71,9 +74,10 @@ export class FileUploadComponent implements OnInit {
 
   private conformImage(file) {
     let self = this;
-    this.fileService.conformImage(file).then(function(image_data) {
-      self.file = image_data;
+    this.fileService.conformImage(file).then(function(image_data_container) {
+      self.file = image_data_container['image_data'];
       self.image_src = self.file;
+      self.thumbnail_src = image_data_container['thumbnail_data'];
       self.emitFileReady();
     }, function(error) {
       self.resetFile();
@@ -86,7 +90,8 @@ export class FileUploadComponent implements OnInit {
   private emitFileReady() {
     this.fileReady.emit({
       'file': this.file,
-      'file_name': this.file_name
+      'file_name': this.file_name,
+      'thumbnail': this.thumbnail_src
     });
   }
 }

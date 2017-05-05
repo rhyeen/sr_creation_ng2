@@ -52,7 +52,7 @@ import {TextareaComponent} from './components/tools/textarea.component';
 import {CompleteBtnComponent} from './components/tools/complete-btn.component';
 import {SearchResultsComponent} from './components/tools/search-results.component';
 import {FileDropComponent} from './components/tools/file-drop.component';
-import {FileUploadComponent} from './components/tools/file-upload.component';
+import {FileInputComponent} from './components/tools/file-input.component';
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
@@ -104,7 +104,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     AddImageComponent,
     SearchResultsComponent,
     FileDropComponent,
-    FileUploadComponent
+    FileInputComponent
   ],
   providers: [
   	appRoutingProviders,

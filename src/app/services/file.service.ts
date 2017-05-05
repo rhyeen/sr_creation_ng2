@@ -7,9 +7,13 @@ export class FileService {
   private base_url = 'http://localhost:4000';
   private file_url = this.base_url + '/user/file';
   private image_url = this.file_url + '/image';
-  private default_image_quality = 1; // scale from 0.0 to 1.0
-  private default_max_width = 700;
-  private defualt_max_height = 700;
+  private thumbnail_url = this.image_url + '/thumbnail';
+  private image_quality = 1; // scale from 0.0 to 1.0
+  private thumbnail_quality = 1; // scale from 0.0 to 1.0
+  private image_max_width = 700;
+  private image_max_height = 700;
+  private thumbnail_max_width = 370;
+  private thumbnail_max_height = 370;
 
   constructor (private http: Http) {}
 
@@ -33,11 +37,26 @@ export class FileService {
     return file_name.substr(file_name.lastIndexOf('.') + 1);
   }
 
-  upload(file) {
+  uploadImage(file) {
     let form_data = new FormData();
-    form_data.append('files', file, file.name);
+    form_data.append('file', file);
+    let body = {
+      data: file
+    };
     return this.http
-      .post(this.file_url, form_data)
+      .post(this.image_url, form_data)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  uploadThumbnail(file) {
+    let form_data = new FormData();
+    form_data.append('file', file);
+    let body = {
+      data: file
+    };
+    return this.http
+      .post(this.thumbnail_url, form_data)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -69,9 +88,14 @@ export class FileService {
         image_file.onload = function () {
           try {
             let image_file = this;
-            let max_width = self.findMaxScaledWidth(image_file);
-            let image_data = self.scaleImage(image_file, max_width, self.default_image_quality, file)
-            resolve(image_data);
+            let max_width = self.findMaxScaledWidth(image_file, self.image_max_width, self.image_max_height);
+            let image_data = self.scaleImage(image_file, max_width, self.image_quality, file);
+            max_width = self.findMaxScaledWidth(image_file, self.thumbnail_max_width, self.thumbnail_max_height);
+            let thumbnail_data = self.scaleImage(image_file, max_width, self.thumbnail_quality, file);
+            resolve({
+              image_data: image_data,
+              thumbnail_data: thumbnail_data
+            });
           } catch(error) {
             reject(error);
           }
@@ -89,11 +113,9 @@ export class FileService {
     return image;
   }
 
-  private findMaxScaledWidth(image_file) {
+  private findMaxScaledWidth(image_file, max_width, max_height) {
     let width = image_file.width;
     let height = image_file.height;
-    let max_width = this.default_max_width;
-    let max_height = this.defualt_max_height;
     if (width > max_width) {
       height = height * (max_width / (1.0 * width));
       height = Math.round(height);

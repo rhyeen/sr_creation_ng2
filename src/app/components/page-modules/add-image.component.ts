@@ -18,6 +18,7 @@ export class AddImageComponent implements OnInit {
   private content;
   private add_image_btn = 'Link';
   private file = null;
+  private thumbnail = null;
 
   constructor(
     private pageService: PageService,
@@ -43,8 +44,8 @@ export class AddImageComponent implements OnInit {
   }
 
   fileReady(file_container) {
-
     this.file = file_container['file'];
+    this.thumbnail = file_container['thumbnail'];
     if (!this.name) {
       this.name = file_container['file_name'];
     }
@@ -68,13 +69,20 @@ export class AddImageComponent implements OnInit {
   }
 
   private uploadImage() {
-    this.fileService.upload(this.file)
+    this.fileService.uploadImage(this.file)
       .subscribe(
-        results => this.handleUploadResults(results),
+        results => this.handleImageUploadResults(results),
         error => this.error = <any>error);
   }
 
-  private handleUploadResults(results) {
+  private handleImageUploadResults(results) {
+    this.fileService.uploadThumbnail(this.thumbnail)
+      .subscribe(
+        results => this.handleThumbnailUploadResults(results),
+        error => this.error = <any>error);
+  }
+
+  private handleThumbnailUploadResults(results) {
     debugger;
   }
 
