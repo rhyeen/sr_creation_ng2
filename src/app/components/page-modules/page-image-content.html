@@ -1,9 +1,4 @@
-<p class="content-read" *ngIf="show_state && !edit_state">
-  <span *ngFor="let partition of content.partitions; let partition_index = index">
-    <span *ngIf="partition.type == 'text'">{{partition.text}}</span>
-    <span class="tag page-tag" *ngIf="partition.type == 'tag'" (click)="showTag(partition)">{{partition.text}}</span>
-  </span>
-</p>
+<p class="content-read" *ngIf="show_state && !edit_state && content.caption">{{content.caption}}</p>
 <div class="content-edit" *ngIf="edit_state">
   <sr-textarea [content_container]="content" [content_key]="content_key"></sr-textarea>
 </div>

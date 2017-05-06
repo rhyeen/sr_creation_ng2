@@ -15,10 +15,11 @@ export class AddImageComponent implements OnInit {
   private show_state;
   private error;
   private name;
-  private content;
   private add_image_btn = 'Link';
   private file = null;
   private thumbnail = null;
+  private image_link = null;
+  private thumbnail_link = null;
 
   constructor(
     private pageService: PageService,
@@ -28,7 +29,7 @@ export class AddImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resetContent();
+    this.resetImage();
     this.file = null;
   }
 
@@ -36,11 +37,12 @@ export class AddImageComponent implements OnInit {
     this.show_state = false;
   }
 
-  resetContent() {
-    this.content = {
-      mark_down: null,
-      partitions: []
-    };
+  resetImage() {
+    this.name = null;
+    this.file = null;
+    this.thumbnail = null;
+    this.image_link = null;
+    this.thumbnail_link = null;
   }
 
   fileReady(file_container) {
@@ -69,13 +71,20 @@ export class AddImageComponent implements OnInit {
   }
 
   private uploadImage() {
+    let name = this.name;
+    if (!name) {
+      name = 'New image';
+    }
+    this.setLoading();
     this.fileService.uploadImage(this.file)
       .subscribe(
         results => this.handleImageUploadResults(results),
         error => this.error = <any>error);
+    this.cancel();
   }
 
   private handleImageUploadResults(results) {
+    this.image_link = results.file_name;
     this.fileService.uploadThumbnail(this.thumbnail)
       .subscribe(
         results => this.handleThumbnailUploadResults(results),
@@ -83,26 +92,16 @@ export class AddImageComponent implements OnInit {
   }
 
   private handleThumbnailUploadResults(results) {
-    debugger;
+    let page_id = this.pageService.getPageId();
+    this.thumbnail_link = results.file_name;
+    this.pageService.newImage(this.name, this.image_link, this.thumbnail_link, page_id)
+      .subscribe(
+        results => this.reloadPage(),
+        error => this.error = <any>error);
   }
 
   private linkImage() {
-    let name = this.name;
-    if (!name) {
-      name = 'New image';
-    }
-    let content = this.content;
-    if (!content) {
-      this.resetContent();
-      content = this.content;
-    }
-    let page_id = this.pageService.getPageId();
-    this.setLoading();
-    this.pageService.newImage(name, content, page_id)
-      .subscribe(
-        data => this.reloadPage(),
-        error => this.error = <any>error);
-    this.cancel();
+    debugger;
   }
 
   private setLoading() {
@@ -110,6 +109,7 @@ export class AddImageComponent implements OnInit {
   }
 
   private reloadPage() {
+    this.resetImage();
     let page_id = this.pageService.getPageId();
     this.pageService.getPage(page_id)
       .subscribe(

@@ -23,12 +23,12 @@ export class PageService {
     return page_code == 'RR';
   }
 
-  newDetail(name, content, id) {
+  newDetail(name, content, page_id) {
     let body = {
       'name': name,
       'content': content
     };
-    let params = this.setAddDetailsParams(id);
+    let params = this.setAddDetailsParams(page_id);
     let options = this.setRequestOptions(params);
     return this.http
       .post(this.page_detail_url, body, options)
@@ -36,15 +36,21 @@ export class PageService {
       .catch(this.handleError);
   }
 
-  newImage(name, content, id) {
+  newImage(name, image_link, thumbnail_link, page_id) {
     let body = {
       'name': name,
-      'content': content
+      'caption': '@TODO',
+      'source': '@TODO',
+      'link': image_link,
+      'thumbnail': {
+        'link': thumbnail_link
+      }
     };
-    let params = this.setAddImagesParams(id);
+    debugger;
+    let params = this.setAddImagesParams(page_id);
     let options = this.setRequestOptions(params);
     return this.http
-      .post(this.page_detail_url, body, options)
+      .post(this.page_image_url, body, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
