@@ -15,11 +15,14 @@ export class AddImageComponent implements OnInit {
   private show_state;
   private error;
   private name;
+  private caption;
+  private source;
   private add_image_btn = 'Link';
   private file = null;
   private thumbnail = null;
   private image_link = null;
   private thumbnail_link = null;
+  private search_selected_item = null;
 
   constructor(
     private pageService: PageService,
@@ -33,7 +36,13 @@ export class AddImageComponent implements OnInit {
     this.file = null;
   }
 
+  removeSelection() {
+    this.search_selected_item = null;
+    this.setAddImageBtnText();
+  }
+
   cancel() {
+    this.removeSelection();
     this.show_state = false;
   }
 
@@ -43,6 +52,8 @@ export class AddImageComponent implements OnInit {
     this.thumbnail = null;
     this.image_link = null;
     this.thumbnail_link = null;
+    this.source = null;
+    this.caption = null;
   }
 
   fileReady(file_container) {
@@ -52,6 +63,14 @@ export class AddImageComponent implements OnInit {
       this.name = file_container['file_name'];
     }
     this.setAddImageBtnText();
+  }
+
+  searchQueryItemSelected(search_item) {
+    this.search_selected_item = search_item;
+    if (search_item) {
+      this.setAddImageBtnText();
+      this.name = search_item.name;
+    }
   }
 
   private setAddImageBtnText() {
@@ -94,7 +113,7 @@ export class AddImageComponent implements OnInit {
   private handleThumbnailUploadResults(results) {
     let page_id = this.pageService.getPageId();
     this.thumbnail_link = results.file_name;
-    this.pageService.newImage(this.name, this.image_link, this.thumbnail_link, page_id)
+    this.pageService.newImage(this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
       .subscribe(
         results => this.reloadPage(),
         error => this.error = <any>error);

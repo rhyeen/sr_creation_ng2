@@ -36,17 +36,16 @@ export class PageService {
       .catch(this.handleError);
   }
 
-  newImage(name, image_link, thumbnail_link, page_id) {
+  newImage(name, caption, source, image_link, thumbnail_link, page_id) {
     let body = {
       'name': name,
-      'caption': '@TODO',
-      'source': '@TODO',
+      'caption': caption,
+      'source': source,
       'link': image_link,
       'thumbnail': {
         'link': thumbnail_link
       }
     };
-    debugger;
     let params = this.setAddImagesParams(page_id);
     let options = this.setRequestOptions(params);
     return this.http
@@ -101,6 +100,10 @@ export class PageService {
       .get(this.page_search_url, options)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  searchRelevantImages(query) {
+    return this.searchRelevantPages(query, 'image');
   }
 
   reorderDetails(details) {

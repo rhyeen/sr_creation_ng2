@@ -1,4 +1,16 @@
-<p class="content-read" *ngIf="show_state && !edit_state && content.caption">{{content.caption}}</p>
+<div class="content-read" *ngIf="show_state && !edit_state && content.caption">
+  <p>
+    <span class="title">Caption: </span>
+    <span>{{content.caption}}</span>
+  </p>
+  <p>
+    <span class="title">Source: </span>
+    <span>
+      <a *ngIf="source_is_link" href="{{content.source}}">{{content.source}}</a>
+      <span *ngIf="!source_is_link">{{content.source}}</span>
+    </span>
+  </p>
+</div>
 <div class="content-edit" *ngIf="edit_state">
   <sr-textarea [content_container]="content" [content_key]="content_key"></sr-textarea>
 </div>

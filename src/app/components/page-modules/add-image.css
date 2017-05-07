@@ -17,6 +17,27 @@
   position: relative;
 }
 
+:host .add-image-properties {
+}
+
+:host .add-image-properties label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+:host .add-image-properties label div {
+  width: 100px;
+  font-weight: 700;
+  margin-right: 10px;
+  line-height: 27px;
+}
+
+:host .add-image-properties label input {
+  flex-grow: 1;
+}
+
 :host input {
   width: 100%;
   border: 1px solid #373737;
@@ -43,4 +64,24 @@
 
 :host .add-image-btn {
   background-color: #4FB12E;
+}
+
+:host .selected-item-container {
+  background-color: #3a66e0;
+  color: white;
+  border-radius: 100px;
+}
+
+:host .selected-item-container sr-exit-btn {
+  margin: 6px 6px 0 0;
+  float: right;
+}
+
+:host .selected-item-text {
+  line-height: 27px;
+  display: inline-block;
+  max-width: 220px;
+  padding: 0 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
