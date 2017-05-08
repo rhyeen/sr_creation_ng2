@@ -9,7 +9,7 @@
       </div>
       <sr-search-results [search_query_text]="name" [other_type]="'image'" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
     </div>
-    <button class="add-image-btn" (click)="newImage()" [disabled]="!name">{{add_image_btn}}</button>
+    <button class="add-image-btn" (click)="newImage()" [disabled]="!name || (!search_selected_item && !file)">{{add_image_btn}}</button>
   </div>
   <div class="add-image-properties">
     <label>

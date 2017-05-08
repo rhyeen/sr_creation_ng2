@@ -7,12 +7,13 @@ import {FileService} from '../../services/file.service';
   selector: 'sr-add-image',
   templateUrl: './add-image.html',
   styleUrls: ['./add-image.css'],
-  inputs: ['show_state']
+  inputs: ['show_state', 'page_images_section']
 })
 export class AddImageComponent implements OnInit {
   @Output() setImages = new EventEmitter();
   @Output() setImagesLoading = new EventEmitter();
   private show_state;
+  private page_images_section;
   private error;
   private name;
   private caption;
@@ -33,16 +34,15 @@ export class AddImageComponent implements OnInit {
 
   ngOnInit() {
     this.resetImage();
-    this.file = null;
   }
 
   removeSelection() {
     this.search_selected_item = null;
+    this.name = null;
     this.setAddImageBtnText();
   }
 
   cancel() {
-    this.removeSelection();
     this.show_state = false;
   }
 
@@ -54,6 +54,7 @@ export class AddImageComponent implements OnInit {
     this.thumbnail_link = null;
     this.source = null;
     this.caption = null;
+    this.search_selected_item = null;
   }
 
   fileReady(file_container) {
@@ -90,10 +91,7 @@ export class AddImageComponent implements OnInit {
   }
 
   private uploadImage() {
-    let name = this.name;
-    if (!name) {
-      name = 'New image';
-    }
+    debugger;
     this.setLoading();
     this.fileService.uploadImage(this.file)
       .subscribe(
@@ -113,6 +111,7 @@ export class AddImageComponent implements OnInit {
   private handleThumbnailUploadResults(results) {
     let page_id = this.pageService.getPageId();
     this.thumbnail_link = results.file_name;
+    debugger;
     this.pageService.newImage(this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
       .subscribe(
         results => this.reloadPage(),
@@ -121,6 +120,27 @@ export class AddImageComponent implements OnInit {
 
   private linkImage() {
     debugger;
+    let links = [];
+    if (this.page_images_section && this.page_images_section.properties && this.page_images_section.properties.list) {
+      links = this.page_images_section.properties.list;
+    }
+    let link = this.search_selected_item;
+    this.setLoading();
+    this.pageService.addPageLink(link, links)
+      .subscribe(
+        data => this.reloadPage(),
+        error => this.error = <any>error);
+    this.cancel();
+    // let page_id = this.pageService.getPageId();
+    // let name = this.name;
+    // let caption = this.search_selected_item.caption;
+    // let source = this.search_selected_item.source;
+    // let image_link = this.search_selected_item.image_link;
+    // let thumbnail_link = this.search_selected_item.thumbnail.link;
+    // this.pageService.newImage(name, caption, source, image_link, thumbnail_link, page_id)
+    //   .subscribe(
+    //     results => this.reloadPage(),
+    //     error => this.error = <any>error);
   }
 
   private setLoading() {

@@ -107,28 +107,7 @@ export class PageService {
   }
 
   reorderDetails(details) {
-    details = this.extractDetailIds(details);
-    let page_id = this.getPageId();
-    let body = {
-      'details': details
-    };
-    let params = this.setReorderDetailsParams(page_id);
-    let options = this.setRequestOptions(params);
-    return this.http
-      .put(this.page_details_url, body, options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  private extractDetailIds(details) {
-    let detail_ids = [];
-    if (!details || !details.length) {
-      return [];
-    }
-    for (let detail of details) {
-      detail_ids.push(this.extractDetailId(detail));
-    }
-    return detail_ids;
+    return this.reorderPageLinks(details);
   }
 
   private extractDetailId(detail) {
@@ -162,28 +141,7 @@ export class PageService {
   }
 
   reorderImages(images) {
-    images = this.extractImageIds(images);
-    let page_id = this.getPageId();
-    let body = {
-      'images': images
-    };
-    let params = this.setReorderImagesParams(page_id);
-    let options = this.setRequestOptions(params);
-    return this.http
-      .put(this.page_images_url, body, options)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-  private extractImageIds(images) {
-    let image_ids = [];
-    if (!images || !images.length) {
-      return [];
-    }
-    for (let image of images) {
-      image_ids.push(this.extractImageId(image));
-    }
-    return image_ids;
+    return this.reorderPageLinks(images);
   }
 
   private extractImageId(image) {
