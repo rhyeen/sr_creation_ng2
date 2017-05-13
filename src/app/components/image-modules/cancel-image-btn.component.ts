@@ -1,14 +1,12 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'sr-image-cancel-btn',
-  templateUrl: './image-cancel-btn.html',
-  styleUrls: ['./image-cancel-btn.css'],
-  inputs: ['enable']
+  selector: 'sr-cancel-image-btn',
+  templateUrl: './cancel-image-btn.html',
+  styleUrls: ['./cancel-image-btn.css']
 })
-export class ImageCancelBtnComponent implements OnInit {
+export class CancelImageBtnComponent implements OnInit {
   @Output() enabled = new EventEmitter();
-  private enable = false;
 
   constructor(
   ) {

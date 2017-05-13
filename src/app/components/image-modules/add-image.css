@@ -85,3 +85,9 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+
+:host sr-cancel-image-btn {
+  position: absolute;
+  margin-left: 340px;
+  margin-top: 10px;
+}

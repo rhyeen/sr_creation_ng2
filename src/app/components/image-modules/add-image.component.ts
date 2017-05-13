@@ -33,7 +33,7 @@ export class AddImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.resetImage();
+    this.resetAll();
   }
 
   removeSelection() {
@@ -46,15 +46,23 @@ export class AddImageComponent implements OnInit {
     this.show_state = false;
   }
 
-  resetImage() {
+  cancelImage() {
+    this.resetImage();
+  }
+
+  private resetAll() {
     this.name = null;
+    this.source = null;
+    this.caption = null;
+    this.search_selected_item = null;
+    this.resetImage();
+  }
+
+  private resetImage() {
     this.file = null;
     this.thumbnail = null;
     this.image_link = null;
     this.thumbnail_link = null;
-    this.source = null;
-    this.caption = null;
-    this.search_selected_item = null;
   }
 
   fileReady(file_container) {
@@ -148,7 +156,7 @@ export class AddImageComponent implements OnInit {
   }
 
   private reloadPage() {
-    this.resetImage();
+    this.resetAll();
     let page_id = this.pageService.getPageId();
     this.pageService.getPage(page_id)
       .subscribe(

@@ -1,13 +1,13 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import {FileService} from '../../services/file.service';
 
 @Component({
   selector: 'sr-file-input',
   templateUrl: './file-input.html',
   styleUrls: ['./file-input.css'],
-  inputs: ['valid_file_types']
+  inputs: ['valid_file_types', 'file']
 })
-export class FileInputComponent implements OnInit {
+export class FileInputComponent implements OnInit, OnChanges {
   @Output() fileReady = new EventEmitter();
   private file;
   private file_name;
@@ -28,6 +28,12 @@ export class FileInputComponent implements OnInit {
 
   ngOnInit() {
     this.resetFile();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.file.currentValue) {
+      this.resetFile();
+    }
   }
 
   private resetFile() {

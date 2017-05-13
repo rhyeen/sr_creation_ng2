@@ -30,6 +30,8 @@ import {PageDetailContentComponent} from './components/detail-modules/page-detai
 import {PageImagesSectionComponent} from './components/image-modules/page-images-section.component';
 import {PageImagesComponent} from './components/image-modules/page-images.component';
 import {PageImageContentComponent} from './components/image-modules/page-image-content.component';
+import {CancelImageBtnComponent} from './components/image-modules/cancel-image-btn.component';
+
 import {AddLinkComponent} from './components/link-modules/add-link.component';
 import {AddDetailComponent} from './components/detail-modules/add-detail.component';
 import {AddImageComponent} from './components/image-modules/add-image.component';
@@ -99,6 +101,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageImagesSectionComponent,
     PageImagesComponent,
     PageImageContentComponent,
+    CancelImageBtnComponent,
     AddLinkComponent,
     AddDetailComponent,
     AddImageComponent,
