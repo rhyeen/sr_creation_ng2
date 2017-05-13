@@ -1,0 +1,11 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='#FFF' d='M7 2h2v5h5v2H9v5H7V9H2V7h5'/></svg>");
+  width: 16px;
+  height: 16px;
+  border: solid 4px #FFF;
+  border-radius: 16px;
+  transition: all 0.3s;
+  transform: rotate(45deg);
+  background-color: #e5442b;
+}

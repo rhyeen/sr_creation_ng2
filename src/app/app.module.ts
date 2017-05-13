@@ -19,37 +19,37 @@ import {BreadcrumbNavComponent} from './components/nav-modules/breadcrumb-nav.co
 
 // page-modules
 import {PageSummaryComponent} from './components/page-modules/page-summary.component';
-import {RelativeLibrariesComponent} from './components/page-modules/relative-libraries.component';
-import {RelativePagesComponent} from './components/page-modules/relative-pages.component';
-import {RelativePagesSectionsComponent} from './components/page-modules/relative-pages-sections.component';
-import {RelativePageSummaryComponent} from './components/page-modules/relative-page-summary.component';
-import {TrailNavComponent} from './components/page-modules/trail-nav.component';
-import {PageDetailsSectionComponent} from './components/page-modules/page-details-section.component';
-import {PageDetailsComponent} from './components/page-modules/page-details.component';
-import {PageDetailContentComponent} from './components/page-modules/page-detail-content.component';
-import {PageImagesSectionComponent} from './components/page-modules/page-images-section.component';
-import {PageImagesComponent} from './components/page-modules/page-images.component';
-import {PageImageContentComponent} from './components/page-modules/page-image-content.component';
-import {AddLinkComponent} from './components/page-modules/add-link.component';
-import {AddDetailComponent} from './components/page-modules/add-detail.component';
-import {AddImageComponent} from './components/page-modules/add-image.component';
+import {RelativeLibrariesComponent} from './components/link-modules/relative-libraries.component';
+import {RelativePagesComponent} from './components/link-modules/relative-pages.component';
+import {RelativePagesSectionsComponent} from './components/link-modules/relative-pages-sections.component';
+import {RelativePageSummaryComponent} from './components/link-modules/relative-page-summary.component';
+import {TrailNavComponent} from './components/nav-modules/trail-nav.component';
+import {PageDetailsSectionComponent} from './components/detail-modules/page-details-section.component';
+import {PageDetailsComponent} from './components/detail-modules/page-details.component';
+import {PageDetailContentComponent} from './components/detail-modules/page-detail-content.component';
+import {PageImagesSectionComponent} from './components/image-modules/page-images-section.component';
+import {PageImagesComponent} from './components/image-modules/page-images.component';
+import {PageImageContentComponent} from './components/image-modules/page-image-content.component';
+import {AddLinkComponent} from './components/link-modules/add-link.component';
+import {AddDetailComponent} from './components/detail-modules/add-detail.component';
+import {AddImageComponent} from './components/image-modules/add-image.component';
 import {PagePropertiesComponent} from './components/page-modules/page-properties.component';
 
 
 // tools
-import {NewItemBtnComponent} from './components/tools/new-item-btn.component';
-import {SectionToggleBtnComponent} from './components/tools/section-toggle-btn.component';
-import {BookmarksBtnComponent} from './components/tools/bookmarks-btn.component';
-import {ContentHelpBtnComponent} from './components/tools/content-help-btn.component';
-import {ExitBtnComponent} from './components/tools/exit-btn.component';
-import {AddBookmarkBtnComponent} from './components/tools/add-bookmark-btn.component';
+import {NewItemBtnComponent} from './components/tools/btns/new-item-btn.component';
+import {SectionToggleBtnComponent} from './components/tools/btns/section-toggle-btn.component';
+import {BookmarksBtnComponent} from './components/tools/btns/bookmarks-btn.component';
+import {ContentHelpBtnComponent} from './components/tools/btns/content-help-btn.component';
+import {ExitBtnComponent} from './components/tools/btns/exit-btn.component';
+import {AddBookmarkBtnComponent} from './components/tools/btns/add-bookmark-btn.component';
 import {SpinnerComponent} from './components/tools/spinner.component';
-import {OptionsBtnComponent} from './components/tools/options-btn.component';
-import {EditBtnComponent} from './components/tools/edit-btn.component';
-import {RemoveBtnComponent} from './components/tools/remove-btn.component';
-import {MoveBtnComponent} from './components/tools/move-btn.component';
+import {OptionsBtnComponent} from './components/tools/btns/options-btn.component';
+import {EditBtnComponent} from './components/tools/btns/edit-btn.component';
+import {RemoveBtnComponent} from './components/tools/btns/remove-btn.component';
+import {MoveBtnComponent} from './components/tools/btns/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
-import {CompleteBtnComponent} from './components/tools/complete-btn.component';
+import {CompleteBtnComponent} from './components/tools/btns/complete-btn.component';
 import {SearchResultsComponent} from './components/tools/search-results.component';
 import {FileDropComponent} from './components/tools/file-drop.component';
 import {FileInputComponent} from './components/tools/file-input.component';
