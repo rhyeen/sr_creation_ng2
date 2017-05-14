@@ -31,6 +31,7 @@ import {PageImagesSectionComponent} from './components/image-modules/page-images
 import {PageImagesComponent} from './components/image-modules/page-images.component';
 import {PageImageContentComponent} from './components/image-modules/page-image-content.component';
 import {CancelImageBtnComponent} from './components/image-modules/cancel-image-btn.component';
+import {MagnifyImageBtnComponent} from './components/image-modules/magnify-image-btn.component';
 
 import {AddLinkComponent} from './components/link-modules/add-link.component';
 import {AddDetailComponent} from './components/detail-modules/add-detail.component';
@@ -102,6 +103,7 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     PageImagesComponent,
     PageImageContentComponent,
     CancelImageBtnComponent,
+    MagnifyImageBtnComponent,
     AddLinkComponent,
     AddDetailComponent,
     AddImageComponent,

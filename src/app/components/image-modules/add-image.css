@@ -88,6 +88,12 @@
 
 :host sr-cancel-image-btn {
   position: absolute;
-  margin-left: 340px;
+  margin-left: 335px;
   margin-top: 10px;
+}
+
+:host sr-magnify-image-btn {
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 8px;
 }

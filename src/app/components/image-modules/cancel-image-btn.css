@@ -10,7 +10,7 @@
   background-color: #e5442b;
 }
 
-:host {
+:host .btn-expander {
   border: solid 4px #e5442b;
   border-radius: 20px;
   background-color: #e5442b;

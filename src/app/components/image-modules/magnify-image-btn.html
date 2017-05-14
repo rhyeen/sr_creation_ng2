@@ -1,0 +1,6 @@
+<div *ngIf="!link" class="btn-expander" (click)="magnifyImage()">
+  <button class="image-magnify-btn"></button>
+</div>
+<a *ngIf="link" href="{{link}}" target="_blank" class="btn-expander" (click)="magnifyImage()">
+  <button class="image-magnify-btn"></button>
+</a>

@@ -50,6 +50,10 @@ export class AddImageComponent implements OnInit {
     this.resetImage();
   }
 
+  magnifyImage() {
+    // managed by the link
+  }
+
   private resetAll() {
     this.name = null;
     this.source = null;

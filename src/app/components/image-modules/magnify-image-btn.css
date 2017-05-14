@@ -1,0 +1,29 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='#FFF'><g><path d='M7.5 2C4.462 2 2 4.462 2 7.5S4.462 13 7.5 13 13 10.538 13 7.5 10.538 2 7.5 2zm0 9.5c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z'/><path d='M11.502 10.502L13 12h.5l4.5 4.5v.5l-1 1h-.5L12 13.5V13l-1.498-1.498'/></g></svg>");
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: none;
+  transition: all 0.3s;
+  background-color: #373737;
+}
+
+:host .btn-expander {
+  border: solid 4px #373737;
+  border-radius: 24px;
+  background-color: #373737;
+}
+
+:host { 
+  opacity: 0.2;
+  transition: all 0.3s;
+}
+
+:host:hover {
+  opacity: 1;
+}
+
+:host a {
+  display: block;
+}
