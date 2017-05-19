@@ -22,7 +22,7 @@
     </label>
   </div>
   <div class="upload-image-container">
-      <sr-magnify-image-btn (enabled)="magnifyImage()" *ngIf="file" [link]="file"></sr-magnify-image-btn>
+    <sr-magnify-image-btn (enabled)="magnifyImage()" *ngIf="file" [link]="file"></sr-magnify-image-btn>
     <sr-cancel-image-btn (enabled)="cancelImage()" *ngIf="file"></sr-cancel-image-btn>
     <sr-file-input [valid_file_types]="['image']" (fileReady)="fileReady($event)" [file]="file"></sr-file-input>
   </div>

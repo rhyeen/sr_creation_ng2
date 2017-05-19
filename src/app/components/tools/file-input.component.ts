@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import {FileService} from '../../services/file.service';
 
 @Component({

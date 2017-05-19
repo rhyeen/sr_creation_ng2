@@ -7,7 +7,8 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class CancelImageBtnComponent implements OnInit {
   @Output() enabled = new EventEmitter();
-
+  private enable;
+  
   constructor(
   ) {
 

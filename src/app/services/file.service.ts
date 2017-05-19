@@ -17,6 +17,14 @@ export class FileService {
 
   constructor (private http: Http) {}
 
+  getImageUrl(image_link) {
+    return this.image_url + '/' + image_link;
+  }
+
+  getThumbnailUrl(thumbnail_link) {
+    return this.thumbnail_url + '/' + thumbnail_link;
+  }
+
   getFileName(file) {
     return file.name;
   }

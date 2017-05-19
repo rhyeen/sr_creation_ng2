@@ -9,6 +9,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 export class MagnifyImageBtnComponent implements OnInit {
   @Output() enabled = new EventEmitter();
   private link;
+  private enable;
   
   constructor(
   ) {

@@ -1,4 +1,9 @@
 <div class="content-read" *ngIf="show_state && !edit_state && content.caption">
+  <sr-magnify-image-btn (enabled)="magnifyImage()" [link]="image_link"></sr-magnify-image-btn>
+  <img src="{{thumbnail_link}}">
+<!--   <a href="{{image_link}}" target="_blank">
+    
+  </a> -->
   <p>
     <span class="title">Caption: </span>
     <span>{{content.caption}}</span>

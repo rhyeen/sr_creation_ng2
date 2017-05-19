@@ -5,6 +5,21 @@
   display: block;
 }
 
+:host img {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+:host sr-magnify-image-btn {
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+:host .content-read {
+  position: relative;
+}
+
 :host p {
   margin-bottom: 10px;
 }
