@@ -21,7 +21,7 @@
   },
   "keywords": [],
   "author": "Ryan Saunders",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "dependencies": {
     "@angular/animations": "^4.0.2",
     "@angular/common": "^4.0.2",
