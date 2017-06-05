@@ -239,7 +239,7 @@ export class PageService {
     let params = this.setPutPageParams(name, type, parent_page_id);
     let options = this.setRequestOptions(params);
     return this.http
-      .put(this.page_url, null, options)
+      .post(this.page_url, null, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

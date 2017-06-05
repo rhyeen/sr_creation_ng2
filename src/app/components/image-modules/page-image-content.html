@@ -11,7 +11,7 @@
   <p>
     <span class="title">Source: </span>
     <span>
-      <a *ngIf="source_is_link" href="{{content.source}}">{{content.source}}</a>
+      <a *ngIf="source_is_link" href="{{content.source}}" target="_blank">{{content.source}}</a>
       <span *ngIf="!source_is_link">{{content.source}}</span>
     </span>
   </p>
