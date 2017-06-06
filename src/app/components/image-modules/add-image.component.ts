@@ -103,7 +103,6 @@ export class AddImageComponent implements OnInit {
   }
 
   private uploadImage() {
-    debugger;
     this.setLoading();
     this.fileService.uploadImage(this.file)
       .subscribe(
@@ -123,7 +122,6 @@ export class AddImageComponent implements OnInit {
   private handleThumbnailUploadResults(results) {
     let page_id = this.pageService.getPageId();
     this.thumbnail_link = results.file_name;
-    debugger;
     this.pageService.newImage(this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
       .subscribe(
         results => this.reloadPage(),
@@ -131,7 +129,6 @@ export class AddImageComponent implements OnInit {
   }
 
   private linkImage() {
-    debugger;
     let links = [];
     if (this.page_images_section && this.page_images_section.properties && this.page_images_section.properties.list) {
       links = this.page_images_section.properties.list;
@@ -143,16 +140,6 @@ export class AddImageComponent implements OnInit {
         data => this.reloadPage(),
         error => this.error = <any>error);
     this.cancel();
-    // let page_id = this.pageService.getPageId();
-    // let name = this.name;
-    // let caption = this.search_selected_item.caption;
-    // let source = this.search_selected_item.source;
-    // let image_link = this.search_selected_item.image_link;
-    // let thumbnail_link = this.search_selected_item.thumbnail.link;
-    // this.pageService.newImage(name, caption, source, image_link, thumbnail_link, page_id)
-    //   .subscribe(
-    //     results => this.reloadPage(),
-    //     error => this.error = <any>error);
   }
 
   private setLoading() {

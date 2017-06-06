@@ -51,6 +51,10 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   }
 
   searchRelevantResults() {
+    if (!this.search_query_text) {
+      this.handleNewSearchResults([]);
+      return;
+    }
     if (this.page_type) {
       this.pageService.searchRelevantPages(this.search_query_text, this.page_type)
         .subscribe(

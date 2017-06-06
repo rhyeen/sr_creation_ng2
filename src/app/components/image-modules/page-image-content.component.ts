@@ -85,7 +85,6 @@ export class PageImageContentComponent implements OnInit {
         "(?:[/?#]\\S*)?" +
       "$", "i"
     );
-    debugger;
     return regex.test(str);
   }
 
