@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Shardrealms is an alternative to D&D.  The idea is to have all character sheets, references sheet, and Game Master (GM) guides and tools located on a convenient and helpful application.
+Please see the parent repository, [sr_creation](https://github.com/rhyeen/sr_creation) for more details.
 
 ## Setup
 
@@ -48,6 +48,8 @@ In the live view on the browser (assuming a Chrome browser), open the developer 
 
 ## Contribute
 
-There are two main ways to contribute: [fix outstanding issues](https://github.com/rhyeen/shardrealms_ng2/issues) or [check the wiki](https://github.com/rhyeen/shardrealms_ng2/wiki/) for possible tasks.  Either way, when a task is completed and ready to be merged back into the master repo branch, [create a pull request](https://github.com/rhyeen/shardrealms_ng2/pulls) for the core team to review and merge.
+There are two main ways to contribute: [resolve outstanding issues](https://github.com/rhyeen/sr_creation/issues) or [check the projects](https://github.com/rhyeen/sr_creation/projects) for possible tasks.  Either way, when a task is completed and ready to be merged back into the master repo branch, [create a pull request](https://github.com/rhyeen/shardrealms_ng2/pulls) for the core team to review and merge.
 
-If you plan to contribute to the tasks found in the Wiki, please contact the core team at *shardrealms@gmail.com*.  We'd like to provide you with the project management tools and expertise to help your development.  We would also like to coordinate with you to ensure we work together in unison and towards the desired end result.
+Note that issues and project tracking are done on the parent repo: [sr_creation](https://github.com/rhyeen/sr_creation)
+
+If you plan to contribute to the tasks found in the Project list, please contact the core team at *shardrealms@gmail.com*.  We'd like to provide you with the project management tools and expertise to help your development.  We would also like to coordinate with you to ensure we work together in unison and towards the desired end result.
