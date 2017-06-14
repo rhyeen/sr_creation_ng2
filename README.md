@@ -33,7 +33,9 @@ make build
 make run-dev
 ```
 
-You should now have a client-server reachable at localhost:3000.
+You should now have a client-server reachable at localhost:3000.  Go ahead and access it from your browser.
+
+You will also need to enable CORS to access the Node.js server.  I highly recommend using the [CORS Chrome extension](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en).  After adding it to chrome, simply click on the extension's icon and toggle **Enable cross-origin resource sharing**.  You will need to make sure to untoggle it to access most other websites, like Facebook and YouTube.
 
 ## Develop
 
