@@ -4,7 +4,7 @@
 
 Please see the parent repository, [sr_creation](https://github.com/rhyeen/sr_creation) for more details.
 
-## Setup
+## Localized Setup
 
 To setup the app on your local machine, make sure to have `NPM` and `Node.js` installed.  You can [download it here](https://nodejs.org/en/download/).
 
@@ -14,31 +14,34 @@ For safe measure, also run `npm run typings install`.
 
 If you run into an error, something is wrong.  Depreciation warnings are expected.
 
+## Dockerized Setup
+
+If you wish to have the Angular client-server instead run on a Docker container instead of on your local machine, you can do so.
+
+We recommend trying to run using **Localized Setup**, just because it's easier to debug and develop.
+
+### Pre-requisites
+
+You must have Docker installed to run the server within a Docker container. Check the official [Docker Installation Guide](https://docs.docker.com/engine/installation/) if it isn't installed on your machine.
+
+### Running container
+
+To start or stop the client-server, build the sr-ng2 image and run it:
+
+```bash
+make build
+make run-dev
+```
+
+You should now have a client-server reachable at localhost:3000.
+
 ## Develop
 
 ### Running the lite server
 
-You can run an instance on your local machine by first following **Setup**, then running `npm start`.  This will start the lite server and a live instance in your local browser.
+You can run an instance on your local machine by first following **Setup**, entering into the app directory (`cd app`), then running `npm start`.  This will start the lite server and a live instance in your local browser.
 
-This will also convert all the Typescript files into Javascript files.  These files are inconveniently added to the same directory, adding 3x the files.  I'd recommend hiding `.js` files in your text editor while working on Shardrealms, as to not accidentally develop is a rendered `.js` file instead of the true Typescript file.
-
-### File Structure
-
-* `index.html` is the initial file requested by the browser.  This file requests all other dependencies and begins the Angular application.
-* `package.json` contains all the dependencies for the project, along with the command line scripts that can be ran.
-* `app/` contains the Angular Application.
-    * `app/components` contains the components of the Angular app.
-        * `app/components/root-container.component.ts` is the main component of the app.  All other components are loaded from it.  Components link the HTML templates to data, and perform simple manipulation of the data to alter the view.
-    * `app/interfaces/` are Typescript objects with strict types.  They are mostly ignored for now, as we mostly only use Typescript to construct the Angular component templates.
-    * `app/services/` contains the logic of anything not related to simply updating the view.  All API calls should be done in a service.  Any intensive service method should be asynchronous.
-    * `app/styles/clean-tone.css` is the CSS styling for the app.  Once the styling is more finalized, we will switch to SASS or LESS instead of CSS.
-    * `app/views/` contains the HTML templates that map to the Angular component that the template is bound to (notice how the names pair with a component).
-    * `app/app.component.ts` is the true root component.  However, it simply wraps `app/components/root-container.component.ts`.
-    * `app/app.module.ts` bootstraps `app/app.component.ts` as well as other Angular libraries.
-    * `app/main.ts` begins the bootstrapping process.
-* `jsons/` contains the "hard-coded" database of all JSON objects referenced in the app.  These should eventually be moved to a noSQL database.
-* `images/` is not in the repo, as it contains copyrighted images taken from all across the Internet. However, `images` is referred to by several `json` files.  Ignore these references.
-* All other files and folders are for compiling Typescript or dependencies for Angular.
+This will also convert all the Typescript files into Javascript files.  These files are inconveniently added to the same directory, adding 3x the files.  I'd recommend hiding `.js` files within the `src/app` directory in your preferred text editor/IDE while working on Shardrealms, as to not accidentally develop in a rendered `.js` file instead of the true Typescript file.
 
 ### Debugging
 

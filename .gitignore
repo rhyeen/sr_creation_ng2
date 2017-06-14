@@ -1,5 +1,5 @@
-node_modules
-images
-typings
+app/node_modules
+app/typings
 *.log
+app/*.log
 sftp-config.json

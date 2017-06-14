@@ -8,20 +8,19 @@ SET_NODE_ENV=dev
 
 IMG=sr_creation/$(IMG_NAME)
 CONTAINER=$(IMG_NAME)
-RUNOPTS=-p $(PORT):$(PORT)
-VOLUME_DESTINATION=/home/default
+RUN_OPTIONS=-p $(PORT):$(PORT)
 
 build:
 	docker build -t $(IMG):$(TAG) .
 
 run-enter: rm
-	docker run -it $(RUNOPTS) --name $(CONTAINER) -v $(VOLUME_TO_MOUNT):$(VOLUME_DESTINATION) -e ENVIRONMENT=dev $(IMG):$(TAG) /bin/bash
+	docker run -it $(RUN_OPTIONS) --name $(CONTAINER) -v $(VOLUME_TO_MOUNT)/app:$(VOLUME_DESTINATION)/app -e ENVIRONMENT=dev $(IMG):$(TAG) /bin/bash
 
 run-dev: rm
-	docker run -it -d $(RUNOPTS) --name $(CONTAINER) -v $(VOLUME_TO_MOUNT):$(VOLUME_DESTINATION) -e ENVIRONMENT=dev $(IMG):$(TAG)
+	docker run -it -d $(RUN_OPTIONS) --name $(CONTAINER) -v $(VOLUME_TO_MOUNT)/app:$(VOLUME_DESTINATION)/app -e ENVIRONMENT=dev $(IMG):$(TAG) /run_dev.sh
 
 run-prod: rm
-	docker run -d $(RUNOPTS) --name $(CONTAINER) -e ENVIRONMENT=prod $(IMG):$(TAG)
+	docker run -d $(RUN_OPTIONS) --name $(CONTAINER) -e ENVIRONMENT=prod $(IMG):$(TAG)
 
 push:
 	docker push $(IMG):$(TAG)
