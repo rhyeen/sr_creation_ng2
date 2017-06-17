@@ -444,26 +444,50 @@ export class PageService {
         }
         let type = page.type;
         switch (type) {
+          case 'AS':
+            return 'associations';
           case 'CA':
             return 'campaigns';
+          case 'CT':
+            return 'catalogs';
           case 'CH':
             return 'characters';
-          case 'CR':
-            return 'creatures';
-          case 'EN':
-            return 'encounters';
+          case 'DI':
+            return 'districts';
+          case 'EA':
+            return 'eras';
+          case 'EV':
+            return 'events';
+          case 'GR':
+            return 'groups';
+          case 'HI':
+            return 'histories';
           case 'IT':
             return 'items';
-          case 'LO':
-            return 'locations';
+          case 'LM':
+            return 'landmarks';
+          case 'LR':
+            return 'lores';
           case 'PL':
-            return 'players';
+            return 'places';
           case 'QU':
             return 'quests';
-          case 'SH':
-            return 'shops';
+          case 'RA':
+            return 'races';
+          case 'RG':
+            return 'regions';
+          case 'RP':
+            return 'reports';
+          case 'SE':
+            return 'sections';
+          case 'SP':
+            return 'species';
           case 'SA':
             return 'story arcs';
+          case 'TX':
+            return 'taxons';
+          case 'WD':
+            return 'worlds';
           default:
             return null;
         }
