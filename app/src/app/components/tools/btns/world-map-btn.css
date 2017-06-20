@@ -1,0 +1,13 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1 20h22l-5.8-7h-1.7l-.5 1h1.706L21 19H3l4.294-5H9l-.5-1H6.8'/><path d='M12 1C7.077 1 7 6 7 6c0 4.923 5 11 5 11s5-6.077 5-11c0 0-.077-5-5-5zm0 7c-1.02 0-2-.98-2-2 0-1 1-2 2-2 1.02 0 2 .98 2 2s-.98 2-2 2zM9 14v1H7.203L4 19H3l4-5M1 20h22v1H1zM15 14v1h1.797L20 19h1l-4-5'/></svg>");
+  width: 24px;
+  height: 24px;
+  border: none;
+  opacity: 0.2;
+  transition: all 0.3s;
+}
+
+:host button:hover {
+  opacity: 1;
+}

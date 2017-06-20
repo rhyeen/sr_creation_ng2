@@ -53,12 +53,14 @@ import {RemoveBtnComponent} from './components/tools/btns/remove-btn.component';
 import {MoveBtnComponent} from './components/tools/btns/move-btn.component';
 import {TextareaComponent} from './components/tools/textarea.component';
 import {CompleteBtnComponent} from './components/tools/btns/complete-btn.component';
+import {WorldMapBtnComponent} from './components/tools/btns/world-map-btn.component';
 import {SearchResultsComponent} from './components/tools/search-results.component';
 import {FileDropComponent} from './components/tools/file-drop.component';
 import {FileInputComponent} from './components/tools/file-input.component';
 
 // pages
 import {OverviewPageComponent} from './components/pages/overview-page.component';
+import {OverviewMapComponent} from './components/maps/overview-map.component';
 
 
 @NgModule({
@@ -91,11 +93,13 @@ import {OverviewPageComponent} from './components/pages/overview-page.component'
     MoveBtnComponent,
     TextareaComponent,
     CompleteBtnComponent,
+    WorldMapBtnComponent,
     AddBookmarkBtnComponent,
     SpinnerComponent,
     OptionsBtnComponent,
     EditBtnComponent,
     OverviewPageComponent,
+    OverviewMapComponent,
     PageDetailsSectionComponent,
     PageDetailsComponent,
     PageDetailContentComponent,

@@ -32,6 +32,11 @@ export class PageSummaryComponent implements OnInit {
   ngOnInit() {
   }
 
+  private viewWorldMap() {
+    let page_id = this.pageService.getPageId();
+    this.router.navigate(['/map', page_id]);
+  }
+
   editSummary() {
     this.edit_mode = true;
   }
