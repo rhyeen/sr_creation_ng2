@@ -1,7 +1,10 @@
 <div class="summary-read" *ngIf="!edit_mode && !is_loading">
   <div class="page-title" *ngIf="page.name">
     <h2>{{page.name}}</h2>
-    <sr-options-btn [config]="options_btn_config" (remove)="deletePage()" (edit)="editSummary()"></sr-options-btn>
+    <div class="page-tools">
+      <sr-world-map-btn *ngIf="page._properties.is_location" (enabled)="viewWorldMap()"></sr-world-map-btn>
+      <sr-options-btn [config]="options_btn_config" (remove)="deletePage()" (edit)="editSummary()"></sr-options-btn>
+    </div>
   </div>
   <div *ngIf="page.summary">
     <div *ngIf="page.summary.properties">
@@ -15,7 +18,9 @@
 <div class="summary-edit" *ngIf="edit_mode">
   <div class="page-title">
     <input type="text" [(ngModel)]="page.name">
-    <sr-complete-btn (complete)="finishEditSummary()"></sr-complete-btn>
+    <div class="page-tools">
+      <sr-complete-btn (complete)="finishEditSummary()"></sr-complete-btn>
+    </div>
   </div>
   <div>
     <div>

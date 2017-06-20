@@ -63,6 +63,7 @@ export class PageService {
         this.addPageSectionStates(page_section);
       }
     }
+    this.addPropertyStates(page);
   }
 
   private addDetailStates(page) {
@@ -91,6 +92,28 @@ export class PageService {
         }
       }
     }
+  }
+
+  private addPropertyStates(page) {
+    page._properties = {
+      is_location: false
+    };
+    if (this.isLocationPage(page)) {
+      page._properties.is_location = true;
+    }
+  }
+
+  private isLocationPage(page) {
+    let location_page_codes = [
+      'DI',
+      'LM',
+      'PL',
+      'RG',
+      'SE',
+      'WD'
+    ];
+    let page_code = this.getPageCode(page.id);
+    return location_page_codes.indexOf(page_code) >= 0;
   }
 
   searchRelevantPages(query, type) {
@@ -431,6 +454,9 @@ export class PageService {
   private getPageCode(id) {
     if (!id) {
       id = this.getPageId();
+      if (!id) {
+        return null;
+      }
     }
     let page_code = id.substring(0,2);
     return page_code.toUpperCase();
