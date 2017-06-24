@@ -38,6 +38,9 @@ import {AddDetailComponent} from './components/detail-modules/add-detail.compone
 import {AddImageComponent} from './components/image-modules/add-image.component';
 import {PagePropertiesComponent} from './components/page-modules/page-properties.component';
 
+// map-modules
+import {MapBackgroundComponent} from './components/map-modules/map-background.component';
+import {AddMapImageComponent} from './components/map-modules/add-map-image.component';
 
 // tools
 import {NewItemBtnComponent} from './components/tools/btns/new-item-btn.component';
@@ -113,7 +116,9 @@ import {OverviewMapComponent} from './components/maps/overview-map.component';
     AddImageComponent,
     SearchResultsComponent,
     FileDropComponent,
-    FileInputComponent
+    FileInputComponent,
+    MapBackgroundComponent,
+    AddMapImageComponent
   ],
   providers: [
   	appRoutingProviders,

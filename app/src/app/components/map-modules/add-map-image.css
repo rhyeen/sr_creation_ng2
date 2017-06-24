@@ -1,0 +1,99 @@
+:host .image-container {
+    margin-bottom: -5px;
+    margin-top: 10px;
+}
+
+:host .add-image-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+:host .input-results {
+  flex-grow: 1;
+  margin-right: 15px;
+  position: relative;
+}
+
+:host .add-image-properties {
+}
+
+:host .add-image-properties label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+:host .add-image-properties label div {
+  width: 100px;
+  font-weight: 700;
+  margin-right: 10px;
+  line-height: 27px;
+}
+
+:host .add-image-properties label input {
+  flex-grow: 1;
+}
+
+:host input {
+  width: 100%;
+  border: 1px solid #373737;
+  padding: 2px 5px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Cuprum', sans-serif;
+}
+
+:host button {
+  width: 70px;
+  min-width: 70px;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: 'Cuprum', sans-serif;
+  color: white;
+}
+
+:host button:disabled {
+  background-color: #ccc;
+}
+
+:host .add-image-btn {
+  background-color: #4FB12E;
+}
+
+:host .selected-item-container {
+  background-color: #3a66e0;
+  color: white;
+  border-radius: 100px;
+}
+
+:host .selected-item-container sr-exit-btn {
+  margin: 6px 6px 0 0;
+  float: right;
+}
+
+:host .selected-item-text {
+  line-height: 27px;
+  display: inline-block;
+  max-width: 220px;
+  padding: 0 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+:host sr-cancel-image-btn {
+  position: absolute;
+  margin-left: 335px;
+  margin-top: 10px;
+}
+
+:host sr-magnify-image-btn {
+  position: absolute;
+  margin-left: 8px;
+  margin-top: 8px;
+}

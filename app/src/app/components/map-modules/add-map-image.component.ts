@@ -6,7 +6,7 @@ import {FileService} from '../../services/file.service';
   selector: 'sr-add-map-image',
   templateUrl: './add-map-image.html',
   styleUrls: ['./add-map-image.css'],
-  inputs: ['map']
+  inputs: ['map', 'show_state']
 })
 export class AddMapImageComponent implements OnInit {
   private map;
