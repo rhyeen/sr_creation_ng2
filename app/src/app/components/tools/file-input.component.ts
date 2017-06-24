@@ -5,12 +5,13 @@ import {FileService} from '../../services/file.service';
   selector: 'sr-file-input',
   templateUrl: './file-input.html',
   styleUrls: ['./file-input.css'],
-  inputs: ['valid_file_types', 'file']
+  inputs: ['valid_file_types', 'file', 'upload_type']
 })
 export class FileInputComponent implements OnInit, OnChanges {
   @Output() fileReady = new EventEmitter();
   private file;
   private file_name;
+  private upload_type; // image || map-image || file
   private error;
   private image_src;
   private thumbnail_src;
@@ -80,7 +81,11 @@ export class FileInputComponent implements OnInit, OnChanges {
 
   private conformImage(file) {
     let self = this;
-    this.fileService.conformImage(file).then(function(image_data_container) {
+    let image_confromer = this.fileService.conformImage;
+    if (this.upload_type === 'map-image') {
+      image_confromer = this.fileService.conformMapImage;
+    }
+    image_confromer(file).then(function(image_data_container) {
       self.file = image_data_container['image_data'];
       self.image_src = self.file;
       self.thumbnail_src = image_data_container['thumbnail_data'];

@@ -8,10 +8,13 @@ export class FileService {
   private file_url = this.base_url + '/user/file';
   private image_url = this.file_url + '/image';
   private thumbnail_url = this.image_url + '/thumbnail';
+  private map_image_url = this.image_url + '/map-image';
   private image_quality = 1; // scale from 0.0 to 1.0
   private thumbnail_quality = 1; // scale from 0.0 to 1.0
   private image_max_width = 700;
   private image_max_height = 700;
+  private map_image_max_width = 4000;
+  private map_image_max_height = 4000;
   private thumbnail_max_width = 370;
   private thumbnail_max_height = 370;
 
@@ -23,6 +26,10 @@ export class FileService {
 
   getThumbnailUrl(thumbnail_link) {
     return this.thumbnail_url + '/' + thumbnail_link;
+  }
+
+  getMapImageUrl(map_image_link) {
+    return this.map_image_url + '/' + map_image_link;
   }
 
   getFileName(file) {
@@ -88,7 +95,15 @@ export class FileService {
     return Observable.throw(error_message);
   }
 
+  conformMapImage(file) {
+    return this.conformImageWithDimensions(file, this.map_image_max_width, this.map_image_max_height);
+  }
+
   conformImage(file) {
+    return this.conformImageWithDimensions(file, this.image_max_width, this.image_max_height);
+  }
+
+  private conformImageWithDimensions(file, width, height) {
     let self = this;
     return new Promise((resolve, reject) => {
       try {
@@ -96,7 +111,7 @@ export class FileService {
         image_file.onload = function () {
           try {
             let image_file = this;
-            let max_width = self.findMaxScaledWidth(image_file, self.image_max_width, self.image_max_height);
+            let max_width = self.findMaxScaledWidth(image_file, width, height);
             let image_data = self.scaleImage(image_file, max_width, self.image_quality, file);
             max_width = self.findMaxScaledWidth(image_file, self.thumbnail_max_width, self.thumbnail_max_height);
             let thumbnail_data = self.scaleImage(image_file, max_width, self.thumbnail_quality, file);

@@ -6,7 +6,9 @@ import {Observable} from 'rxjs/Observable';
 export class MapService {
   private base_url = 'http://localhost:4000';
   private map_url = this.base_url + '/user/map';
-
+  private map_image_url = this.map_url + '/image';
+  private map_link_url = this.map_url + '/link';
+  
   constructor (private http: Http) {}
 
   getMap(id) {
@@ -18,10 +20,61 @@ export class MapService {
       .catch(this.handleError);
   }
 
+  newImage(name, caption, source, image_link, thumbnail_link, page_id) {
+    let body = {
+      'name': name,
+      'caption': caption,
+      'source': source,
+      'link': image_link,
+      'thumbnail': {
+        'link': thumbnail_link
+      }
+    };
+    let params = this.setAddImagesParams(page_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .post(this.map_image_url, body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  addMapLink(link, page_id) {
+    link = this.extractLinkId(link);
+    let params = this.setAddMapLinkParams(link, page_id);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .put(this.map_link_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  extractLinkId(link) {
+    return link.id;
+  }
+
   private setGetMapParams(id) {
     let params = new URLSearchParams();
     if (id) {
       params.set('id', id);
+    }
+    return params;
+  }
+
+  private setAddImagesParams(id) {
+    let params = new URLSearchParams();
+    if (id) {
+      params.set('id', id);
+    }
+    return params;
+  }
+
+  private setAddMapLinkParams(link_id, page_id) {
+    let params = new URLSearchParams();
+    if (link_id) {
+      params.set('map_id', link_id);
+    }
+    if (page_id) {
+      params.set('page_id', page_id);
     }
     return params;
   }

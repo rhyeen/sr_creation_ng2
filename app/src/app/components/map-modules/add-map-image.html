@@ -1,7 +1,6 @@
 <div class="image-container" *ngIf="show_state">
   <div class="add-image-container">
     <div class="input-results">
-      <!-- <input type="text" [(ngModel)]="name"> -->
       <input *ngIf="!search_selected_item" type="text" [(ngModel)]="name">
       <div *ngIf="search_selected_item" class="selected-item-container">
         <div class="selected-item-text">{{name}}</div>
@@ -24,6 +23,6 @@
   <div class="upload-image-container">
     <sr-magnify-image-btn (enabled)="magnifyImage()" *ngIf="file" [link]="file"></sr-magnify-image-btn>
     <sr-cancel-image-btn (enabled)="cancelImage()" *ngIf="file"></sr-cancel-image-btn>
-    <sr-file-input [valid_file_types]="['image']" (fileReady)="fileReady($event)" [file]="file" [upload_type]="'image'"></sr-file-input>
+    <sr-file-input [valid_file_types]="['image']" (fileReady)="fileReady($event)" [file]="file" [upload_type]="'map-image'"></sr-file-input>
   </div>
 </div>
