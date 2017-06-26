@@ -6,7 +6,7 @@
         <div class="selected-item-text">{{name}}</div>
         <sr-exit-btn (closed)="removeSelection()"></sr-exit-btn>
       </div>
-      <sr-search-results [search_query_text]="name" [other_type]="'image'" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
+      <sr-search-results [search_query_text]="name" [other_type]="'map-image'" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
     </div>
     <button class="add-image-btn" (click)="newImage()" [disabled]="!name || (!search_selected_item && !file)">{{add_image_btn}}</button>
   </div>

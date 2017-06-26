@@ -8,7 +8,8 @@ export class MapService {
   private map_url = this.base_url + '/user/map';
   private map_image_url = this.map_url + '/image';
   private map_link_url = this.map_url + '/link';
-  
+  private page_search_url = this.map_url + '/search';
+
   constructor (private http: Http) {}
 
   getMap(id) {
@@ -46,6 +47,23 @@ export class MapService {
       .put(this.map_link_url, options)
       .map(this.extractData)
       .catch(this.handleError);
+  }
+
+  searchRelevantMapImages(query) {
+    let params = this.setSearchRelevantPagesParams(query);
+    let options = this.setRequestOptions(params);
+    return this.http
+      .get(this.page_search_url, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  private setSearchRelevantPagesParams(query) {
+    let params = new URLSearchParams();
+    if (query) {
+      params.set('query', query);
+    }
+    return params;
   }
 
   extractLinkId(link) {

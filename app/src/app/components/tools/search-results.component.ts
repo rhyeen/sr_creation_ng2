@@ -1,5 +1,6 @@
 import {Component, OnInit, ElementRef, OnChanges, Output, EventEmitter} from '@angular/core';
 import {PageService} from '../../services/page.service';
+import {MapService} from '../../services/map.service';
 
 @Component({
   selector: 'sr-search-results',
@@ -14,7 +15,7 @@ import {PageService} from '../../services/page.service';
 export class SearchResultsComponent implements OnInit, OnChanges {
   @Output() itemSelected = new EventEmitter();
   private page_type;
-  private other_type;
+  private other_type; // null | 'image' | 'map-image'
   private item_list;
   private selected_item;
   private search_query_text;
@@ -23,6 +24,7 @@ export class SearchResultsComponent implements OnInit, OnChanges {
 
   constructor(
     private pageService: PageService,
+    private mapService: MapService,
     private _eref: ElementRef
   ) {
 
@@ -62,6 +64,11 @@ export class SearchResultsComponent implements OnInit, OnChanges {
           error => this.error = <any>error);
     } else if (this.other_type === 'image') {
       this.pageService.searchRelevantImages(this.search_query_text)
+        .subscribe(
+          results => this.handleNewSearchResults(results),
+          error => this.error = <any>error);
+    }  else if (this.other_type === 'map-image') {
+      this.mapService.searchRelevantMapImages(this.search_query_text)
         .subscribe(
           results => this.handleNewSearchResults(results),
           error => this.error = <any>error);
