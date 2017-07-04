@@ -2,7 +2,6 @@
   <div class="page-title" *ngIf="page.name">
     <h2>{{page.name}}</h2>
     <div class="page-tools">
-      <sr-world-map-btn *ngIf="page._properties.is_location" (enabled)="viewWorldMap()"></sr-world-map-btn>
       <sr-options-btn [config]="options_btn_config" (remove)="deletePage()" (edit)="editSummary()"></sr-options-btn>
     </div>
   </div>

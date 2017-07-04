@@ -2,7 +2,7 @@
   <sr-page-summary [page]="page"></sr-page-summary>
   <sr-page-images-section [page_images_section]="page['images']"></sr-page-images-section>
   <sr-page-details-section [page_details_section]="page['details']"></sr-page-details-section>
+  <sr-page-maps-section *ngIf="page['maps']" [page_maps_section]="page['maps']"></sr-page-maps-section>
   <sr-relative-pages-sections [relative_pages_sections]="page['pages']"></sr-relative-pages-sections>
-  <sr-relative-libraries [relative_libraries]="page['relative_libraries']"></sr-relative-libraries>
 </div>
 <sr-spinner *ngIf="page['is_loading']"></sr-spinner>

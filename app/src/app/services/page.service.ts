@@ -58,12 +58,12 @@ export class PageService {
     page._states = {};
     this.addDetailStates(page);
     this.addImageStates(page);
+    this.addMapStates(page);
     if (page.pages && page.pages.length) {
       for (let page_section of page.pages) {
         this.addPageSectionStates(page_section);
       }
     }
-    this.addPropertyStates(page);
   }
 
   private addDetailStates(page) {
@@ -82,6 +82,14 @@ export class PageService {
     }
   }
 
+  private addMapStates(page) {
+    if (page.maps && page.maps.list && page.maps.list.length) {
+      for (let map of page.maps.list) {
+        map._states = {};
+      }
+    }
+  }
+
   private addPageSectionStates(page_section) {
     page_section._states = {};
     if (page_section.properties) {
@@ -92,28 +100,6 @@ export class PageService {
         }
       }
     }
-  }
-
-  private addPropertyStates(page) {
-    page._properties = {
-      is_location: false
-    };
-    if (this.isLocationPage(page)) {
-      page._properties.is_location = true;
-    }
-  }
-
-  private isLocationPage(page) {
-    let location_page_codes = [
-      'DI',
-      'LM',
-      'PL',
-      'RG',
-      'SE',
-      'WD'
-    ];
-    let page_code = this.getPageCode(page.id);
-    return location_page_codes.indexOf(page_code) >= 0;
   }
 
   searchRelevantPages(query, type) {
@@ -129,8 +115,20 @@ export class PageService {
     return this.searchRelevantPages(query, 'image');
   }
 
+  searchRelevantMapImages(query) {
+    return this.searchRelevantPages(query, 'map-image');
+  }
+
+  searchRelevantMaps(query) {
+    return this.searchRelevantPages(query, 'map');
+  }
+
   reorderDetails(details) {
     return this.reorderPageLinks(details);
+  }
+
+  reorderMaps(maps) {
+    return this.reorderPageLinks(maps);
   }
 
   private extractDetailId(detail) {
@@ -215,9 +213,13 @@ export class PageService {
   }
 
   addPageLink(link, links) {
+    let page_id = this.getPageId();
+    return this.addDefinedPageLink(page_id, link, links);
+  }
+
+  addDefinedPageLink(page_id, link, links) {
     links = this.extractLinkIds(links);
     link = this.extractLinkId(link);
-    let page_id = this.getPageId();
     links.push(link);
     return this.updatePageLinks(links, page_id);
   }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FileService} from '../../services/file.service';
+import {FileService} from '../../../services/file.service';
 
 @Component({
   selector: 'sr-map-background',

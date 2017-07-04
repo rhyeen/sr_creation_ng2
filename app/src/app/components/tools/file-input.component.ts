@@ -81,11 +81,7 @@ export class FileInputComponent implements OnInit, OnChanges {
 
   private conformImage(file) {
     let self = this;
-    let image_confromer = this.fileService.conformImage;
-    if (this.upload_type === 'map-image') {
-      image_confromer = this.fileService.conformMapImage;
-    }
-    image_confromer(file).then(function(image_data_container) {
+    this.fileService.conformImage(file, this.upload_type).then(function(image_data_container) {
       self.file = image_data_container['image_data'];
       self.image_src = self.file;
       self.thumbnail_src = image_data_container['thumbnail_data'];

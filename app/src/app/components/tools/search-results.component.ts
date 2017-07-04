@@ -1,6 +1,5 @@
 import {Component, OnInit, ElementRef, OnChanges, Output, EventEmitter} from '@angular/core';
 import {PageService} from '../../services/page.service';
-import {MapService} from '../../services/map.service';
 
 @Component({
   selector: 'sr-search-results',
@@ -24,7 +23,6 @@ export class SearchResultsComponent implements OnInit, OnChanges {
 
   constructor(
     private pageService: PageService,
-    private mapService: MapService,
     private _eref: ElementRef
   ) {
 
@@ -68,7 +66,12 @@ export class SearchResultsComponent implements OnInit, OnChanges {
           results => this.handleNewSearchResults(results),
           error => this.error = <any>error);
     }  else if (this.other_type === 'map-image') {
-      this.mapService.searchRelevantMapImages(this.search_query_text)
+      this.pageService.searchRelevantMapImages(this.search_query_text)
+        .subscribe(
+          results => this.handleNewSearchResults(results),
+          error => this.error = <any>error);
+    }  else if (this.other_type === 'map') {
+      this.pageService.searchRelevantMaps(this.search_query_text)
         .subscribe(
           results => this.handleNewSearchResults(results),
           error => this.error = <any>error);

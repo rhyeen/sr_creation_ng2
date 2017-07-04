@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {MapService} from '../../services/map.service';
-import {FileService} from '../../services/file.service';
+import {MapService} from '../../../services/map.service';
+import {FileService} from '../../../services/file.service';
+import {PageService} from '../../../services/page.service';
 
 @Component({
   selector: 'sr-add-map-image',
@@ -26,7 +27,8 @@ export class AddMapImageComponent implements OnInit {
 
   constructor(
     private mapService: MapService,
-    private fileService: FileService
+    private fileService: FileService,
+    private pageService: PageService
   ) {
 
   }
@@ -121,7 +123,7 @@ export class AddMapImageComponent implements OnInit {
   private handleThumbnailUploadResults(results) {
     let page_id = this.map.page_id;
     this.thumbnail_link = results.file_name;
-    this.mapService.newImage(this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
+    this.mapService.newImage(this.map.id, this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
       .subscribe(
         results => this.passSetImage(this.image_link),
         error => this.error = <any>error);
@@ -130,9 +132,9 @@ export class AddMapImageComponent implements OnInit {
   private linkImage() {
     let link = this.search_selected_item;
     this.setLoading();
-    this.mapService.addMapLink(link, this.map.page_id)
+    this.pageService.addDefinedPageLink(this.map.id, link, [])
       .subscribe(
-        data => this.passSetImage(this.mapService.extractLinkId(link)),
+        data => this.passSetImage(this.pageService.extractLinkId(link)),
         error => this.error = <any>error);
     this.cancel();
   }

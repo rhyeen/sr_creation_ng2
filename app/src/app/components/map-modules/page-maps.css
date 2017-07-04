@@ -1,0 +1,62 @@
+:host .page-maps-container {
+  display: block;
+  width: 350px;
+  max-height: 175px;
+  padding: 5px 10px;
+  margin: 15px 0 30px 0px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+:host .page-map-title {
+  position: relative;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 30px;
+}
+
+:host .page-map-title a {
+  color: black;
+  font-size: 18px;
+  flex-grow: 1;
+  font-weight: 400;
+  transition: all 0.3s;
+}
+
+:host .page-map-title a:hover {
+  color: #003399;
+  text-decoration: none;
+}
+
+:host .page-map-tools {
+  margin-top: 4px;
+  display: flex;
+/*  justify-content: space-between;*/
+}
+
+:host sr-content-help-btn {
+  margin-top: 2px;
+  margin-right: 4px;
+}
+
+:host sr-exit-btn {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+:host .options-container {
+  margin-left: -60px;
+  margin-right: 20px;
+}
+
+:host .content-help-btn-space {
+  width: 16px;
+}
+
+@media (max-width: 400px) {
+  :host .page-maps-container {
+    width: calc(100% - 20px);
+  }
+}

@@ -1,0 +1,15 @@
+<div class="page-maps-container" *ngIf="show_state && !is_loading" [dragula]="page_map_bag" [dragulaModel]="maps">
+  <div *ngFor="let map of maps; let map_index = index">
+    <div class="page-map-title">
+      <a href="javascript:void(0)" (click)="selectMap(map)">{{map.name}}</a>
+      <div class="page-map-tools">
+        <sr-content-help-btn *ngIf="map['summary'] && (map['summary']['text'] || map['summary']['properties'])" (enabled)="contentHelpEnabled($event, map)"></sr-content-help-btn>
+        <div class="content-help-btn-space" *ngIf="!(map['summary'] && (map['summary']['text'] || map['summary']['properties']))"></div>
+        <sr-move-btn></sr-move-btn>
+        <sr-options-btn [config]="options_btn_config" (remove)="deleteMap(map)"></sr-options-btn>
+      </div>
+    </div>
+    <sr-page-map-summary *ngIf="map['summary']" [show_state]="map._states.help_enabled" [map_summary]="map['summary']"></sr-page-map-summary>
+  </div>
+</div>
+<sr-spinner *ngIf="is_loading"></sr-spinner>

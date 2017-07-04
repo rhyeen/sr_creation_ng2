@@ -20,15 +20,7 @@ export class OverviewMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.subscribe(path => {
-      this.setLoading();
-    });
-    this.setLoading();
-    this.route.params
-      .switchMap((params: Params) => this.mapService.getMap(params['id']))
-      .subscribe(
-        map => this.setMap(map),
-        error => this.map_error = <any>error);
+    this.refreshMap();
   }
 
   /**
@@ -39,6 +31,18 @@ export class OverviewMapComponent implements OnInit {
       this.map = {};
       this.map['is_loading'] = true;
     }
+  }
+
+  refreshMap() {
+    this.router.events.subscribe(path => {
+      this.setLoading();
+    });
+    this.setLoading();
+    this.route.params
+      .switchMap((params: Params) => this.mapService.getMap(params['id']))
+      .subscribe(
+        map => this.setMap(map),
+        error => this.map_error = <any>error);
   }
 
   setMap(map) {

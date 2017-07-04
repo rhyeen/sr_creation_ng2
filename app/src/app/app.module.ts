@@ -19,7 +19,6 @@ import {BreadcrumbNavComponent} from './components/nav-modules/breadcrumb-nav.co
 
 // page-modules
 import {PageSummaryComponent} from './components/page-modules/page-summary.component';
-import {RelativeLibrariesComponent} from './components/link-modules/relative-libraries.component';
 import {RelativePagesComponent} from './components/link-modules/relative-pages.component';
 import {RelativePagesSectionsComponent} from './components/link-modules/relative-pages-sections.component';
 import {RelativePageSummaryComponent} from './components/link-modules/relative-page-summary.component';
@@ -39,8 +38,14 @@ import {AddImageComponent} from './components/image-modules/add-image.component'
 import {PagePropertiesComponent} from './components/page-modules/page-properties.component';
 
 // map-modules
-import {MapBackgroundComponent} from './components/map-modules/map-background.component';
-import {AddMapImageComponent} from './components/map-modules/add-map-image.component';
+import {AddMapComponent} from './components/map-modules/add-map.component';
+import {PageMapSummaryComponent} from './components/map-modules/page-map-summary.component';
+import {PageMapsSectionComponent} from './components/map-modules/page-maps-section.component';
+import {PageMapsComponent} from './components/map-modules/page-maps.component';
+
+import {MapBackgroundComponent} from './components/map-view/map-modules/map-background.component';
+import {AddMapImageComponent} from './components/map-view/map-modules/add-map-image.component';
+
 
 // tools
 import {NewItemBtnComponent} from './components/tools/btns/new-item-btn.component';
@@ -81,7 +86,6 @@ import {OverviewMapComponent} from './components/maps/overview-map.component';
     BookmarksComponent,
     BreadcrumbNavComponent,
     PageSummaryComponent,
-    RelativeLibrariesComponent,
     RelativePagesComponent,
     RelativePagesSectionsComponent,
     RelativePageSummaryComponent,
@@ -117,6 +121,10 @@ import {OverviewMapComponent} from './components/maps/overview-map.component';
     SearchResultsComponent,
     FileDropComponent,
     FileInputComponent,
+    AddMapComponent,
+    PageMapSummaryComponent,
+    PageMapsSectionComponent,
+    PageMapsComponent,
     MapBackgroundComponent,
     AddMapImageComponent
   ],

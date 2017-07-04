@@ -1,0 +1,11 @@
+<div class="add-map-container" *ngIf="show_state">
+  <div class="input-results">
+    <input *ngIf="!search_selected_item" type="text" [(ngModel)]="name">
+    <div *ngIf="search_selected_item" class="selected-item-container">
+      <div class="selected-item-text">{{name}}</div>
+      <sr-exit-btn (closed)="removeSelection()"></sr-exit-btn>
+    </div>
+    <sr-search-results [search_query_text]="name" [other_type]="'map'" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
+  </div>
+  <button class="add-map-btn" (click)="linkOrCreateMap()" [disabled]="!name">{{add_map_btn}}</button>
+</div>

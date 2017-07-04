@@ -1,0 +1,8 @@
+<div *ngIf="page_maps_section">
+  <h3>Maps</h3>
+  <sr-section-toggle-btn *ngIf="page_maps_section['list'].length" (reveal)="togglePageMaps($event)"></sr-section-toggle-btn>
+  <sr-new-item-btn (enabled)="toggleAddMap($event)" [enable]="add_map_enabled"></sr-new-item-btn>
+  <sr-add-map [show_state]="add_map_enabled" [page_maps_section]="page_maps_section" (setMaps)="setMaps($event)" (setMapsLoading)="setMapsLoading()"></sr-add-map>
+  <sr-page-maps *ngIf="page_maps_section['list'].length && !hide_maps && !is_loading" [maps]="page_maps_section['list']" (setMaps)="setMaps($event)"></sr-page-maps>
+  <sr-spinner *ngIf="is_loading"></sr-spinner>
+</div>

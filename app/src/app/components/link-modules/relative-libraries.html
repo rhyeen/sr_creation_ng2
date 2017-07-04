@@ -1,6 +1,0 @@
-<div *ngIf="relative_libraries && relative_libraries.length">
-  <h3 class="relative-library-title">Related Libraries</h3>
-  <div class="library-link">
-    <a href="javascript:void(0)" *ngFor="let relative_library of relative_libraries" (click)="selectLibrary(relative_library)">{{relative_library.name}}</a>
-  </div>
-</div>

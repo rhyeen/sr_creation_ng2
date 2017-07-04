@@ -13,8 +13,9 @@ export class FileService {
   private thumbnail_quality = 1; // scale from 0.0 to 1.0
   private image_max_width = 700;
   private image_max_height = 700;
-  private map_image_max_width = 4000;
-  private map_image_max_height = 4000;
+  // @TODO: should be 4000, disabling for now until bug is resolved: https://github.com/rhyeen/sr_creation/issues/29
+  private map_image_max_width = 1000;
+  private map_image_max_height = 1000;
   private thumbnail_max_width = 370;
   private thumbnail_max_height = 370;
 
@@ -95,12 +96,14 @@ export class FileService {
     return Observable.throw(error_message);
   }
 
-  conformMapImage(file) {
-    return this.conformImageWithDimensions(file, this.map_image_max_width, this.map_image_max_height);
-  }
-
-  conformImage(file) {
-    return this.conformImageWithDimensions(file, this.image_max_width, this.image_max_height);
+  conformImage(file, conform_type) {
+    let max_width = this.image_max_width;
+    let max_height = this.image_max_height;
+    if (conform_type === 'map-image') {
+      max_width = this.map_image_max_width;
+      max_height = this.map_image_max_height;
+    }
+    return this.conformImageWithDimensions(file, max_width, max_height);
   }
 
   private conformImageWithDimensions(file, width, height) {
