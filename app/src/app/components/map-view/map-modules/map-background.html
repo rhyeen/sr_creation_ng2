@@ -1,7 +1,7 @@
-<div *ngIf="map.image_id">
+<div class="map-image" *ngIf="image_link">
   <img src="{{image_link}}">
 </div>
-<div class="upload-new-image" *ngIf="!map.image_id">
+<div class="upload-new-image" *ngIf="!image_link">
   <h2>Choose a background map image</h2>
-  <sr-add-map-image [map]="map" [show_state]="true"></sr-add-map-image>
+  <sr-add-map-image [map]="map" [show_state]="true" (setImage)="setImage($event)" (setImageLoading)="imageLoading()"></sr-add-map-image>
 </div>

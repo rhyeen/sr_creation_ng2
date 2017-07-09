@@ -2,3 +2,11 @@
   display: block;
   width: 370px;
 }
+
+:host .map-image {
+  width: 100%;
+  max-height: calc(100% - 70px);
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+

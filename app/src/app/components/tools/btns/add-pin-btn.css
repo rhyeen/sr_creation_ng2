@@ -1,0 +1,11 @@
+:host button {
+  background: none;
+  background-image: url("data:image/svg+xml;uft8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='#4FB12E'><path d='M15.098 16.392c-.611.379-1.326.608-2.098.608-2.209 0-4-1.791-4-4s1.791-4 4-4c.604 0 1.171.144 1.684.383.453-.988 1.112-1.861 1.925-2.562C15.68 6.327 14.511 6 13 6c-7 0-7 6.769-7 6.769C6 16 8 18 10 21c2.773 4.16 3 7 3 7s1-4 3-7c.515-.773 1.029-1.479 1.51-2.157-.982-.619-1.808-1.459-2.412-2.451z'/><path d='M21.5 6C17.91 6 15 8.91 15 12.5s2.91 6.5 6.5 6.5 6.5-2.91 6.5-6.5S25.09 6 21.5 6zm4.5 7h-4v4h-1v-4h-4v-1h4V8h1v4h4v1z'/></svg>");
+  width: 34px;
+  height: 34px;
+  border-radius: 34px;
+  background-color: white;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.75);
+}
+

@@ -165,7 +165,7 @@ export class PageService {
     return this.reorderPageLinks(images);
   }
 
-  private extractImageId(image) {
+  extractImageId(image) {
     return image.id;
   }
 
@@ -235,7 +235,7 @@ export class PageService {
     return link_ids;
   }
 
-  private extractLinkId(link) {
+  extractLinkId(link) {
     return link.id;
   }
 
@@ -464,6 +464,35 @@ export class PageService {
     return page_code.toUpperCase();
   }
 
+  getLocationPageTypes() {
+    return [
+      {
+        code: 'WD',
+        title: 'world'
+      },
+      {
+        code: 'RG',
+        title: 'region'
+      },
+      {
+        code: 'DI',
+        title: 'district'
+      },
+      {
+        code: 'PL',
+        title: 'place'
+      },
+      {
+        code: 'LM',
+        title: 'landmark'
+      },
+      {
+        code: 'SE',
+        title: 'section'
+      }
+    ]
+  }
+
   private extractData(res: Response) {
     let addTitles = function(response_body) {
       let getPageTitle = function(page) {
@@ -476,8 +505,6 @@ export class PageService {
             return 'associations';
           case 'CA':
             return 'campaigns';
-          case 'CT':
-            return 'catalogs';
           case 'CH':
             return 'characters';
           case 'DI':
@@ -508,6 +535,8 @@ export class PageService {
             return 'reports';
           case 'SE':
             return 'sections';
+          case 'ST':
+            return 'sets';
           case 'SP':
             return 'species';
           case 'SA':

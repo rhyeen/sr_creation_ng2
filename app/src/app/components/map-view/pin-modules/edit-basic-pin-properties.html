@@ -1,0 +1,24 @@
+<div class="add-pin-properties">
+  <label>
+    <div>Title:</div>
+    <input type="text" [(ngModel)]="title">
+  </label>
+  <h4>Linked page</h4>
+  <label>
+    <div>Type:</div>
+    <select [(ngModel)]="link_page_type">
+      <option *ngFor="let page_type of location_page_types" [ngValue]="page_type">{{page_type.title}}</option>
+    </select>
+  </label>
+  <label>
+    <div>Name:</div>
+    <div class="input-results">
+      <input *ngIf="!search_selected_item" type="text" [(ngModel)]="linked_page_name">
+      <!-- <div *ngIf="search_selected_item" class="selected-item-container">
+        <div class="selected-item-text">{{linked_page_name}}</div>
+        <sr-exit-btn (closed)="removeSelection()"></sr-exit-btn>
+      </div>
+      <sr-search-results [search_query_text]="linked_page_name" [page_type]="link_page_type.code" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results> -->
+    </div>
+  </label>
+</div>

@@ -7,12 +7,13 @@ import {PageService} from '../../../services/page.service';
   selector: 'sr-add-map-image',
   templateUrl: './add-map-image.html',
   styleUrls: ['./add-map-image.css'],
-  inputs: ['map', 'show_state']
+  inputs: ['map', 'show_state'],
+  outputs: ['setImage']
 })
 export class AddMapImageComponent implements OnInit {
   private map;
-  @Output() setImage = new EventEmitter();
-  @Output() setImageLoading = new EventEmitter();
+  private setImage = new EventEmitter();
+  private setImageLoading = new EventEmitter();
   private show_state;
   private error;
   private name;
@@ -123,9 +124,18 @@ export class AddMapImageComponent implements OnInit {
   private handleThumbnailUploadResults(results) {
     let page_id = this.map.page_id;
     this.thumbnail_link = results.file_name;
+    let image = {
+      caption: this.caption,
+      link: this.image_link,
+      name: this.name,
+      source: this.source,
+      thumbnail: {
+        link: this.thumbnail_link
+      }
+    };
     this.mapService.newImage(this.map.id, this.name, this.caption, this.source, this.image_link, this.thumbnail_link, page_id)
       .subscribe(
-        results => this.passSetImage(this.image_link),
+        results => this.passSetImage(image, results),
         error => this.error = <any>error);
   }
 
@@ -134,7 +144,7 @@ export class AddMapImageComponent implements OnInit {
     this.setLoading();
     this.pageService.addDefinedPageLink(this.map.id, link, [])
       .subscribe(
-        data => this.passSetImage(this.pageService.extractLinkId(link)),
+        data => this.passSetImage(link, this.pageService.extractLinkId(link)),
         error => this.error = <any>error);
     this.cancel();
   }
@@ -143,8 +153,9 @@ export class AddMapImageComponent implements OnInit {
     this.setImageLoading.emit();
   }
 
-  private passSetImage(image_id) {
-    this.map.image_id = image_id;
-    this.setImage.emit(image_id);
+  private passSetImage(image, image_id) {
+    image['id'] = image_id;
+    this.map.image = image;
+    this.setImage.emit(image);
   }
 }

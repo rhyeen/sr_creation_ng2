@@ -1,6 +1,7 @@
 :host .map-container {
   display: block;
   margin: 15px;
+  position: relative;
 }
 
 :host sr-spinner {

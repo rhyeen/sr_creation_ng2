@@ -1,0 +1,10 @@
+<div class="closed-options" *ngIf="!opened">
+  <sr-add-pin-btn (click)="addPin()"></sr-add-pin-btn>
+</div>
+<div class="open-options" *ngIf="opened">
+  <div class="title-bar">
+    <h3 class="title">Add pin</h3>
+    <sr-exit-btn [color]="'black-x'" (click)="closeOptions()"></sr-exit-btn>
+  </div>
+  <sr-edit-basic-pin-properties [pin]="new_pin"></sr-edit-basic-pin-properties>
+</div>

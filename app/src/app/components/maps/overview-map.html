@@ -1,4 +1,5 @@
 <div class="map-container" *ngIf="!map['is_loading']">
   <sr-map-background [map]="map" (refreshMap)="refreshMap()" (loading)="setLoading()"></sr-map-background>
+  <sr-map-foreground [map]="map" (refreshMap)="refreshMap()" (loading)="setLoading()"></sr-map-foreground>
 </div>
 <sr-spinner *ngIf="map['is_loading']"></sr-spinner>
