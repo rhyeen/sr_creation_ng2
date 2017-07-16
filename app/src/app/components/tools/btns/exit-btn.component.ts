@@ -19,7 +19,7 @@ export class ExitBtnComponent implements OnInit {
     
   }
 
-  exit() {
+  exit(event) {
     this.closed.emit();
   }
 }

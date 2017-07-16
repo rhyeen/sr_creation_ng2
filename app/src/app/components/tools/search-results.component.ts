@@ -39,14 +39,16 @@ export class SearchResultsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    let new_search_query_text = changes.search_query_text.currentValue;
-    if (new_search_query_text && new_search_query_text.length > 2 && (!this.selected_item || new_search_query_text != this.selected_item.name)) {
-      this.selected_item = null;
-      this.showResults();
-    }
-    if (new_search_query_text != changes.search_query_text.previousValue && !this.selected_item) {
-      this.search_query_text = new_search_query_text;
-      this.searchRelevantResults();
+    if (changes.search_query_text) {
+      let new_search_query_text = changes.search_query_text.currentValue;
+      if (new_search_query_text && new_search_query_text.length > 2 && (!this.selected_item || new_search_query_text != this.selected_item.name)) {
+        this.selected_item = null;
+        this.showResults();
+      }
+      if (new_search_query_text != changes.search_query_text.previousValue && !this.selected_item) {
+        this.search_query_text = new_search_query_text;
+        this.searchRelevantResults();
+      }
     }
   }
 

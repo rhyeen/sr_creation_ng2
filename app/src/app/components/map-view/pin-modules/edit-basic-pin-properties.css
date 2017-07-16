@@ -1,28 +1,41 @@
-:host .title-bar {
-  display: flex;
-  justify-content: space-between;
-}
-
-:host .add-pin-properties label {
+:host label,
+:host .complex-label {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 15px;
 }
 
-:host .add-pin-properties label div {
+:host .property-group {
+  margin-bottom: 15px;
+}
+
+:host .property-group label {
+  margin-bottom: 0px;
+}
+
+:host .label-title {
   width: 100px;
   font-weight: 700;
   margin-right: 10px;
   line-height: 27px;
 }
 
-:host .add-pin-properties label input {
+:host label input {
   flex-grow: 1;
 }
 
-:host input {
+:host .input-results {
+  flex-grow: 1;
+  margin-right: 0px;
+  position: relative;
+}
+
+:host .input-results input {
   width: 100%;
+}
+
+:host input {
   border: 1px solid #373737;
   padding: 2px 5px;
   font-size: 18px;
@@ -30,7 +43,7 @@
   font-family: 'Cuprum', sans-serif;
 }
 
-:host button {
+:host .place-pin-btn {
   width: 70px;
   min-width: 70px;
   border: none;
@@ -41,15 +54,16 @@
   color: white;
 }
 
-:host button:disabled {
+:host .place-pin-btn:disabled {
   background-color: #ccc;
 }
 
-:host .add-image-btn {
-  background-color: #4FB12E;
+:host .place-pin-btn {
+  background-color: #3a66e0;
 }
 
 :host .selected-item-container {
+  position: relative;
   background-color: #3a66e0;
   color: white;
   border-radius: 100px;
@@ -63,8 +77,13 @@
 :host .selected-item-text {
   line-height: 27px;
   display: inline-block;
-  max-width: 220px;
+  max-width: calc(100% - 42px);
+  white-space: nowrap;
   padding: 0 10px;
   overflow-x: hidden;
   text-overflow: ellipsis;
+}
+
+:host .multi-line-label {
+  display: block;
 }

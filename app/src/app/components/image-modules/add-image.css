@@ -81,6 +81,7 @@
   line-height: 27px;
   display: inline-block;
   max-width: 220px;
+  white-space: nowrap;
   padding: 0 10px;
   overflow-x: hidden;
   text-overflow: ellipsis;
