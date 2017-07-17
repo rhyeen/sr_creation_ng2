@@ -1,0 +1,4 @@
+<div class="add-pin-location">
+  <button class="customize-pin-btn" (click)="placePin()" [disabled]="!pin.coordinates || pin.coordinates.x == null || pin.coordinates.y == null">Customize pin</button>
+  <button class="back-btn" (click)="cancel()">Back</button>
+</div>

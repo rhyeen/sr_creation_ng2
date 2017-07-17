@@ -1,4 +1,5 @@
 <div class="map-image" *ngIf="image_link">
+  <div class="white-out" *ngIf="target_pin._state && target_pin._state.set_basic_properties && !target_pin._state.set_basic_location"></div>
   <img src="{{image_link}}">
 </div>
 <div class="upload-new-image" *ngIf="!image_link">

@@ -1,10 +1,17 @@
 <div class="closed-options" *ngIf="!opened">
   <sr-add-pin-btn (click)="addPin()"></sr-add-pin-btn>
 </div>
-<div class="open-options" *ngIf="opened">
+<div class="open-options" *ngIf="opened && !target_pin._state.set_basic_properties">
   <div class="title-bar">
     <h3 class="title">Add pin</h3>
     <sr-exit-btn [color]="'black-x'" (click)="closeOptions()"></sr-exit-btn>
   </div>
-  <sr-edit-basic-pin-properties [pin]="new_pin"></sr-edit-basic-pin-properties>
+  <sr-edit-basic-pin-properties [pin]="target_pin"></sr-edit-basic-pin-properties>
+</div>
+<div class="open-options" *ngIf="opened && target_pin._state.set_basic_properties">
+  <div class="title-bar">
+    <h3 class="title">Choose a spot to place the pin</h3>
+    <sr-exit-btn [color]="'black-x'" (click)="closeOptions()"></sr-exit-btn>
+  </div>
+  <sr-edit-basic-pin-location [pin]="target_pin" (setCancel)="backToBasicProperties()"></sr-edit-basic-pin-location>
 </div>

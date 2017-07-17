@@ -5,7 +5,7 @@ import {FileService} from '../../../services/file.service';
   selector: 'sr-map-background',
   templateUrl: './map-background.html',
   styleUrls: ['./map-background.css'],
-  inputs: ['map']
+  inputs: ['map', 'target_pin']
 })
 export class MapBackgroundComponent implements OnInit {
   private map;

@@ -10,6 +10,7 @@ import {MapService} from '../../services/map.service';
 export class OverviewMapComponent implements OnInit {
   private map;
   private map_error;
+  private target_pin;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +22,11 @@ export class OverviewMapComponent implements OnInit {
 
   ngOnInit() {
     this.refreshMap();
+    this.target_pin = {
+      coordinates: {
+
+      }
+    };
   }
 
   /**

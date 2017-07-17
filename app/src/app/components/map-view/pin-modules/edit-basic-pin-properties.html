@@ -1,13 +1,13 @@
 <div class="add-pin-properties">
   <label>
     <div class="label-title">Title:</div>
-    <input type="text" [(ngModel)]="title">
+    <input type="text" [(ngModel)]="pin.title.name">
   </label>
   <h4>Linked page</h4>
   <div class="property-group">
     <label>
       <div class="label-title">Type:</div>
-      <select [ngModel]="link_page_type" (ngModelChange)="selectLinkPageType($event)">
+      <select [ngModel]="pin_link_type_container" (ngModelChange)="selectLinkPageType($event)">
         <option *ngFor="let page_type of location_page_types" [ngValue]="page_type">{{page_type.title}}</option>
       </select>
     </label>
@@ -16,16 +16,16 @@
       <div class="input-results">
         <input *ngIf="!search_selected_item" type="text" [(ngModel)]="linked_page_name">
         <div *ngIf="search_selected_item" class="selected-item-container">
-          <div class="selected-item-text">{{linked_page_name}}</div>
+          <div class="selected-item-text">{{search_selected_item.name}}</div>
           <sr-exit-btn (closed)="removeSelection()"></sr-exit-btn>
         </div>
-        <sr-search-results [search_query_text]="linked_page_name" [page_type]="link_page_type.code" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
+        <sr-search-results [search_query_text]="linked_page_name" [page_type]="pin.link.type" (itemSelected)="searchQueryItemSelected($event)"></sr-search-results>
       </div>
     </div>
   </div>
   <label class="multi-line-label">
     <div class="label-title">Tooltip:</div>
-    <sr-textarea [content_container]="tooltip_container" [content_key]="'tooltip'"></sr-textarea>
+    <sr-textarea [content_container]="pin.tooltip" [content_key]="'text'"></sr-textarea>
   </label>
-  <button class="place-pin-btn" (click)="newPin()" [disabled]="!title">Place pin</button>
+  <button class="place-pin-btn" (click)="newPin()" [disabled]="!pin.title.name">Place pin</button>
 </div>

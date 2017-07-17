@@ -49,6 +49,7 @@ import {MapForegroundComponent} from './components/map-view/map-modules/map-fore
 import {MapOptionsComponent} from './components/map-view/map-modules/map-options.component';
 import {AddPinBtnComponent} from './components/tools/btns/add-pin-btn.component';
 import {EditBasicPinProperties} from './components/map-view/pin-modules/edit-basic-pin-properties.component';
+import {EditBasicPinLocation} from './components/map-view/pin-modules/edit-basic-pin-location.component';
 
 // tools
 import {NewItemBtnComponent} from './components/tools/btns/new-item-btn.component';
@@ -133,7 +134,8 @@ import {OverviewMapComponent} from './components/maps/overview-map.component';
     MapForegroundComponent,
     MapOptionsComponent,
     AddPinBtnComponent,
-    EditBasicPinProperties
+    EditBasicPinProperties,
+    EditBasicPinLocation
   ],
   providers: [
   	appRoutingProviders,

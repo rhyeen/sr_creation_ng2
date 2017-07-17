@@ -10,11 +10,9 @@ import {PageService} from '../../../services/page.service';
 export class EditBasicPinProperties implements OnInit {
   private pin;
   private location_page_types;
-  private title;
   private linked_page_name;
-  private link_page_type;
   private search_selected_item;
-  private tooltip_container;
+  private pin_link_type_container;
 
   constructor(
     private pageService: PageService
@@ -22,13 +20,43 @@ export class EditBasicPinProperties implements OnInit {
   }
 
   ngOnInit() {
-    // only needed for sr-textarea.  If we switch all these properites to be within a pin object, the tooltip_container can just be the pin object.
-    this.tooltip_container = {
-      tooltip: ''
-    };
     this.search_selected_item = null;
     this.location_page_types = this.getLocationPageTypes();
-    this.link_page_type = this.location_page_types[0];
+    if (!this.pin.title) {
+      this.pin.title = {
+        name: null
+      };
+    }
+    if (!this.pin.tooltip) {
+      this.pin.tooltip = {
+        text: null
+      };
+    }
+    if (!this.pin.link) {
+      this.pin.link = {
+        id: null,
+        name: null,
+        type: this.location_page_types[0].code
+      };
+      this.pin_link_type_container = this.location_page_types[0].code;
+    } else {
+      this.pin_link_type_container = this.getLocationPageType(this.pin.link.type, this.location_page_types);
+      this.search_selected_item = {
+        id: this.pin.link.id,
+        name: this.pin.link.name
+      };
+    }
+  }
+
+  private getLocationPageType(code, location_page_types) {
+    if (!code) {
+      return location_page_types[0];
+    }
+    for (let location_page_type of location_page_types) {
+      if (location_page_type.code == code) {
+        return location_page_type;
+      }
+    }
   }
 
   private getLocationPageTypes() {
@@ -38,7 +66,13 @@ export class EditBasicPinProperties implements OnInit {
   searchQueryItemSelected(search_item) {
     this.search_selected_item = search_item;
     if (search_item) {
+      this.pin.link.name = search_item.name;
       this.linked_page_name = search_item.name;
+      this.pin.link.id = search_item.id;
+    } else {
+      this.pin.link.name = null;
+      this.linked_page_name = null;
+      this.pin.link.id = null;
     }
   }
 
@@ -47,7 +81,12 @@ export class EditBasicPinProperties implements OnInit {
   }
 
   selectLinkPageType(link_page_type) {
-    this.link_page_type = link_page_type;
+    this.pin_link_type_container = link_page_type;
+    this.pin.link.type = link_page_type.code;
     this.search_selected_item = null;
+  }
+
+  newPin() {
+    this.pin._state.set_basic_properties = true;
   }
 }
