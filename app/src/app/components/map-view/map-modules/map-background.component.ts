@@ -9,6 +9,7 @@ import {FileService} from '../../../services/file.service';
 })
 export class MapBackgroundComponent implements OnInit {
   private map;
+  private target_pin;
   @Output() refreshMap = new EventEmitter();
   @Output() loading = new EventEmitter();
   private image_link;
@@ -35,5 +36,23 @@ export class MapBackgroundComponent implements OnInit {
 
   setImage(image) {
     this.refreshMap.emit();
+  }
+
+  setPinPosition(event) {
+    if (!this.editingPinModeEnabled()) {
+      return;
+    }
+    // this.target_pin.coordinates = {
+    //   x: event.offsetX,
+    //   y: event.offsetY
+    // }
+    this.target_pin.coordinates = {
+      x: event.layerX,
+      y: event.layerY
+    }
+  }
+
+  private editingPinModeEnabled() {
+    return this.target_pin._state && this.target_pin._state.set_basic_properties && !this.target_pin._state.set_basic_location;
   }
 }

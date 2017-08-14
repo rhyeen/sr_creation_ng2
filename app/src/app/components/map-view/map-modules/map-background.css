@@ -8,12 +8,22 @@
   max-height: calc(100% - 70px);
   overflow-x: scroll;
   overflow-y: scroll;
+  position: relative;
 }
 
-:host .white-out {
+:host .map-image .map-image-background {
+  opacity: 1;
+}
+
+:host .map-image.white-out .map-image-background {
+  opacity: 0.5;
+}
+
+/*:host .white-out {
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: white;
+  overflow: hidden;
   opacity: 0.5;
-}
+}*/

@@ -1,6 +1,11 @@
-<div class="map-image" *ngIf="image_link">
-  <div class="white-out" *ngIf="target_pin._state && target_pin._state.set_basic_properties && !target_pin._state.set_basic_location"></div>
-  <img src="{{image_link}}">
+<div class="map-image" *ngIf="image_link" [ngClass]="{'white-out': target_pin._state && target_pin._state.set_basic_properties && !target_pin._state.set_basic_location}" (click)="setPinPosition($event)">
+<!--   <div class="white-out" *ngIf="target_pin._state && target_pin._state.set_basic_properties && !target_pin._state.set_basic_location" (click)="setPinPosition($event)"></div> -->
+  <div class="map-image-background">
+    <img src="{{image_link}}">
+  </div>
+  <div class="map-image-foreground">
+    <sr-editable-pin *ngIf="target_pin.coordinates.x && target_pin.coordinates.y" [coordinates]="target_pin.coordinates"></sr-editable-pin>
+  </div>
 </div>
 <div class="upload-new-image" *ngIf="!image_link">
   <h2>Choose a background map image</h2>

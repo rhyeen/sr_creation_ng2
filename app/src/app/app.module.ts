@@ -50,6 +50,7 @@ import {MapOptionsComponent} from './components/map-view/map-modules/map-options
 import {AddPinBtnComponent} from './components/tools/btns/add-pin-btn.component';
 import {EditBasicPinProperties} from './components/map-view/pin-modules/edit-basic-pin-properties.component';
 import {EditBasicPinLocation} from './components/map-view/pin-modules/edit-basic-pin-location.component';
+import {EditablePin} from './components/map-view/pin-modules/editable-pin.component';
 
 // tools
 import {NewItemBtnComponent} from './components/tools/btns/new-item-btn.component';
@@ -135,7 +136,8 @@ import {OverviewMapComponent} from './components/maps/overview-map.component';
     MapOptionsComponent,
     AddPinBtnComponent,
     EditBasicPinProperties,
-    EditBasicPinLocation
+    EditBasicPinLocation,
+    EditablePin
   ],
   providers: [
   	appRoutingProviders,

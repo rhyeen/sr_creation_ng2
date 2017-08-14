@@ -46,6 +46,18 @@ export class EditBasicPinProperties implements OnInit {
         name: this.pin.link.name
       };
     }
+    this.skipBasicPinProperties();
+  }
+
+  /**
+   * @DEBUG: For debugging only to skip this model.
+   */
+  private skipBasicPinProperties() {
+    setTimeout(_ => {
+      this.pin.title = 'Test title';
+      this.pin.tooltip = 'Test tooltip';
+      this.pin._state.set_basic_properties = true;
+    });
   }
 
   private getLocationPageType(code, location_page_types) {
