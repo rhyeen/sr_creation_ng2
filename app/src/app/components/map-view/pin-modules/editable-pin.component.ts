@@ -4,10 +4,11 @@ import {Component, OnInit, OnChanges} from '@angular/core';
   selector: 'sr-editable-pin',
   templateUrl: './editable-pin.html',
   styleUrls: ['./editable-pin.css'],
-  inputs: ['coordinates']
+  inputs: ['coordinates', 'theme']
 })
 export class EditablePin implements OnInit, OnChanges {
   private coordinates;
+  private theme;
   private x;
   private y;
 

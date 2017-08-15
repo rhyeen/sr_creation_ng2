@@ -11,6 +11,27 @@ export class MapService {
 
   constructor (private http: Http) {}
 
+  getPinThemes() {
+    return [
+      {
+        "theme": "town",
+        "title": "Town"
+      },
+      {
+        "theme": "city",
+        "title": "City"
+      },
+      {
+        "theme": "capital",
+        "title": "Capital"
+      },
+      {
+        "theme": "landmark",
+        "title": "Landmark"
+      }
+    ]
+  }
+
   getMap(id) {
     let params = this.setGetMapParams(id);
     this.setMapId(id);

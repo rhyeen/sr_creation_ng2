@@ -28,10 +28,19 @@ export class MapOptionsComponent implements OnInit {
 
   closeOptions() {
     this.opened = false;
+    this.target_pin._state.set_basic_location = false;
     this.target_pin._state.set_basic_properties = false;
   }
 
   backToBasicProperties() {
     this.target_pin._state.set_basic_properties = false;
+  }
+
+  backToBasicLocation() {
+    this.target_pin._state.set_basic_location = false;
+  }
+
+  savePin() {
+    debugger;
   }
 }

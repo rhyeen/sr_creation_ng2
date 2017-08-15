@@ -9,7 +9,6 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class EditBasicPinLocation implements OnInit {
   private pin;
-  private coordinates;
   private setCancel = new EventEmitter();
 
 

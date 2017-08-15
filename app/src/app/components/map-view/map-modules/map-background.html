@@ -4,7 +4,7 @@
     <img src="{{image_link}}">
   </div>
   <div class="map-image-foreground">
-    <sr-editable-pin *ngIf="target_pin.coordinates.x && target_pin.coordinates.y" [coordinates]="target_pin.coordinates"></sr-editable-pin>
+    <sr-editable-pin *ngIf="target_pin.coordinates.x && target_pin.coordinates.y" [coordinates]="target_pin.coordinates" [theme]="target_pin.theme"></sr-editable-pin>
   </div>
 </div>
 <div class="upload-new-image" *ngIf="!image_link">

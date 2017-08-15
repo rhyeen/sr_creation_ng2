@@ -1,0 +1,10 @@
+<div class="add-pin-customization">
+  <label>
+    <div class="label-title">Theme:</div>
+    <select [ngModel]="pin_theme_container" (ngModelChange)="selectPinTheme($event)">
+      <option *ngFor="let pin_theme of pin_themes" [ngValue]="pin_theme">{{pin_theme.title}}</option>
+    </select>
+  </label>
+  <button class="save-pin-btn" (click)="savePin()">Save pin</button>
+  <button class="back-btn" (click)="cancel()">Back</button>
+</div>
